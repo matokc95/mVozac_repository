@@ -1,0 +1,16 @@
+﻿<Page
+    x:Class="mVozac.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:mVozac"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Height="740.429" Width="401.238">
+    <Grid Margin="0,0,81.2,446.4">
+        <TextBox HorizontalAlignment="Left" Height="32" Margin="63,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" PlaceholderText="Unesite korisničko ime"/>
+        <TextBox HorizontalAlignment="Left" Height="32" Margin="63,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" PlaceholderText="Unesite lozinku"/>
+        <Button Content="Prijavi se" HorizontalAlignment="Left" Height="54" Margin="63,137,0,0" VerticalAlignment="Top" Width="92" FontSize="12"/>
+        <Button Content="Registriraj se" HorizontalAlignment="Left" Height="54" Margin="160,137,0,0" VerticalAlignment="Top" Width="95" FontSize="12" Click="Button_Click_1"/>
+
+    </Grid>
+</Page>
