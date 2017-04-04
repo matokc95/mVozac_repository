@@ -6,11 +6,27 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Height="740.429" Width="401.238">
-    <Grid Margin="0,0,81.2,446.4">
-        <TextBox HorizontalAlignment="Left" Height="32" Margin="63,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" PlaceholderText="Unesite korisničko ime"/>
-        <TextBox HorizontalAlignment="Left" Height="32" Margin="63,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" PlaceholderText="Unesite lozinku"/>
-        <Button Content="Prijavi se" HorizontalAlignment="Left" Height="54" Margin="63,137,0,0" VerticalAlignment="Top" Width="92" FontSize="12"/>
-        <Button Content="Registriraj se" HorizontalAlignment="Left" Height="54" Margin="160,137,0,0" VerticalAlignment="Top" Width="95" FontSize="12" Click="Button_Click_1"/>
+    <Grid x:Name="LayoutRoot" Background="Chocolate">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="Prijava" TextAlignment="Center" Foreground="Black" FontSize="40"/>
+
+            <Image HorizontalAlignment="Left" Height="125" Margin="110,68,0,0" VerticalAlignment="Top" Width="171" Source="ms-appx:///Assets/logo.png"/>
+
+            <TextBlock Text="Korisničko ime" Foreground="Black" FontSize="30"/>
+            <TextBox  BorderBrush="LightGray" Name="Korisnicko_ime" Margin="0,0,10.2,0"/>
+            <TextBlock  Foreground="Black" Text="Lozinka" Margin="9,-7,0,0" FontSize="30"/>
+            <PasswordBox BorderBrush="LightGray" Name="Lozinka" Margin="0,0,10.2,0" />
+
+            <Button Content="Prijavi se" Background="Bisque" Name="Login" Click="Login_Click" />
+
+            <Button Content="Registriraj se" Background="Bisque" Name="SignUp" Click="SignUp_Click"/>
+
+        </StackPanel>
+
 
     </Grid>
 </Page>

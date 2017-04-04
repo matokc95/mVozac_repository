@@ -17,5 +17,9 @@ namespace mVozac
 {
     public sealed partial class Registracija : Page
     {
+        private void Submit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
