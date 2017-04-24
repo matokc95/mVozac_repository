@@ -35,7 +35,7 @@
             <RadioButton Name="GenFeMale"  Background="LightGray" Content="Ženski" Grid.Row="4" Margin="200,0,0,0" Foreground="Black" />
 
             <TextBlock Text="Broj telefona : " Grid.Row="5" Margin="-6,12.6,6,12.6" Foreground="Black" />
-            <TextBox Name="TxtPhNo" BorderBrush="LightGray" MaxLength="10"  InputScope="digits" Grid.Row="5" Margin="100,0,0,0"/>
+            <TextBox Name="TxtPhNo" BorderBrush="LightGray" MaxLength="10"  InputScope="Digits" Grid.Row="5" Margin="100,0,0,0"/>
 
             <Button BorderBrush="Transparent"  Background="#FF30DABB" Content="Registriraj se"  Name="BtnSubmit" Click="Submit_Click" Grid.Row="7" Margin="6,15.4,0,-15.4"/>
         </Grid>
