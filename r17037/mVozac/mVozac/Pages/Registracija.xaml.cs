@@ -17,6 +17,10 @@ namespace mVozac
 {
     public sealed partial class Registracija : Page
     {
+        public Registracija()
+        {
+            this.InitializeComponent();
+        }
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
 
