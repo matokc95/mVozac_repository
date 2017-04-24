@@ -21,7 +21,14 @@ namespace mVozac
         {
             this.InitializeComponent();
         }
-        private void Submit_Click(object sender, RoutedEventArgs e)
+
+        private void Povratak_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage), null);
+        }
+
+
+        private void Register_Click(object sender, RoutedEventArgs e)
         {
 
         }

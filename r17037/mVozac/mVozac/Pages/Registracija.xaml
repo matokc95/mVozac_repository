@@ -18,26 +18,27 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
+            <Button BorderBrush="Transparent"  Background="#FF30DABB" Content="Povratak"  Name="BtnPovratak" Click="Povratak_Click" Margin="6,11,0,10.333"/>
 
-            <TextBlock Text="Registracija korisnika" TextAlignment="Center" Grid.Row="0" FontSize="40"  Foreground="Black"/>
+            <TextBlock Text="Registracija korisnika" TextAlignment="Center" Grid.Row="0" FontSize="30"  Foreground="Black" Margin="73,-1,0,0.333"/>
 
-            <TextBlock Text="Korisničko ime :" Grid.Row="1" Foreground="Black"   Margin="-6,10.4,6,14.8"/>
-            <TextBox Name="TxtUserName" BorderBrush="LightGray" Grid.Row="1" Margin="100,0,0,0"/>
+            <TextBlock Text="Korisničko ime :" Grid.Row="1" Foreground="Black"   Margin="6,10.4,6,14.8"/>
+            <TextBox Name="TxtUserName" BorderBrush="LightGray" Grid.Row="1" Margin="120,0,0,0"/>
 
-            <TextBlock Text="Lozinka : " Grid.Row="2" Margin="-6,13.2,6,12" Foreground="Black" />
-            <PasswordBox Name="TxtPwd" BorderBrush="LightGray" Grid.Row="2" Margin="100,0,0,0" />
+            <TextBlock Text="Lozinka : " Grid.Row="2" Margin="6,13.2,6,12" Foreground="Black" />
+            <PasswordBox Name="TxtPwd" BorderBrush="LightGray" Grid.Row="2" Margin="120,0,0,0" />
 
-            <TextBlock Text="E-mail adresa : " Grid.Row="3" Margin="-6,16,6,9.2" Foreground="Black" />
-            <TextBox Name="TxtAddr" BorderBrush="LightGray" Grid.Row="3" Margin="100,0,0,0"/>
+            <TextBlock Text="E-mail adresa : " Grid.Row="3" Margin="6,16,6,9.2" Foreground="Black" />
+            <TextBox Name="TxtAddr" BorderBrush="LightGray" Grid.Row="3" Margin="120,0,0,0"/>
 
-            <TextBlock Text="Spol: " Grid.Row="4" Margin="-6,12.8,6,12.4" Foreground="Black" />
-            <RadioButton Name="GenMale" Background="LightGray" Content="Muški" Grid.Row="4" Margin="100,0,0,0" Foreground="Black" />
-            <RadioButton Name="GenFeMale"  Background="LightGray" Content="Ženski" Grid.Row="4" Margin="200,0,0,0" Foreground="Black" />
+            <TextBlock Text="Spol: " Grid.Row="4" Margin="6,12.8,6,12.4" Foreground="Black" />
+            <RadioButton Name="GenMale" Background="LightGray" Content="Muški" Grid.Row="4" Margin="120,0,0,0" Foreground="Black" />
+            <RadioButton Name="GenFeMale"  Background="LightGray" Content="Ženski" Grid.Row="4" Margin="220,0,0,0" Foreground="Black" />
 
-            <TextBlock Text="Broj telefona : " Grid.Row="5" Margin="-6,12.6,6,12.6" Foreground="Black" />
-            <TextBox Name="TxtPhNo" BorderBrush="LightGray" MaxLength="10"  InputScope="Digits" Grid.Row="5" Margin="100,0,0,0"/>
+            <TextBlock Text="Broj telefona : " Grid.Row="5" Margin="6,12.6,6,12.6" Foreground="Black" />
+            <TextBox Name="TxtPhNo" BorderBrush="LightGray" MaxLength="10"  InputScope="Digits" Grid.Row="5" Margin="120,0,0,0"/>
 
-            <Button BorderBrush="Transparent"  Background="#FF30DABB" Content="Registriraj se"  Name="BtnSubmit" Click="Submit_Click" Grid.Row="7" Margin="6,15.4,0,-15.4"/>
+            <Button BorderBrush="Transparent"  Background="#FF30DABB" Content="Registriraj se"  Name="BtnRegister" Click="Register_Click" Grid.Row="7" Margin="5,8,0,-8"/>
         </Grid>
     </Grid>
 </Page>
