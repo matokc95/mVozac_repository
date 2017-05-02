@@ -5,16 +5,17 @@
     xmlns:local="using:mVozac"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Height="740.429" Width="401.238">
+    mc:Ignorable="d" Height="777.949" Width="593.906">
     <Grid x:Name="LayoutRoot" Background="Chocolate">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="225*"/>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="44*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+        <StackPanel Grid.Row="0" Margin="12,17,0,28.667">
             <TextBlock Text="Prijava" TextAlignment="Center" Foreground="Black" FontSize="40"/>
-
-            <Image HorizontalAlignment="Left" Height="125" Margin="110,68,0,0" VerticalAlignment="Top" Width="171" Source="ms-appx:///Assets/logo.png"/>
+            <Image HorizontalAlignment="Left" Height="334" Margin="10,68,0,0" VerticalAlignment="Top" Width="562" Source="ms-appx:///Assets/logo.png"/>
 
             <TextBlock Text="Korisničko ime" Foreground="Black" FontSize="30"/>
             <TextBox  BorderBrush="LightGray" Name="Korisnicko_ime" Margin="0,0,10.2,0"/>
