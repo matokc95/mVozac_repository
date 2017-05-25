@@ -1,8 +1,8 @@
 ﻿{
   "dependencies": {
-    "Microsoft.EntityFrameworkCore.Sqlite": "1.1.2",
-    "Microsoft.EntityFrameworkCore.Tools": "1.1.1",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2"
+    "Microsoft.EntityFrameworkCore.Sqlite": "2.0.0-preview1-final",
+    "Microsoft.EntityFrameworkCore.Sqlite.Core": "2.0.0-preview1-final",
+    "Microsoft.EntityFrameworkCore.Sqlite.Design": "2.0.0-preview1-final"
   },
   "frameworks": {
     "uap10.0": {}
