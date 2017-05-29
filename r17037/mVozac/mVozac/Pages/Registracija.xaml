@@ -5,9 +5,9 @@
     xmlns:local="using:mVozac"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Height="740.429" Width="401.238">
+    mc:Ignorable="d" Height="740.429" Width="426.333">
     <Grid x:Name="LayoutRoot" Background="White">
-        <Grid Margin="5,0,0,0">
+        <Grid Margin="5,4,0,-4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -22,23 +22,27 @@
 
             <TextBlock Text="Registracija korisnika" TextAlignment="Center" Grid.Row="0" FontSize="30"  Foreground="Black" Margin="73,-1,0,0.333"/>
 
-            <TextBlock Text="Korisničko ime :" Grid.Row="1" Foreground="Black"   Margin="6,10.4,6,14.8"/>
-            <TextBox Name="TxtUserName" BorderBrush="LightGray" Grid.Row="1" Margin="120,0,0,0"/>
+            <TextBlock Text="Ime :" Foreground="Black" Margin="6,10.667,6,137.667" Grid.Row="7"/>
+            <TextBox Name="TxtName" BorderBrush="LightGray" Margin="120,2.667,0,133.667" Grid.Row="7"/>
 
-            <TextBlock Text="Lozinka : " Grid.Row="2" Margin="6,13.2,6,12" Foreground="Black" />
-            <PasswordBox Name="TxtPwd" BorderBrush="LightGray" Grid.Row="2" Margin="120,0,0,0" />
+            <TextBlock Text="Prezime: " Foreground="Black" Margin="4,58.667,52,96.667" Grid.Row="7"/>
+            <TextBox Name="TxtPrezime" BorderBrush="LightGray" Margin="120,51.667,0,137.667" Grid.Row="7" />
 
-            <TextBlock Text="E-mail adresa : " Grid.Row="3" Margin="6,16,6,9.2" Foreground="Black" />
-            <TextBox Name="TxtAddr" BorderBrush="LightGray" Grid.Row="3" Margin="120,0,0,0"/>
+            <TextBlock Text="Korisnicko ime: " Margin="6,185.667,4,-29.333" Foreground="Black" Grid.Row="7" />
+            <TextBox Name="TxtKorIme" BorderBrush="LightGray" Margin="120,186.667,0,7.667" Grid.Row="7" />
 
-            <TextBlock Text="Spol: " Grid.Row="4" Margin="6,12.8,6,12.4" Foreground="Black" />
-            <RadioButton Name="GenMale" Background="LightGray" Content="Muški" Grid.Row="4" Margin="120,0,0,0" Foreground="Black" />
-            <RadioButton Name="GenFeMale"  Background="LightGray" Content="Ženski" Grid.Row="4" Margin="220,0,0,0" Foreground="Black" />
+            <TextBlock Text="Lozinka : " Margin="6,228.667,6,-33.333" Foreground="Black" Grid.Row="7" />
+            <PasswordBox Name="TxtPwd" BorderBrush="LightGray" Grid.Row="7" Margin="120,224.667,0,-33.333" />
 
-            <TextBlock Text="Broj telefona : " Grid.Row="5" Margin="6,12.6,6,12.6" Foreground="Black" />
-            <TextBox Name="TxtPhNo" BorderBrush="LightGray" MaxLength="10"  InputScope="Digits" Grid.Row="5" Margin="120,0,0,0"/>
+            <TextBlock Text="E-mail adresa : " Grid.Row="7" Margin="6,292.667,6,-116.333" Foreground="Black" />
+            <TextBox Name="TxtAddr" BorderBrush="LightGray" Grid.Row="7" Margin="120,286.667,0,-112.333"/>
 
-            <Button BorderBrush="Transparent"  Background="#FF30DABB" Content="Registriraj se"  Name="BtnRegister" Click="Register_Click" Grid.Row="7" Margin="5,8,0,-8"/>
+            <Button BorderBrush="Transparent"  Background="#FF30DABB" Content="Registriraj se"  Name="BtnRegister" Click="Register_Click" Grid.Row="7" Margin="5,365.667,0,-171.333"/>
+            <TextBlock Text="Datum rođenja: " Margin="2,97.667,8,58.667" Grid.Row="7" TextWrapping="Wrap" />
+            <DatePicker Name="DatumPicker" Margin="121,93.667,0,95.667" Grid.Row="7" />
+            <TextBlock Text="OIB: " Margin="6,134.667,4,18.667" Grid.Row="7" />
+            <TextBox Name="TxtOIB" Margin="119,135.667,0,50.667" Grid.Row="7" />
+
         </Grid>
     </Grid>
 </Page>

@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using mVozac.ServiceReference2;
 
 namespace mVozac
 {
@@ -30,6 +31,17 @@ namespace mVozac
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
+            Korisnik kor = new Korisnik();
+            kor.Ime = TxtName.Text;
+            kor.Prezime = TxtPrezime.Text;
+            kor.DatumRodenja = DatumPicker.Date.Date;
+            kor.OIB = TxtOIB.Text;
+            kor.KorisnickoIme = TxtKorIme.Text;
+            kor.Lozinka = TxtPwd.Password;
+            kor.Email = TxtAddr.Text;
+
+            Service1Client service = new Service1Client();
+            service.InsertKorisnikaAsync(kor);
 
         }
     }

@@ -4,8 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mVozac", "mVozac\mVozac.csproj", "{79AD7DFE-428D-4073-B80F-E07E7C56751C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8AD058C7-CBD0-4423-B42E-22884796E370} = {8AD058C7-CBD0-4423-B42E-22884796E370}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessSQLService", "C:\Users\Matija\Desktop\database example\C# and C++\CppWindowsStoreAppAccessSQLServer\AccessSQLService\AccessSQLService.csproj", "{3F83430B-ED7F-46C4-8EE5-34C97492B10F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfToDB", "WcfToDB\WcfToDB.csproj", "{8AD058C7-CBD0-4423-B42E-22884796E370}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,22 +42,22 @@ Global
 		{79AD7DFE-428D-4073-B80F-E07E7C56751C}.Release|x86.ActiveCfg = Release|x86
 		{79AD7DFE-428D-4073-B80F-E07E7C56751C}.Release|x86.Build.0 = Release|x86
 		{79AD7DFE-428D-4073-B80F-E07E7C56751C}.Release|x86.Deploy.0 = Release|x86
-		{3F83430B-ED7F-46C4-8EE5-34C97492B10F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F83430B-ED7F-46C4-8EE5-34C97492B10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F83430B-ED7F-46C4-8EE5-34C97492B10F}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{3F83430B-ED7F-46C4-8EE5-34C97492B10F}.Debug|ARM.Build.0 = Debug|Any CPU
-		{3F83430B-ED7F-46C4-8EE5-34C97492B10F}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{3F83430B-ED7F-46C4-8EE5-34C97492B10F}.Debug|x64.Build.0 = Debug|Any CPU
-		{3F83430B-ED7F-46C4-8EE5-34C97492B10F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3F83430B-ED7F-46C4-8EE5-34C97492B10F}.Debug|x86.Build.0 = Debug|Any CPU
-		{3F83430B-ED7F-46C4-8EE5-34C97492B10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F83430B-ED7F-46C4-8EE5-34C97492B10F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3F83430B-ED7F-46C4-8EE5-34C97492B10F}.Release|ARM.ActiveCfg = Release|Any CPU
-		{3F83430B-ED7F-46C4-8EE5-34C97492B10F}.Release|ARM.Build.0 = Release|Any CPU
-		{3F83430B-ED7F-46C4-8EE5-34C97492B10F}.Release|x64.ActiveCfg = Release|Any CPU
-		{3F83430B-ED7F-46C4-8EE5-34C97492B10F}.Release|x64.Build.0 = Release|Any CPU
-		{3F83430B-ED7F-46C4-8EE5-34C97492B10F}.Release|x86.ActiveCfg = Release|Any CPU
-		{3F83430B-ED7F-46C4-8EE5-34C97492B10F}.Release|x86.Build.0 = Release|Any CPU
+		{8AD058C7-CBD0-4423-B42E-22884796E370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AD058C7-CBD0-4423-B42E-22884796E370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AD058C7-CBD0-4423-B42E-22884796E370}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{8AD058C7-CBD0-4423-B42E-22884796E370}.Debug|ARM.Build.0 = Debug|Any CPU
+		{8AD058C7-CBD0-4423-B42E-22884796E370}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8AD058C7-CBD0-4423-B42E-22884796E370}.Debug|x64.Build.0 = Debug|Any CPU
+		{8AD058C7-CBD0-4423-B42E-22884796E370}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8AD058C7-CBD0-4423-B42E-22884796E370}.Debug|x86.Build.0 = Debug|Any CPU
+		{8AD058C7-CBD0-4423-B42E-22884796E370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AD058C7-CBD0-4423-B42E-22884796E370}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AD058C7-CBD0-4423-B42E-22884796E370}.Release|ARM.ActiveCfg = Release|Any CPU
+		{8AD058C7-CBD0-4423-B42E-22884796E370}.Release|ARM.Build.0 = Release|Any CPU
+		{8AD058C7-CBD0-4423-B42E-22884796E370}.Release|x64.ActiveCfg = Release|Any CPU
+		{8AD058C7-CBD0-4423-B42E-22884796E370}.Release|x64.Build.0 = Release|Any CPU
+		{8AD058C7-CBD0-4423-B42E-22884796E370}.Release|x86.ActiveCfg = Release|Any CPU
+		{8AD058C7-CBD0-4423-B42E-22884796E370}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
