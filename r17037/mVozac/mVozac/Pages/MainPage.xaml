@@ -18,7 +18,7 @@
             <Image HorizontalAlignment="Left" Height="236" Margin="106,68,0,0" VerticalAlignment="Top" Width="343" Source="ms-appx:///Assets/logo.png"/>
 
             <TextBlock Text="Korisničko ime" Foreground="Black" FontSize="30"/>
-            <TextBox  BorderBrush="LightGray" Name="Korisnicko_ime" Margin="0,0,10.2,0"/>
+            <TextBox  BorderBrush="LightGray" Name="TxtKorIme" Margin="0,0,10.2,0"/>
             <TextBlock  Foreground="Black" Text="Lozinka" Margin="9,-7,0,0" FontSize="30"/>
             <PasswordBox BorderBrush="LightGray" Name="Lozinka" Margin="0,0,10.2,0" />
 

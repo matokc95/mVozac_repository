@@ -86,5 +86,35 @@ namespace WcfToDB
             }
 
         }
+        public Korisnik SelectKorisnika(Korisnik k)
+        {
+            Korisnik kor = new Korisnik();
+            try
+            {
+                command.CommandText = "select * from korisnik where korisnicko_ime=@korisnicko_ime";
+                command.Parameters.AddWithValue("korisnicko_ime", k.KorisnickoIme);
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    kor.KorisnickoIme = reader[0].ToString();
+                }
+                return kor;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }

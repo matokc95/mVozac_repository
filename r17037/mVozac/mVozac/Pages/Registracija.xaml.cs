@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using mVozac.ServiceReference2;
+using Windows.UI.Popups;
 
 namespace mVozac
 {
@@ -30,19 +31,35 @@ namespace mVozac
 
 
         private void Register_Click(object sender, RoutedEventArgs e)
-        {
-            Korisnik kor = new Korisnik();
-            kor.Ime = TxtName.Text;
-            kor.Prezime = TxtPrezime.Text;
-            kor.DatumRodenja = DatumPicker.Date.Date;
-            kor.OIB = TxtOIB.Text;
-            kor.KorisnickoIme = TxtKorIme.Text;
-            kor.Lozinka = TxtPwd.Password;
-            kor.Email = TxtAddr.Text;
+        {      
+            if (TxtName.Text.Length == 0 || TxtPrezime.Text.Length == 0 || 
+                TxtOIB.Text.Length == 0 || TxtKorIme.Text.Length == 0 || 
+                TxtPwd.Password.Length == 0 || TxtAddr.Text.Length == 0)
+            {
+                var dialog = new MessageDialog("Niste unijeli sva polja!");
+                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                dialog.ShowAsync();
+            }
+            else
+            {
+                Korisnik kor = new Korisnik();
+                kor.Ime = TxtName.Text;
+                kor.Prezime = TxtPrezime.Text;
+                kor.DatumRodenja = DatumPicker.Date.Date;
+                kor.OIB = TxtOIB.Text;
+                kor.KorisnickoIme = TxtKorIme.Text;
+                kor.Lozinka = TxtPwd.Password;
+                kor.Email = TxtAddr.Text;
 
-            Service1Client service = new Service1Client();
-            service.InsertKorisnikaAsync(kor);
+                Service1Client service = new Service1Client();
+                service.InsertKorisnikaAsync(kor);
 
+                var dialog = new MessageDialog("Uspješno ste se registrirali!");
+                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                dialog.ShowAsync();
+
+                this.Frame.Navigate(typeof(MainPage));
+            }
         }
     }
 }

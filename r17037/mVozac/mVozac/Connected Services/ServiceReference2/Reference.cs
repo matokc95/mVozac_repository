@@ -192,6 +192,9 @@ namespace mVozac.ServiceReference2 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertKorisnika", ReplyAction="http://tempuri.org/IService1/InsertKorisnikaResponse")]
         System.Threading.Tasks.Task<int> InsertKorisnikaAsync(mVozac.ServiceReference2.Korisnik k);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SelectKorisnika", ReplyAction="http://tempuri.org/IService1/SelectKorisnikaResponse")]
+        System.Threading.Tasks.Task<mVozac.ServiceReference2.Korisnik> SelectKorisnikaAsync(mVozac.ServiceReference2.Korisnik k);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -247,6 +250,10 @@ namespace mVozac.ServiceReference2 {
         
         public System.Threading.Tasks.Task<int> InsertKorisnikaAsync(mVozac.ServiceReference2.Korisnik k) {
             return base.Channel.InsertKorisnikaAsync(k);
+        }
+        
+        public System.Threading.Tasks.Task<mVozac.ServiceReference2.Korisnik> SelectKorisnikaAsync(mVozac.ServiceReference2.Korisnik k) {
+            return base.Channel.SelectKorisnikaAsync(k);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {
