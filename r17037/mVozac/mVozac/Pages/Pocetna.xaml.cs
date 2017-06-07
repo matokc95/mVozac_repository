@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using mVozac.ServiceReference2;
 
 namespace mVozac
 {
@@ -20,6 +21,7 @@ namespace mVozac
         public Pocetna()
         {
             this.InitializeComponent();
+  
         }
     }
 }

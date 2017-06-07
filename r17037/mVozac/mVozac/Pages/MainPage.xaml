@@ -20,9 +20,9 @@
             <TextBlock Text="Korisničko ime" Foreground="Black" FontSize="30"/>
             <TextBox  BorderBrush="LightGray" Name="TxtKorIme" Margin="0,0,10.2,0"/>
             <TextBlock  Foreground="Black" Text="Lozinka" Margin="9,-7,0,0" FontSize="30"/>
-            <PasswordBox BorderBrush="LightGray" Name="Lozinka" Margin="0,0,10.2,0" />
+            <PasswordBox BorderBrush="LightGray" Name="TxtLozinka" Margin="0,0,10.2,0" />
 
-            <Button Content="Prijavi se" Background="Bisque" Name="Login" Click="Login_Click" />
+            <Button Content="Prijavi se" Background="Bisque" Name="Login" Click="Login_ClickAsync" />
 
             <Button Content="Registriraj se" Background="Bisque" Name="SignUp" Click="SignUp_Click"/>
 

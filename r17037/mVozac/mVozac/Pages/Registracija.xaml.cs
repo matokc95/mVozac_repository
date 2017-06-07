@@ -30,10 +30,10 @@ namespace mVozac
         }
 
 
-        private void Register_Click(object sender, RoutedEventArgs e)
-        {      
-            if (TxtName.Text.Length == 0 || TxtPrezime.Text.Length == 0 || 
-                TxtOIB.Text.Length == 0 || TxtKorIme.Text.Length == 0 || 
+        private async void Register_ClickAsync(object sender, RoutedEventArgs e)
+        {
+            if (TxtName.Text.Length == 0 || TxtPrezime.Text.Length == 0 ||
+                TxtOIB.Text.Length == 0 || TxtKorIme.Text.Length == 0 ||
                 TxtPwd.Password.Length == 0 || TxtAddr.Text.Length == 0)
             {
                 var dialog = new MessageDialog("Niste unijeli sva polja!");
@@ -51,14 +51,23 @@ namespace mVozac
                 kor.Lozinka = TxtPwd.Password;
                 kor.Email = TxtAddr.Text;
 
+
                 Service1Client service = new Service1Client();
-                service.InsertKorisnikaAsync(kor);
+                var res = await service.InsertKorisnikaAsync(kor);
+                if (res == 0)
+                {
+                    var dialog = new MessageDialog("Neuspjela registracija!");
+                    dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                    dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("Uspješno ste se registrirali!");
+                    dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                    dialog.ShowAsync();
+                    this.Frame.Navigate(typeof(MainPage));
+                }
 
-                var dialog = new MessageDialog("Uspješno ste se registrirali!");
-                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                dialog.ShowAsync();
-
-                this.Frame.Navigate(typeof(MainPage));
             }
         }
     }

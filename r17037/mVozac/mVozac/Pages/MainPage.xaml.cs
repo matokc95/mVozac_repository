@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using mVozac.ServiceReference2;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -33,15 +34,27 @@ namespace mVozac
             this.Frame.Navigate(typeof(Registracija), null);
         }
 
-        private void Login_Click(object sender, RoutedEventArgs e)
+        private async void Login_ClickAsync(object sender, RoutedEventArgs e)
         {
-            List<Korisnik> listaKorisnika = new List<Korisnik>();
             Korisnik kor = new Korisnik()
             {
-                KorisnickoIme = TxtKorIme.Text
+                KorisnickoIme = TxtKorIme.Text,
+                Lozinka=TxtLozinka.Password
+                
             };
             Service1Client service = new Service1Client();
-            //listaKorisnika.Add(service.SelectKorisnikaAsync(kor));
+            var res = await service.SelectKorisnikaAsync(kor);
+            if(res.KorisnickoIme == kor.KorisnickoIme && res.Lozinka == kor.Lozinka)
+            {
+                this.Frame.Navigate(typeof(Pocetna), res);
+            }
+            else
+            {
+                var dialog = new MessageDialog("Neuspjela prijava!");
+                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                dialog.ShowAsync();
+            }
+            
         }
     }
 }

@@ -5,61 +5,61 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema 17037_DB
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema 17037_DB
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `17037_DB` DEFAULT CHARACTER SET utf8 ;
+USE `17037_DB` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`bus`
+-- Table `17037_DB`.`bus`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`bus` (
+CREATE TABLE IF NOT EXISTS `17037_DB`.`bus` (
   `bus_id` INT NOT NULL AUTO_INCREMENT,
-  `duzina` INT NULL,
-  `sirina` INT NULL,
-  `broj_sjedala` INT NULL,
-  `max_brzina` INT NULL,
+  `duzina` INT NULL DEFAULT NULL,
+  `sirina` INT NULL DEFAULT NULL,
+  `broj_sjedala` INT NULL DEFAULT NULL,
+  `max_brzina` INT NULL DEFAULT NULL,
   PRIMARY KEY (`bus_id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`korisnik`
+-- Table `17037_DB`.`korisnik`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`korisnik` (
+CREATE TABLE IF NOT EXISTS `17037_DB`.`korisnik` (
   `korisnik_id` INT NOT NULL AUTO_INCREMENT,
-  `ime` VARCHAR(45) NULL,
-  `prezime` VARCHAR(45) NULL,
-  `datum_rodenja` DATE NULL,
-  `oib` VARCHAR(45) NULL,
+  `ime` VARCHAR(45) NULL DEFAULT NULL,
+  `prezime` VARCHAR(45) NULL DEFAULT NULL,
+  `datum_rodenja` DATE NULL DEFAULT NULL,
+  `oib` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`korisnik_id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`vozac`
+-- Table `17037_DB`.`vozac`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`vozac` (
+CREATE TABLE IF NOT EXISTS `17037_DB`.`vozac` (
   `vozac_id` INT NOT NULL AUTO_INCREMENT,
   `korisnik` INT NOT NULL,
   PRIMARY KEY (`vozac_id`),
   INDEX `fk_vozac_korisnik1_idx` (`korisnik` ASC),
   CONSTRAINT `fk_vozac_korisnik1`
     FOREIGN KEY (`korisnik`)
-    REFERENCES `mydb`.`korisnik` (`korisnik_id`)
+    REFERENCES `17037_DB`.`korisnik` (`korisnik_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`grad`
+-- Table `17037_DB`.`grad`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`grad` (
+CREATE TABLE IF NOT EXISTS `17037_DB`.`grad` (
   `grad_id` INT NOT NULL AUTO_INCREMENT,
   `naziv` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`grad_id`))
@@ -67,9 +67,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`stanica`
+-- Table `17037_DB`.`stanica`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`stanica` (
+CREATE TABLE IF NOT EXISTS `17037_DB`.`stanica` (
   `stanica_id` INT NOT NULL AUTO_INCREMENT,
   `naziv_stanice` VARCHAR(45) NOT NULL,
   `grad` INT NOT NULL,
@@ -77,16 +77,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`stanica` (
   INDEX `fk_stanica_grad1_idx` (`grad` ASC),
   CONSTRAINT `fk_stanica_grad1`
     FOREIGN KEY (`grad`)
-    REFERENCES `mydb`.`grad` (`grad_id`)
+    REFERENCES `17037_DB`.`grad` (`grad_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`linija`
+-- Table `17037_DB`.`linija`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`linija` (
+CREATE TABLE IF NOT EXISTS `17037_DB`.`linija` (
   `linija_id` INT NOT NULL AUTO_INCREMENT,
   `naziv_linije` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`linija_id`))
@@ -94,9 +94,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`medustanice`
+-- Table `17037_DB`.`medustanice`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`medustanice` (
+CREATE TABLE IF NOT EXISTS `17037_DB`.`medustanice` (
   `start` TINYINT(1) NOT NULL,
   `end` TINYINT(1) NOT NULL,
   `linija` INT NOT NULL,
@@ -106,23 +106,23 @@ CREATE TABLE IF NOT EXISTS `mydb`.`medustanice` (
   INDEX `fk_medustanice_stanica1_idx` (`stanica` ASC),
   CONSTRAINT `fk_medustanice_linija1`
     FOREIGN KEY (`linija`)
-    REFERENCES `mydb`.`linija` (`linija_id`)
+    REFERENCES `17037_DB`.`linija` (`linija_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT `fk_medustanice_stanica1`
     FOREIGN KEY (`stanica`)
-    REFERENCES `mydb`.`stanica` (`stanica_id`)
+    REFERENCES `17037_DB`.`stanica` (`stanica_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`voznja`
+-- Table `17037_DB`.`voznja`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`voznja` (
+CREATE TABLE IF NOT EXISTS `17037_DB`.`voznja` (
   `voznja_id` INT NOT NULL AUTO_INCREMENT,
-  `datum_voznje` DATE NULL,
+  `datum_voznje` DATE NULL DEFAULT NULL,
   `vozac` INT NOT NULL,
   `bus` INT NOT NULL,
   `linija` INT NOT NULL,
@@ -132,26 +132,26 @@ CREATE TABLE IF NOT EXISTS `mydb`.`voznja` (
   INDEX `fk_voznja_linija1_idx` (`linija` ASC),
   CONSTRAINT `fk_voznja_vozac1`
     FOREIGN KEY (`vozac`)
-    REFERENCES `mydb`.`vozac` (`vozac_id`)
+    REFERENCES `17037_DB`.`vozac` (`vozac_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT `fk_voznja_bus1`
     FOREIGN KEY (`bus`)
-    REFERENCES `mydb`.`bus` (`bus_id`)
+    REFERENCES `17037_DB`.`bus` (`bus_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT `fk_voznja_linija1`
     FOREIGN KEY (`linija`)
-    REFERENCES `mydb`.`linija` (`linija_id`)
+    REFERENCES `17037_DB`.`linija` (`linija_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`popust`
+-- Table `17037_DB`.`popust`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`popust` (
+CREATE TABLE IF NOT EXISTS `17037_DB`.`popust` (
   `popust_id` INT NOT NULL AUTO_INCREMENT,
   `naziv_popusta` VARCHAR(45) NOT NULL,
   `kolicina_popusta` INT NOT NULL,
@@ -160,9 +160,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`karta`
+-- Table `17037_DB`.`karta`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`karta` (
+CREATE TABLE IF NOT EXISTS `17037_DB`.`karta` (
   `karta_id` INT NOT NULL AUTO_INCREMENT,
   `popust` INT NOT NULL,
   `vozac` INT NOT NULL,
@@ -173,17 +173,17 @@ CREATE TABLE IF NOT EXISTS `mydb`.`karta` (
   INDEX `fk_karta_voznja1_idx` (`voznja` ASC),
   CONSTRAINT `fk_karta_popust1`
     FOREIGN KEY (`popust`)
-    REFERENCES `mydb`.`popust` (`popust_id`)
+    REFERENCES `17037_DB`.`popust` (`popust_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT `fk_karta_vozac1`
     FOREIGN KEY (`vozac`)
-    REFERENCES `mydb`.`vozac` (`vozac_id`)
+    REFERENCES `17037_DB`.`vozac` (`vozac_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT `fk_karta_voznja1`
     FOREIGN KEY (`voznja`)
-    REFERENCES `mydb`.`voznja` (`voznja_id`)
+    REFERENCES `17037_DB`.`voznja` (`voznja_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
