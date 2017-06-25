@@ -123,6 +123,24 @@
     <Compile Include="Pages\Pocetna.xaml.cs">
       <DependentUpon>Pocetna.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PonistiKarte.xaml.cs">
+      <DependentUpon>PonistiKarte.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PretraziKarte.xaml.cs">
+      <DependentUpon>PretraziKarte.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProdajKartu.xaml.cs">
+      <DependentUpon>ProdajKartu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RasporedVoznje.xaml.cs">
+      <DependentUpon>RasporedVoznje.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Statistika.xaml.cs">
+      <DependentUpon>Statistika.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tahometar.xaml.cs">
+      <DependentUpon>Tahometar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pages\Registracija.xaml.cs">
       <DependentUpon>Registracija.xaml</DependentUpon>
@@ -186,9 +204,33 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PonistiKarte.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PretraziKarte.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ProdajKartu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RasporedVoznje.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Registracija.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Statistika.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Tahometar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using mVozac.ServiceReference2;
+using mVozac.Pages;
 
 namespace mVozac
 {
@@ -22,6 +23,46 @@ namespace mVozac
         {
             this.InitializeComponent();
   
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            Korisnik s = (Korisnik)e.Parameter;
+            TxtPrijavljeni.Text = s.KorisnickoIme;
+        }
+
+        private void BtnOdjava_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void ProdajKartu_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(ProdajKartu));
+        }
+
+        private void PretraziKarte_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(PretraziKarte));
+        }
+
+        private void RasporedVoznje_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(RasporedVoznje));
+        }
+
+        private void PonistiKarte_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(PonistiKarte));
+        }
+
+        private void Tahometar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Tahometar));
+        }
+
+        private void Statistika_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Statistika));
         }
     }
 }
