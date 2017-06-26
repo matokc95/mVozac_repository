@@ -28,6 +28,7 @@ namespace mVozac
         {
             Korisnik s = (Korisnik)e.Parameter;
             TxtPrijavljeni.Text = s.KorisnickoIme;
+            base.OnNavigatedTo(e);
         }
 
         private void BtnOdjava_Click(object sender, RoutedEventArgs e)
@@ -37,32 +38,32 @@ namespace mVozac
 
         private void ProdajKartu_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(ProdajKartu));
+            this.Frame.Navigate(typeof(ProdajKartu), TxtPrijavljeni.Text);
         }
 
         private void PretraziKarte_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(PretraziKarte));
+            this.Frame.Navigate(typeof(PretraziKarte), TxtPrijavljeni.Text);
         }
 
         private void RasporedVoznje_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(RasporedVoznje));
+            this.Frame.Navigate(typeof(RasporedVoznje), TxtPrijavljeni.Text);
         }
 
         private void PonistiKarte_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(PonistiKarte));
+            this.Frame.Navigate(typeof(PonistiKarte), TxtPrijavljeni.Text);
         }
 
         private void Tahometar_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Tahometar));
+            this.Frame.Navigate(typeof(Tahometar), TxtPrijavljeni.Text);
         }
 
         private void Statistika_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Statistika));
+            this.Frame.Navigate(typeof(Statistika), TxtPrijavljeni.Text);
         }
     }
 }

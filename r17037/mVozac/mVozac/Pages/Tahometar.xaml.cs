@@ -26,5 +26,14 @@ namespace mVozac.Pages
         {
             this.InitializeComponent();
         }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            TxtPrijavljeni.Text = e.Parameter.ToString();
+        }
+        private void BtnPovratak_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.GoBack();
+        }
     }
 }
