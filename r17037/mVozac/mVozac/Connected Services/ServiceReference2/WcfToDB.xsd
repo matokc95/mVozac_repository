@@ -19,4 +19,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Korisnik" nillable="true" type="tns:Korisnik" />
+  <xs:complexType name="Voznja">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BrojSjedala" type="xs:int" />
+      <xs:element minOccurs="0" name="DatumVoznje" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ImeVozaca" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NazivLinije" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrezimeVozaca" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Voznja" nillable="true" type="tns:Voznja" />
 </xs:schema>

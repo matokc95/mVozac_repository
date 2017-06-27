@@ -57,4 +57,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SelectVoznju">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tekst" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SelectVoznjuResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WcfToDB" minOccurs="0" name="SelectVoznjuResult" nillable="true" type="q6:Voznja" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

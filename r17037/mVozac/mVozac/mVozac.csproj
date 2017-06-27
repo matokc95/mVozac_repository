@@ -95,6 +95,9 @@
     <None Include="Connected Services\ServiceReference2\mVozac.ServiceReference2.Korisnik.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference2\mVozac.ServiceReference2.Voznja.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference2\service.wsdl" />
     <None Include="Connected Services\ServiceReference2\service.xsd">
       <SubType>Designer</SubType>

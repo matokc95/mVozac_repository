@@ -180,6 +180,96 @@ namespace mVozac.ServiceReference2 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Voznja", Namespace="http://schemas.datacontract.org/2004/07/WcfToDB")]
+    public partial class Voznja : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int BrojSjedalaField;
+        
+        private System.DateTime DatumVoznjeField;
+        
+        private string ImeVozacaField;
+        
+        private string NazivLinijeField;
+        
+        private string PrezimeVozacaField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BrojSjedala {
+            get {
+                return this.BrojSjedalaField;
+            }
+            set {
+                if ((this.BrojSjedalaField.Equals(value) != true)) {
+                    this.BrojSjedalaField = value;
+                    this.RaisePropertyChanged("BrojSjedala");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DatumVoznje {
+            get {
+                return this.DatumVoznjeField;
+            }
+            set {
+                if ((this.DatumVoznjeField.Equals(value) != true)) {
+                    this.DatumVoznjeField = value;
+                    this.RaisePropertyChanged("DatumVoznje");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ImeVozaca {
+            get {
+                return this.ImeVozacaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImeVozacaField, value) != true)) {
+                    this.ImeVozacaField = value;
+                    this.RaisePropertyChanged("ImeVozaca");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NazivLinije {
+            get {
+                return this.NazivLinijeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NazivLinijeField, value) != true)) {
+                    this.NazivLinijeField = value;
+                    this.RaisePropertyChanged("NazivLinije");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PrezimeVozaca {
+            get {
+                return this.PrezimeVozacaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PrezimeVozacaField, value) != true)) {
+                    this.PrezimeVozacaField = value;
+                    this.RaisePropertyChanged("PrezimeVozaca");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference2.IService1")]
     public interface IService1 {
@@ -195,6 +285,9 @@ namespace mVozac.ServiceReference2 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SelectKorisnika", ReplyAction="http://tempuri.org/IService1/SelectKorisnikaResponse")]
         System.Threading.Tasks.Task<mVozac.ServiceReference2.Korisnik> SelectKorisnikaAsync(mVozac.ServiceReference2.Korisnik k);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SelectVoznju", ReplyAction="http://tempuri.org/IService1/SelectVoznjuResponse")]
+        System.Threading.Tasks.Task<mVozac.ServiceReference2.Voznja> SelectVoznjuAsync(string tekst);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -254,6 +347,10 @@ namespace mVozac.ServiceReference2 {
         
         public System.Threading.Tasks.Task<mVozac.ServiceReference2.Korisnik> SelectKorisnikaAsync(mVozac.ServiceReference2.Korisnik k) {
             return base.Channel.SelectKorisnikaAsync(k);
+        }
+        
+        public System.Threading.Tasks.Task<mVozac.ServiceReference2.Voznja> SelectVoznjuAsync(string tekst) {
+            return base.Channel.SelectVoznjuAsync(tekst);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {

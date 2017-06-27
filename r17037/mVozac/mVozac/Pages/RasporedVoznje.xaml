@@ -5,7 +5,7 @@
     xmlns:local="using:mVozac"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Height="740.429" Width="401.238">
+    mc:Ignorable="d" Height="740.429" Width="401.238" Loading="Page_Loading">
     <Grid x:Name="LayoutRoot" Background="White">
         <Grid Margin="5,0,0,0">
             <Grid.RowDefinitions>
@@ -23,6 +23,15 @@
             <TextBlock HorizontalAlignment="Left" Height="36" Margin="62,23.667,0,-57.667" Grid.Row="7" TextWrapping="Wrap" Text="Prijavljeni korisnik:" VerticalAlignment="Top" Width="126"/>
             <TextBox x:Name="TxtPrijavljeni" HorizontalAlignment="Left" Height="30" Margin="199,20.667,0,-50.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134" IsReadOnly="True"/>
             <Button Content="Povratak" Background="#FF30DABB" Name="BtnPovratak" HorizontalAlignment="Left" Margin="6,11,0,10.333" Width="78" VerticalAlignment="Stretch" Click="BtnPovratak_Click"/>
+            <TextBlock HorizontalAlignment="Left" Margin="103,125.667,0,-39.667" Grid.Row="7" TextWrapping="Wrap" Text="Ime vozača:" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Margin="197,122.667,0,-68.667" Grid.Row="7" TextWrapping="Wrap" Text="Nema informacija" Name="txtIme" VerticalAlignment="Top" Width="136" IsReadOnly="True"/>
+            <TextBlock HorizontalAlignment="Left" Margin="82,191.667,0,-105.667" Grid.Row="7" TextWrapping="Wrap" Text="Prezime vozača:" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Margin="197,188.667,0,-134.667" Grid.Row="7" TextWrapping="Wrap" Text="Nema informacija" x:Name="txtPrezime" VerticalAlignment="Top" Width="136" IsReadOnly="True"/>
+            <TextBlock HorizontalAlignment="Left" Margin="43,257.667,0,-171.667" Grid.Row="7" TextWrapping="Wrap" Text="Broj sjedala autobusa:" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Margin="197,254.667,0,-200.667" Grid.Row="7" TextWrapping="Wrap" Text="Nema informacija" x:Name="txtBrojSjedala" VerticalAlignment="Top" Width="136" IsReadOnly="True"/>
+            <TextBlock HorizontalAlignment="Left" Margin="100,323.667,0,-237.667" Grid.Row="7" TextWrapping="Wrap" Text="Linija vožnje:" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Margin="197,320.667,0,-266.667" Grid.Row="7" TextWrapping="Wrap" Text="Nema informacija" x:Name="txtLinija" VerticalAlignment="Top" Width="136" IsReadOnly="True"/>
+            <Button Content="Potvrdi vožnju" Name="btnPotvrdi" HorizontalAlignment="Left" Margin="141,408.667,0,-334.667" Grid.Row="7" VerticalAlignment="Top"/>
 
         </Grid>
     </Grid>

@@ -31,6 +31,12 @@
   <wsdl:message name="IService1_SelectKorisnika_OutputMessage">
     <wsdl:part name="parameters" element="tns:SelectKorisnikaResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_SelectVoznju_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectVoznju" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectVoznju_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectVoznjuResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -47,6 +53,10 @@
     <wsdl:operation name="SelectKorisnika">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/SelectKorisnika" message="tns:IService1_SelectKorisnika_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/SelectKorisnikaResponse" message="tns:IService1_SelectKorisnika_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectVoznju">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SelectVoznju" message="tns:IService1_SelectVoznju_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SelectVoznjuResponse" message="tns:IService1_SelectVoznju_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -80,6 +90,15 @@
     </wsdl:operation>
     <wsdl:operation name="SelectKorisnika">
       <soap:operation soapAction="http://tempuri.org/IService1/SelectKorisnika" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectVoznju">
+      <soap:operation soapAction="http://tempuri.org/IService1/SelectVoznju" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

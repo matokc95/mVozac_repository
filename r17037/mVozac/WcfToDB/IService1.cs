@@ -22,6 +22,8 @@ namespace WcfToDB
         int InsertKorisnika(Korisnik k);
         [OperationContract]
         Korisnik SelectKorisnika(Korisnik k);
+        [OperationContract]
+        Voznja SelectVoznju(string tekst);
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
