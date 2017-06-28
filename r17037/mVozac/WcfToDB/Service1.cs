@@ -63,7 +63,7 @@ namespace WcfToDB
                 command.CommandText = "insert into korisnik(ime,prezime,datum_rodenja,oib,korisnicko_ime,lozinka,email) values(@ime, @prezime, null, @oib, @korisnicko_ime, @lozinka, @email)";
                 command.Parameters.AddWithValue("ime", k.Ime);
                 command.Parameters.AddWithValue("prezime", k.Prezime);
-         //       command.Parameters.AddWithValue("datum_rodenja", null);
+                //       command.Parameters.AddWithValue("datum_rodenja", null);
                 command.Parameters.AddWithValue("oib", k.OIB);
                 command.Parameters.AddWithValue("korisnicko_ime", k.KorisnickoIme);
                 command.Parameters.AddWithValue("lozinka", k.Lozinka);
@@ -81,7 +81,7 @@ namespace WcfToDB
             }
             finally
             {
-                if(connection != null)
+                if (connection != null)
                 {
                     connection.Close();
                 }
@@ -140,6 +140,38 @@ namespace WcfToDB
                     voznja.BrojSjedala = int.Parse(reader[3].ToString());
                 }
                 return voznja;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public Popust SelectPopust()
+        {
+            Popust popust = new Popust();
+            try
+            {
+                command.CommandText = "select naziv_popusta, kolicina_popusta from popust";
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    popust.NazivPopusta = reader[0].ToString();
+                    popust.KolicinaPopusta = float.Parse(reader[1].ToString());
+                }
+                reader.Close();
+                return popust;
             }
             catch (Exception)
             {
