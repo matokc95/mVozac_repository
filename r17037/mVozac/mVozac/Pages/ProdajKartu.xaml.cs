@@ -40,7 +40,8 @@ namespace mVozac.Pages
         private async void Page_Loading(FrameworkElement sender, object args)
         {
             Service1Client service = new Service1Client();
-            // tu bi mi trebal procitat al nece
+            //evo sad radi
+            var res = await service.SelectPopustAsync();
         }
     }
 }

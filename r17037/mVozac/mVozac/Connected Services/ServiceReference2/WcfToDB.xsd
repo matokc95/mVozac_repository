@@ -32,4 +32,11 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Voznja" nillable="true" type="tns:Voznja" />
+  <xs:complexType name="Popust">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="KolicinaPopusta" type="xs:float" />
+      <xs:element minOccurs="0" name="NazivPopusta" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Popust" nillable="true" type="tns:Popust" />
 </xs:schema>
