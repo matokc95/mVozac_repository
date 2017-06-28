@@ -43,6 +43,36 @@
   <wsdl:message name="IService1_SelectPopust_OutputMessage">
     <wsdl:part name="parameters" element="tns:SelectPopustResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_SelectVoznjaCijena_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectVoznjaCijena" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectVoznjaCijena_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectVoznjaCijenaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPopustID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPopustID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPopustID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPopustIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetKorisnikID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetKorisnikID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetKorisnikID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetKorisnikIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetVoznjaID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVoznjaID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetVoznjaID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVoznjaIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertKarta_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertKarta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertKarta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertKartaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -67,6 +97,26 @@
     <wsdl:operation name="SelectPopust">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/SelectPopust" message="tns:IService1_SelectPopust_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/SelectPopustResponse" message="tns:IService1_SelectPopust_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectVoznjaCijena">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SelectVoznjaCijena" message="tns:IService1_SelectVoznjaCijena_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SelectVoznjaCijenaResponse" message="tns:IService1_SelectVoznjaCijena_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPopustID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPopustID" message="tns:IService1_GetPopustID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPopustIDResponse" message="tns:IService1_GetPopustID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKorisnikID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetKorisnikID" message="tns:IService1_GetKorisnikID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetKorisnikIDResponse" message="tns:IService1_GetKorisnikID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVoznjaID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetVoznjaID" message="tns:IService1_GetVoznjaID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetVoznjaIDResponse" message="tns:IService1_GetVoznjaID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertKarta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertKarta" message="tns:IService1_InsertKarta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertKartaResponse" message="tns:IService1_InsertKarta_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -118,6 +168,51 @@
     </wsdl:operation>
     <wsdl:operation name="SelectPopust">
       <soap:operation soapAction="http://tempuri.org/IService1/SelectPopust" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectVoznjaCijena">
+      <soap:operation soapAction="http://tempuri.org/IService1/SelectVoznjaCijena" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPopustID">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPopustID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorisnikID">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetKorisnikID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVoznjaID">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetVoznjaID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertKarta">
+      <soap:operation soapAction="http://tempuri.org/IService1/InsertKarta" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -63,7 +63,7 @@ namespace WcfToDB
                 command.CommandText = "insert into korisnik(ime,prezime,datum_rodenja,oib,korisnicko_ime,lozinka,email) values(@ime, @prezime, null, @oib, @korisnicko_ime, @lozinka, @email)";
                 command.Parameters.AddWithValue("ime", k.Ime);
                 command.Parameters.AddWithValue("prezime", k.Prezime);
-                //       command.Parameters.AddWithValue("datum_rodenja", null);
+                //command.Parameters.AddWithValue("datum_rodenja", null);
                 command.Parameters.AddWithValue("oib", k.OIB);
                 command.Parameters.AddWithValue("korisnicko_ime", k.KorisnickoIme);
                 command.Parameters.AddWithValue("lozinka", k.Lozinka);
@@ -157,12 +157,13 @@ namespace WcfToDB
             }
         }
 
-        public Popust SelectPopust()
+        public Popust SelectPopust(string nazivPopusta)
         {
             Popust popust = new Popust();
             try
             {
-                command.CommandText = "select naziv_popusta, kolicina_popusta from popust";
+                command.CommandText = "select naziv_popusta, kolicina_popusta from popust where naziv_popusta = @naziv_popusta";
+                command.Parameters.AddWithValue("naziv_popusta", nazivPopusta);
 
                 command.CommandType = CommandType.Text;
                 connection.Open();
@@ -175,6 +176,189 @@ namespace WcfToDB
                 }
                 reader.Close();
                 return popust;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public float SelectVoznjaCijena(string nazivLinije, string vozac)
+        {
+            float price = -1;
+            try
+            {
+                command.CommandText = "select v.cijena, v.prihvacena, v.gotova, k.korinicko_ime " +
+                    "from voznja v join linija l on v.linija = l.linija_id " +
+                    "join korisnik k on v.vozac = k.korisnik_id " +
+                    "where v.prihvacena = 1 " +
+                    "and v.gotova = 0 " +
+                    "and l.naziv_linije = @naziv_linije " +
+                    "and k.korisnicko_ime = @korisnicko_ime";
+                command.Parameters.AddWithValue("naziv_linije", nazivLinije);
+                command.Parameters.AddWithValue("korisnicko_ime", vozac);
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    price = float.Parse(reader[0].ToString());
+                }
+                reader.Close();
+
+                return price;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public int GetPopustID(string naziv)
+        {
+            int id = 0;
+
+            try
+            {
+                command.CommandText = "SELECT popust_id " +
+                    "FROM popust " +
+                    "WHERE naziv_popusta = @naziv_popusta";
+                command.Parameters.AddWithValue("naziv_popusta", naziv);
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = int.Parse(reader[0].ToString());
+                }
+                reader.Close();
+
+                return id;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public int GetKorisnikID(string kor_ime)
+        {
+            int id = 0;
+
+            try
+            {
+                command.CommandText = "SELECT korisnik_id " +
+                    "FROM korisnik " +
+                    "WHERE korisnicko_ime = @korisnicko_ime";
+                command.Parameters.AddWithValue("korisnicko_ime", kor_ime);
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = int.Parse(reader[0].ToString());
+                }
+                reader.Close();
+
+                return id;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public int GetVoznjaID(string linija, string vozac)
+        {
+            int id = 0;
+
+            try
+            {
+                command.CommandText = "select v.voznja_id " +
+                    "from voznja v join linija l on v.linija = l.linija_id " +
+                    "join korisnik k on v.vozac = k.korisnik_id " +
+                    "where v.prihvacena = 1 " +
+                    "and v.gotova = 0 " +
+                    "and l.naziv_linije = @naziv_linije " +
+                    "and k.korisnicko_ime = @korisnicko_ime";
+                command.Parameters.AddWithValue("naziv_linije", linija);
+                command.Parameters.AddWithValue("korisnicko_ime", vozac);
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = int.Parse(reader[0].ToString());
+                }
+                reader.Close();
+
+                return id;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public int InsertKarta(Karta k)
+        {
+            try
+            {
+                command.CommandText = "INSERT INTO karta " +
+                    "(popust, vozac, voznja) " +
+                    "VALUES(@popust, @vozac, @voznja)";
+                command.Parameters.AddWithValue("popust", k.Popust);
+                command.Parameters.AddWithValue("vozac", k.Vozac);
+                command.Parameters.AddWithValue("voznja", k.Voznja);
+
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                return command.ExecuteNonQuery();
             }
             catch (Exception)
             {

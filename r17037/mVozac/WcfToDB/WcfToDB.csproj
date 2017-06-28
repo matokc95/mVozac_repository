@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Bus.cs" />
     <Compile Include="IService1.cs" />
+    <Compile Include="Karta.cs" />
     <Compile Include="Linija.cs" />
     <Compile Include="Popust.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

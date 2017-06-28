@@ -39,4 +39,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Popust" nillable="true" type="tns:Popust" />
+  <xs:complexType name="Karta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Popust" type="xs:int" />
+      <xs:element minOccurs="0" name="Vozac" type="xs:int" />
+      <xs:element minOccurs="0" name="Voznja" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Karta" nillable="true" type="tns:Karta" />
 </xs:schema>

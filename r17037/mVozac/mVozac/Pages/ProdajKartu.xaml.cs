@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -37,11 +38,60 @@ namespace mVozac.Pages
             this.Frame.GoBack();
         }
 
-        private async void Page_Loading(FrameworkElement sender, object args)
+        private async void btnIzdaj_ClickAsync(object sender, RoutedEventArgs e)
         {
-            Service1Client service = new Service1Client();
-            //evo sad radi
-            var res = await service.SelectPopustAsync();
+            bool dalje = true;
+            Service1Client servicePopust = new Service1Client();
+            var resPopust = await servicePopust.SelectPopustAsync(txtPopust.Text);
+
+            if (resPopust.NazivPopusta == null)
+            {
+                dalje = false;
+            }
+
+            Service1Client serviceVoznja = new Service1Client();
+            var resCijena = await serviceVoznja.SelectVoznjaCijenaAsync(txtVoznja.Text, TxtPrijavljeni.Text);
+
+            if (resCijena == -1)
+            {
+                dalje = false;
+            }
+
+            if (!dalje)
+            {
+                var dialog = new MessageDialog("Morate unjeti popust i liniju.");
+                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                dialog.ShowAsync();
+            }
+            else
+            {
+                float ukupnaCijea = resCijena - (resCijena * (resPopust.KolicinaPopusta / 100));
+                txtPrice.Text = ukupnaCijea.ToString();
+
+                Karta karta = new Karta();
+                Service1Client servis = new Service1Client();
+
+                var resKartaPopust = await servis.GetPopustIDAsync(txtPopust.Text);
+                karta.Popust = resKartaPopust;
+                var resKartaVOzac = await servis.GetKorisnikIDAsync(TxtPrijavljeni.Text);
+                karta.Vozac = resKartaVOzac;
+                var resKartaVoznja = await servis.GetVoznjaIDAsync(txtVoznja.Text, TxtPrijavljeni.Text);
+                karta.Voznja = resKartaVoznja;
+
+                var resInsert = await servis.InsertKartaAsync(karta);
+                if (resInsert == 0)
+                {
+                    var dialog = new MessageDialog("Pogreška kod kreiranja karte.");
+                    dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                    dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("Uspješno ste kreirali kartu!");
+                    dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                    dialog.ShowAsync();
+                }
+            }
         }
     }
 }

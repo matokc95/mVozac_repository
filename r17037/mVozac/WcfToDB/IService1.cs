@@ -25,7 +25,17 @@ namespace WcfToDB
         [OperationContract]
         Voznja SelectVoznju(string tekst);
         [OperationContract]
-        Popust SelectPopust();
+        Popust SelectPopust(string nazivPopusta);
+        [OperationContract]
+        float SelectVoznjaCijena(string nazivLinije, string vozac);
+        [OperationContract]
+        int GetPopustID(string naziv);
+        [OperationContract]
+        int GetKorisnikID(string kor_ime);
+        [OperationContract]
+        int GetVoznjaID(string linija, string vozac);
+        [OperationContract]
+        int InsertKarta(Karta k);
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.

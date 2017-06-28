@@ -360,6 +360,66 @@ namespace mVozac.ServiceReference2 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Karta", Namespace="http://schemas.datacontract.org/2004/07/WcfToDB")]
+    public partial class Karta : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int PopustField;
+        
+        private int VozacField;
+        
+        private int VoznjaField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Popust {
+            get {
+                return this.PopustField;
+            }
+            set {
+                if ((this.PopustField.Equals(value) != true)) {
+                    this.PopustField = value;
+                    this.RaisePropertyChanged("Popust");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Vozac {
+            get {
+                return this.VozacField;
+            }
+            set {
+                if ((this.VozacField.Equals(value) != true)) {
+                    this.VozacField = value;
+                    this.RaisePropertyChanged("Vozac");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Voznja {
+            get {
+                return this.VoznjaField;
+            }
+            set {
+                if ((this.VoznjaField.Equals(value) != true)) {
+                    this.VoznjaField = value;
+                    this.RaisePropertyChanged("Voznja");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference2.IService1")]
     public interface IService1 {
@@ -380,7 +440,22 @@ namespace mVozac.ServiceReference2 {
         System.Threading.Tasks.Task<mVozac.ServiceReference2.Voznja> SelectVoznjuAsync(string tekst);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SelectPopust", ReplyAction="http://tempuri.org/IService1/SelectPopustResponse")]
-        System.Threading.Tasks.Task<mVozac.ServiceReference2.Popust> SelectPopustAsync();
+        System.Threading.Tasks.Task<mVozac.ServiceReference2.Popust> SelectPopustAsync(string nazivPopusta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SelectVoznjaCijena", ReplyAction="http://tempuri.org/IService1/SelectVoznjaCijenaResponse")]
+        System.Threading.Tasks.Task<float> SelectVoznjaCijenaAsync(string nazivLinije, string vozac);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPopustID", ReplyAction="http://tempuri.org/IService1/GetPopustIDResponse")]
+        System.Threading.Tasks.Task<int> GetPopustIDAsync(string naziv);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetKorisnikID", ReplyAction="http://tempuri.org/IService1/GetKorisnikIDResponse")]
+        System.Threading.Tasks.Task<int> GetKorisnikIDAsync(string kor_ime);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetVoznjaID", ReplyAction="http://tempuri.org/IService1/GetVoznjaIDResponse")]
+        System.Threading.Tasks.Task<int> GetVoznjaIDAsync(string linija, string vozac);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertKarta", ReplyAction="http://tempuri.org/IService1/InsertKartaResponse")]
+        System.Threading.Tasks.Task<int> InsertKartaAsync(mVozac.ServiceReference2.Karta k);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -446,8 +521,28 @@ namespace mVozac.ServiceReference2 {
             return base.Channel.SelectVoznjuAsync(tekst);
         }
         
-        public System.Threading.Tasks.Task<mVozac.ServiceReference2.Popust> SelectPopustAsync() {
-            return base.Channel.SelectPopustAsync();
+        public System.Threading.Tasks.Task<mVozac.ServiceReference2.Popust> SelectPopustAsync(string nazivPopusta) {
+            return base.Channel.SelectPopustAsync(nazivPopusta);
+        }
+        
+        public System.Threading.Tasks.Task<float> SelectVoznjaCijenaAsync(string nazivLinije, string vozac) {
+            return base.Channel.SelectVoznjaCijenaAsync(nazivLinije, vozac);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetPopustIDAsync(string naziv) {
+            return base.Channel.GetPopustIDAsync(naziv);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetKorisnikIDAsync(string kor_ime) {
+            return base.Channel.GetKorisnikIDAsync(kor_ime);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetVoznjaIDAsync(string linija, string vozac) {
+            return base.Channel.GetVoznjaIDAsync(linija, vozac);
+        }
+        
+        public System.Threading.Tasks.Task<int> InsertKartaAsync(mVozac.ServiceReference2.Karta k) {
+            return base.Channel.InsertKartaAsync(k);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {
