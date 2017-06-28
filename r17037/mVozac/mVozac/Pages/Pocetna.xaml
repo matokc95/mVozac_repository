@@ -24,7 +24,7 @@
             <Button Content="Pomoć" HorizontalAlignment="Left" Height="32" Margin="319,10,0,0" VerticalAlignment="Top" Width="66"/>
             <TextBlock HorizontalAlignment="Left" Height="36" Margin="62,23.667,0,-57.667" Grid.Row="7" TextWrapping="Wrap" Text="Prijavljeni korisnik:" VerticalAlignment="Top" Width="126"/>
             <TextBox x:Name="TxtPrijavljeni" HorizontalAlignment="Left" Height="30" Margin="199,20.667,0,-50.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134" IsReadOnly="True"/>
-            <Button Content="Prodaj kartu" FontSize="13" HorizontalAlignment="Left" Margin="37,98.667,0,-115.667" Grid.Row="7" VerticalAlignment="Top" Height="51" Width="118" Click="ProdajKartu_Click"/>
+            <Button x:Name="ProdajKartu" Content="Prodaj kartu" FontSize="13" HorizontalAlignment="Left" Margin="37,98.667,0,-115.667" Grid.Row="7" VerticalAlignment="Top" Height="51" Width="118" Click="ProdajKartu_Click"/>
             <Button Content="Pretraži karte" Name="PretraziKarte" FontSize="13" HorizontalAlignment="Left" Margin="226,98.667,0,-115.667" Grid.Row="7" VerticalAlignment="Top" Height="51" Width="118" Click="PretraziKarte_Click"/>
             <Button Content="Raspored vožnje" Name="RasporedVoznje" FontSize="13" HorizontalAlignment="Left" Margin="37,185.667,0,-202.667" Grid.Row="7" VerticalAlignment="Top" Height="51" Width="118" Click="RasporedVoznje_Click"/>
             <Button Content="Poništi karte" Name="PonistiKarte" FontSize="13" HorizontalAlignment="Left" Margin="226,185.667,0,-202.667" Grid.Row="7" VerticalAlignment="Top" Height="51" Width="118" Click="PonistiKarte_Click"/>

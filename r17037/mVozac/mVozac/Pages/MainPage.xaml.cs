@@ -39,12 +39,12 @@ namespace mVozac
             Korisnik kor = new Korisnik()
             {
                 KorisnickoIme = TxtKorIme.Text,
-                Lozinka=TxtLozinka.Password
-                
+                Lozinka = TxtLozinka.Password
+
             };
             Service1Client service = new Service1Client();
             var res = await service.SelectKorisnikaAsync(kor);
-            if(res.KorisnickoIme == kor.KorisnickoIme && res.Lozinka == kor.Lozinka)
+            if (res.KorisnickoIme == kor.KorisnickoIme && res.Lozinka == kor.Lozinka)
             {
                 this.Frame.Navigate(typeof(Pocetna), res);
             }
@@ -54,7 +54,7 @@ namespace mVozac
                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                 dialog.ShowAsync();
             }
-            
+
         }
     }
 }

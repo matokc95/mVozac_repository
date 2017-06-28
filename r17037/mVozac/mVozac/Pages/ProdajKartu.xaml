@@ -23,6 +23,10 @@
             <TextBlock HorizontalAlignment="Left" Height="36" Margin="62,23.667,0,-57.667" Grid.Row="7" TextWrapping="Wrap" Text="Prijavljeni korisnik:" VerticalAlignment="Top" Width="126"/>
             <TextBox x:Name="TxtPrijavljeni" HorizontalAlignment="Left" Height="30" Margin="199,20.667,0,-50.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134" IsReadOnly="True"/>
             <Button Content="Povratak" Background="#FF30DABB" Name="BtnPovratak" HorizontalAlignment="Left" Margin="6,11,0,0" Height="32" Width="78" VerticalAlignment="Top" Click="BtnPovratak_Click"/>
+            <ComboBox x:Name="cmbPopust" HorizontalAlignment="Left" Margin="169,102.667,0,-100.667" Grid.Row="7" VerticalAlignment="Top" Width="120"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Popust" VerticalAlignment="Top" Margin="94,107.667,0,-93.667" Grid.Row="7"/>
+            <TextBlock HorizontalAlignment="Left" Margin="94,191.667,0,-157.667" Grid.Row="7" TextWrapping="Wrap" Text="Vožnja" VerticalAlignment="Top"/>
+            <ComboBox x:Name="cmbVoznja" HorizontalAlignment="Left" Margin="169,186.667,0,-132.667" Grid.Row="7" VerticalAlignment="Top" Width="120"/>
 
         </Grid>
     </Grid>

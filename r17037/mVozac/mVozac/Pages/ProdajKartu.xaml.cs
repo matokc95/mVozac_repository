@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mVozac.ServiceReference2;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -34,6 +35,12 @@ namespace mVozac.Pages
         private void BtnPovratak_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.GoBack();
+        }
+
+        private async void Page_Loading(FrameworkElement sender, object args)
+        {
+            Service1Client service = new Service1Client();
+            // tu bi mi trebal procitat al nece
         }
     }
 }

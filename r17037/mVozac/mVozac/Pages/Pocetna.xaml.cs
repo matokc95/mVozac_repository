@@ -22,7 +22,7 @@ namespace mVozac
         public Pocetna()
         {
             this.InitializeComponent();
-  
+
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
