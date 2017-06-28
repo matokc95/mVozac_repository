@@ -23,15 +23,24 @@
             <TextBlock HorizontalAlignment="Left" Height="36" Margin="62,23.667,0,-57.667" Grid.Row="7" TextWrapping="Wrap" Text="Prijavljeni korisnik:" VerticalAlignment="Top" Width="126"/>
             <TextBox x:Name="TxtPrijavljeni" HorizontalAlignment="Left" Height="30" Margin="199,20.667,0,-50.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134" IsReadOnly="True"/>
             <Button Content="Povratak" Background="#FF30DABB" Name="BtnPovratak" HorizontalAlignment="Left" Margin="6,11,0,10.333" Width="78" VerticalAlignment="Stretch" Click="BtnPovratak_Click"/>
-            <TextBlock HorizontalAlignment="Left" Margin="103,125.667,0,-39.667" Grid.Row="7" TextWrapping="Wrap" Text="Ime vozača:" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Margin="197,122.667,0,-68.667" Grid.Row="7" TextWrapping="Wrap" Text="Nema informacija" Name="txtIme" VerticalAlignment="Top" Width="136" IsReadOnly="True"/>
-            <TextBlock HorizontalAlignment="Left" Margin="82,191.667,0,-105.667" Grid.Row="7" TextWrapping="Wrap" Text="Prezime vozača:" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Margin="197,188.667,0,-134.667" Grid.Row="7" TextWrapping="Wrap" Text="Nema informacija" x:Name="txtPrezime" VerticalAlignment="Top" Width="136" IsReadOnly="True"/>
-            <TextBlock HorizontalAlignment="Left" Margin="43,257.667,0,-171.667" Grid.Row="7" TextWrapping="Wrap" Text="Broj sjedala autobusa:" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Margin="197,254.667,0,-200.667" Grid.Row="7" TextWrapping="Wrap" Text="Nema informacija" x:Name="txtBrojSjedala" VerticalAlignment="Top" Width="136" IsReadOnly="True"/>
-            <TextBlock HorizontalAlignment="Left" Margin="100,323.667,0,-237.667" Grid.Row="7" TextWrapping="Wrap" Text="Linija vožnje:" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Margin="197,320.667,0,-266.667" Grid.Row="7" TextWrapping="Wrap" Text="Nema informacija" x:Name="txtLinija" VerticalAlignment="Top" Width="136" IsReadOnly="True"/>
-            <Button Content="Potvrdi vožnju" Name="btnPotvrdi" HorizontalAlignment="Left" Margin="141,408.667,0,-334.667" Grid.Row="7" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="112,98.667,0,0" Grid.Row="7" TextWrapping="Wrap" Text="Ime vozača:" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Margin="197,95.667,0,0" Grid.Row="7" TextWrapping="Wrap" Text="Nema informacija" Name="txtIme" VerticalAlignment="Top" Width="136" IsReadOnly="True" Height="23"/>
+            <TextBlock HorizontalAlignment="Left" Margin="82,140.667,0,0" Grid.Row="7" TextWrapping="Wrap" Text="Prezime vozača:" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Margin="197,137.667,0,0" Grid.Row="7" TextWrapping="Wrap" Text="Nema informacija" x:Name="txtPrezime" VerticalAlignment="Top" Width="136" IsReadOnly="True" Height="23"/>
+            <TextBlock HorizontalAlignment="Left" Margin="43,203.667,0,-51.667" Grid.Row="7" TextWrapping="Wrap" Text="Broj sjedala autobusa:" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Margin="197,200.667,0,-60.667" Grid.Row="7" TextWrapping="Wrap" Text="Nema informacija" x:Name="txtBrojSjedala" VerticalAlignment="Top" Width="136" IsReadOnly="True" Height="23"/>
+            <TextBlock HorizontalAlignment="Left" Margin="100,395.667,0,-243.667" Grid.Row="7" TextWrapping="Wrap" Text="Linija vožnje:" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Margin="197,392.667,0,-243.667" Grid.Row="7" TextWrapping="Wrap" Text="Nema informacija" x:Name="txtLinija" VerticalAlignment="Top" Width="136" IsReadOnly="True" Height="23"/>
+            <Button Content="Potvrdi vožnju" Name="btnPotvrdi" HorizontalAlignment="Left" Margin="141,453.667,0,-304.667" Grid.Row="7" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="13,71.667,0,0" Grid.Row="7" TextWrapping="Wrap" Text="Podaci o vozaču:" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="13,177.667,0,-25.667" Grid.Row="7" TextWrapping="Wrap" Text="Podaci o autobusu:" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="136,243.667,0,-91.667" Grid.Row="7" TextWrapping="Wrap" Text="Dužina:" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Margin="197,242.667,0,-102.667" Grid.Row="7" TextWrapping="Wrap" Text="Nema informacija" x:Name="txtDuzina" VerticalAlignment="Top" Width="136" IsReadOnly="True" Height="15"/>
+            <TextBlock HorizontalAlignment="Left" Margin="145,285.667,0,-133.667" Grid.Row="7" TextWrapping="Wrap" Text="Širina:" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Margin="197,284.667,0,-144.667" Grid.Row="7" TextWrapping="Wrap" Text="Nema informacija" x:Name="txtSirina" VerticalAlignment="Top" Width="136" IsReadOnly="True" Height="15"/>
+            <TextBlock HorizontalAlignment="Left" Margin="106,327.667,0,-175.667" Grid.Row="7" TextWrapping="Wrap" Text="Max. brzina:" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Margin="197,326.667,0,-186.667" Grid.Row="7" TextWrapping="Wrap" Text="Nema informacija" x:Name="txtBrzina" VerticalAlignment="Top" Width="136" IsReadOnly="True" Height="15"/>
+            <TextBlock HorizontalAlignment="Left" Margin="13,366.667,0,-214.667" Grid.Row="7" TextWrapping="Wrap" Text="Podaci o liniji:" VerticalAlignment="Top"/>
 
         </Grid>
     </Grid>

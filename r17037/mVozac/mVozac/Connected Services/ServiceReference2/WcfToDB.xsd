@@ -23,9 +23,12 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="BrojSjedala" type="xs:int" />
       <xs:element minOccurs="0" name="DatumVoznje" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DuzinaBusa" type="xs:float" />
       <xs:element minOccurs="0" name="ImeVozaca" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaxBrzina" type="xs:float" />
       <xs:element minOccurs="0" name="NazivLinije" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PrezimeVozaca" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SirinaBusa" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Voznja" nillable="true" type="tns:Voznja" />

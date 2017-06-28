@@ -189,11 +189,17 @@ namespace mVozac.ServiceReference2 {
         
         private System.DateTime DatumVoznjeField;
         
+        private float DuzinaBusaField;
+        
         private string ImeVozacaField;
+        
+        private float MaxBrzinaField;
         
         private string NazivLinijeField;
         
         private string PrezimeVozacaField;
+        
+        private float SirinaBusaField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int BrojSjedala {
@@ -222,6 +228,19 @@ namespace mVozac.ServiceReference2 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public float DuzinaBusa {
+            get {
+                return this.DuzinaBusaField;
+            }
+            set {
+                if ((this.DuzinaBusaField.Equals(value) != true)) {
+                    this.DuzinaBusaField = value;
+                    this.RaisePropertyChanged("DuzinaBusa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string ImeVozaca {
             get {
                 return this.ImeVozacaField;
@@ -230,6 +249,19 @@ namespace mVozac.ServiceReference2 {
                 if ((object.ReferenceEquals(this.ImeVozacaField, value) != true)) {
                     this.ImeVozacaField = value;
                     this.RaisePropertyChanged("ImeVozaca");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float MaxBrzina {
+            get {
+                return this.MaxBrzinaField;
+            }
+            set {
+                if ((this.MaxBrzinaField.Equals(value) != true)) {
+                    this.MaxBrzinaField = value;
+                    this.RaisePropertyChanged("MaxBrzina");
                 }
             }
         }
@@ -256,6 +288,19 @@ namespace mVozac.ServiceReference2 {
                 if ((object.ReferenceEquals(this.PrezimeVozacaField, value) != true)) {
                     this.PrezimeVozacaField = value;
                     this.RaisePropertyChanged("PrezimeVozaca");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float SirinaBusa {
+            get {
+                return this.SirinaBusaField;
+            }
+            set {
+                if ((this.SirinaBusaField.Equals(value) != true)) {
+                    this.SirinaBusaField = value;
+                    this.RaisePropertyChanged("SirinaBusa");
                 }
             }
         }

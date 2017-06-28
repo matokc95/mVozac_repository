@@ -48,6 +48,9 @@ namespace mVozac.Pages
                 txtPrezime.Text = res.PrezimeVozaca;
                 txtBrojSjedala.Text = res.BrojSjedala.ToString();
                 txtLinija.Text = res.NazivLinije;
+                txtDuzina.Text = res.DuzinaBusa.ToString();
+                txtSirina.Text = res.SirinaBusa.ToString();
+                txtBrzina.Text = res.MaxBrzina.ToString();
             }
             else
             {

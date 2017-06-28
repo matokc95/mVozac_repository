@@ -20,5 +20,11 @@ namespace WcfToDB
         public int BrojSjedala { get; set; }
         [DataMember]
         public string NazivLinije { get; set; }
+        [DataMember]
+        public float DuzinaBusa { get; set; }
+        [DataMember]
+        public float SirinaBusa { get; set; }
+        [DataMember]
+        public float MaxBrzina { get; set; }
     }
 }

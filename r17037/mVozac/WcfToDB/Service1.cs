@@ -125,7 +125,7 @@ namespace WcfToDB
             Voznja voznja = new Voznja();
             try
             {
-                command.CommandText = "select k.ime,k.prezime,l.naziv_linije,b.broj_sjedala from voznja v join korisnik k on k.korisnik_id=v.vozac join bus b on b.bus_id=v.bus join linija l on v.linija=l.linija_id where k.korisnicko_ime=@korisnicko_ime";
+                command.CommandText = "select k.ime,k.prezime,l.naziv_linije,b.broj_sjedala,b.duzina,b.sirina,b.max_brzina from voznja v join korisnik k on k.korisnik_id=v.vozac join bus b on b.bus_id=v.bus join linija l on v.linija=l.linija_id where k.korisnicko_ime=@korisnicko_ime";
                 command.Parameters.AddWithValue("korisnicko_ime", tekst);
 
                 command.CommandType = CommandType.Text;
@@ -138,6 +138,9 @@ namespace WcfToDB
                     voznja.PrezimeVozaca = reader[1].ToString();
                     voznja.NazivLinije = reader[2].ToString();
                     voznja.BrojSjedala = int.Parse(reader[3].ToString());
+                    voznja.DuzinaBusa = float.Parse(reader[4].ToString());
+                    voznja.SirinaBusa = float.Parse(reader[5].ToString());
+                    voznja.MaxBrzina = float.Parse(reader[6].ToString());
                 }
                 return voznja;
             }
