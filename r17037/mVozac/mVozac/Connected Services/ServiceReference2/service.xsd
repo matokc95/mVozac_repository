@@ -157,4 +157,32 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="PotvrdiVoznju">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="linija" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PotvrdiVoznjuResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PotvrdiVoznjuResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProvjeriStatusVoznje">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="linija" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProvjeriStatusVoznjeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ProvjeriStatusVoznjeResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

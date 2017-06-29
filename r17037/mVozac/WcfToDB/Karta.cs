@@ -11,7 +11,7 @@ namespace WcfToDB
     public class Karta
     {
         [DataMember]
-        public int Popust { get; set; }
+        public float Popust { get; set; }
         [DataMember]
         public int Vozac { get; set; }
         [DataMember]

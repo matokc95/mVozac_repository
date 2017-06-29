@@ -8,13 +8,9 @@
     x:Class="mVozac.Pages.Tahometar"
     mc:Ignorable="d" Height="740.429" Width="401.238">
     <Grid x:Name="pageGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-        <Maps:MapControl
-       x:Name="MapControl1"            
-       ZoomInteractionMode="GestureAndControl"
-       TiltInteractionMode="GestureAndControl"   
-       MapServiceToken="NUDduMOOVmZwz1cjsgca~ePRq5HHEc8Eu-ODahG9JOA~Agf7dNjHmoa9EnFTRdMWbAGtRDl0_FMmMKmQHW3eZU_2Qzl6zurdWXrEw4U57MCp" Margin="0,59,0,0"/>
-        <Button Content="Povratak" Name="BtnPovratak" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="BtnPovratak_Click"/>
-
+        <Maps:MapControl x:Name="MapControl1" HorizontalAlignment="Left" Margin="0,57,0,0" VerticalAlignment="Top" Height="570" Width="401" MapServiceToken="NUDduMOOVmZwz1cjsgca~ePRq5HHEc8Eu-ODahG9JOA~Agf7dNjHmoa9EnFTRdMWbAGtRDl0_FMmMKmQHW3eZU_2Qzl6zurdWXrEw4U57MCp"/>
+        <Button Content="Povratak" Name="BtnPovratak" HorizontalAlignment="Left" Margin="13,10,0,0" VerticalAlignment="Top" Click="BtnPovratak_Click"/>
+        <Button Content="Prikazi moju lokaciju" Name="btnLokacija" HorizontalAlignment="Left" Margin="236,8,0,0" VerticalAlignment="Top" Click="btnLokacija_Click"/>
     </Grid>
+
 </Page>

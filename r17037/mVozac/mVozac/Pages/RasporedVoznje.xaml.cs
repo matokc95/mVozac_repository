@@ -59,5 +59,25 @@ namespace mVozac.Pages
                 dialog.ShowAsync();
             }
         }
+
+        private async void btnPotvrdi_Click(object sender, RoutedEventArgs e)
+        {
+            Service1Client service = new Service1Client();
+          
+            var res = await service.PotvrdiVoznjuAsync(txtLinija.Text);
+            if (res == -1)
+            {
+                var dialog = new MessageDialog("Došlo je do pogreške!");
+                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                await dialog.ShowAsync();
+            }
+            else
+            {
+                var dialog2 = new MessageDialog("Vožnja je prihvaćena!");
+                dialog2.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                await dialog2.ShowAsync();
+                this.Frame.GoBack();
+            }     
+        }
     }
 }

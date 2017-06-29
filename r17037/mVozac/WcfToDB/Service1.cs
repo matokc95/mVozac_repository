@@ -372,5 +372,66 @@ namespace WcfToDB
                 }
             }
         }
+        
+        public PonistiKartu SelectKarta()
+        {
+            PonistiKartu karta = new PonistiKartu();
+            try
+            {
+                command.CommandText = "select ka.karta_id,k.ime,k.prezime,p.kolicina_popusta,v.voznja_id from karta ka join popust p on ka.popust=p.popust_id join korisnik k on ka.vozac=k.korisnik_id join voznja v on ka.voznja=v.voznja_id";
+                //command.Parameters.AddWithValue("naziv_popusta", nazivPopusta);
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    karta.KartaID= int.Parse(reader[0].ToString());
+                    karta.ImeVozaca = reader[1].ToString();
+                    karta.PrezimeVozaca = reader[2].ToString();
+                    karta.KolPopusta = float.Parse(reader[3].ToString());
+                    karta.VoznjaID = int.Parse(reader[4].ToString());
+                }
+                reader.Close();
+                return karta;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
+        public int PotvrdiVoznju(string linija)
+        {
+            try
+            {
+                command.CommandText = "update voznja set prihvacena=1 where linija=(select linija_id from linija where naziv_linije=@linija)";
+                command.Parameters.AddWithValue("linija", linija);
+
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                return command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }

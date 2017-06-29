@@ -73,6 +73,18 @@
   <wsdl:message name="IService1_InsertKarta_OutputMessage">
     <wsdl:part name="parameters" element="tns:InsertKartaResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_PotvrdiVoznju_InputMessage">
+    <wsdl:part name="parameters" element="tns:PotvrdiVoznju" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PotvrdiVoznju_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PotvrdiVoznjuResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ProvjeriStatusVoznje_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProvjeriStatusVoznje" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ProvjeriStatusVoznje_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProvjeriStatusVoznjeResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -117,6 +129,14 @@
     <wsdl:operation name="InsertKarta">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertKarta" message="tns:IService1_InsertKarta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertKartaResponse" message="tns:IService1_InsertKarta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PotvrdiVoznju">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PotvrdiVoznju" message="tns:IService1_PotvrdiVoznju_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PotvrdiVoznjuResponse" message="tns:IService1_PotvrdiVoznju_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProvjeriStatusVoznje">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ProvjeriStatusVoznje" message="tns:IService1_ProvjeriStatusVoznje_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ProvjeriStatusVoznjeResponse" message="tns:IService1_ProvjeriStatusVoznje_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -213,6 +233,24 @@
     </wsdl:operation>
     <wsdl:operation name="InsertKarta">
       <soap:operation soapAction="http://tempuri.org/IService1/InsertKarta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PotvrdiVoznju">
+      <soap:operation soapAction="http://tempuri.org/IService1/PotvrdiVoznju" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProvjeriStatusVoznje">
+      <soap:operation soapAction="http://tempuri.org/IService1/ProvjeriStatusVoznje" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

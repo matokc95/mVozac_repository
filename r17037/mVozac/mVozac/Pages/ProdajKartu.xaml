@@ -20,17 +20,18 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="mVozač" TextAlignment="Center" FontSize="30"  Foreground="Black" Margin="118,29,107,-29.667" Grid.Row="0"/>
-            <TextBlock HorizontalAlignment="Left" Height="36" Margin="62,23.667,0,-57.667" Grid.Row="7" TextWrapping="Wrap" Text="Prijavljeni korisnik:" VerticalAlignment="Top" Width="126"/>
-            <TextBox x:Name="TxtPrijavljeni" HorizontalAlignment="Left" Height="30" Margin="199,20.667,0,-50.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134" IsReadOnly="True"/>
+            <TextBlock HorizontalAlignment="Left" Height="36" Margin="62,32.667,0,0" Grid.Row="7" TextWrapping="Wrap" Text="Prijavljeni korisnik:" VerticalAlignment="Top" Width="126"/>
+            <TextBox x:Name="TxtPrijavljeni" HorizontalAlignment="Left" Height="30" Margin="199,29.667,0,0" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134" IsReadOnly="True"/>
             <Button Content="Povratak" Background="#FF30DABB" Name="BtnPovratak" HorizontalAlignment="Left" Margin="6,11,0,0" Height="32" Width="78" VerticalAlignment="Top" Click="BtnPovratak_Click"/>
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Popust" VerticalAlignment="Top" Margin="94,107.667,0,-93.667" Grid.Row="7"/>
-            <TextBlock HorizontalAlignment="Left" Margin="94,191.667,0,-157.667" Grid.Row="7" TextWrapping="Wrap" Text="Vožnja" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Popust:" VerticalAlignment="Top" Margin="100,143.667,0,0" Grid.Row="7"/>
+            <TextBlock HorizontalAlignment="Left" Margin="100,185.667,0,-35.667" Grid.Row="7" TextWrapping="Wrap" Text="Vožnja:" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Height="4" Margin="199,207.667,0,-157.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="13"/>
-            <TextBox x:Name="txtPopust" HorizontalAlignment="Left" Margin="199,95.667,0,-41.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134"/>
-            <TextBox x:Name="txtVoznja" HorizontalAlignment="Left" Margin="199,179.667,0,-125.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134"/>
-            <TextBlock HorizontalAlignment="Left" Margin="77,282.667,0,-196.667" Grid.Row="7" TextWrapping="Wrap" Text="Cijena:" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Margin="199,270.667,0,-164.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134"/>
-            <Button x:Name="btnIzdaj" Content="Izdaj kartu" HorizontalAlignment="Left" Margin="147,354.667,0,-216.667" Grid.Row="7" VerticalAlignment="Top" Click="btnIzdaj_Click"/>
+            <TextBox Name="txtPopust" HorizontalAlignment="Left" Margin="172,137.667,0,0" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134"/>
+            <TextBox Name="txtVoznja" HorizontalAlignment="Left" Margin="172,179.667,0,-41.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134"/>
+            <TextBlock HorizontalAlignment="Left" Margin="101,228.667,0,-78.667" Grid.Row="7" TextWrapping="Wrap" Text="Cijena:" VerticalAlignment="Top"/>
+            <TextBox Name="txtPrice" HorizontalAlignment="Left" Margin="172,222.667,0,-84.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134"/>
+            <Button Name="btnIzdaj" Content="Izdaj kartu" HorizontalAlignment="Left" Margin="147,399.667,0,-261.667" Grid.Row="7" VerticalAlignment="Top" Click="btnIzdaj_ClickAsync"/>
+            <TextBlock Text="Izdavanje karte" TextAlignment="Center" FontSize="30"  Foreground="Black" Margin="94,77.667,87,38.333" Grid.Row="7"/>
 
         </Grid>
     </Grid>

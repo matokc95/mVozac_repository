@@ -365,14 +365,14 @@ namespace mVozac.ServiceReference2 {
     [System.Runtime.Serialization.DataContractAttribute(Name="Karta", Namespace="http://schemas.datacontract.org/2004/07/WcfToDB")]
     public partial class Karta : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private int PopustField;
+        private float PopustField;
         
         private int VozacField;
         
         private int VoznjaField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Popust {
+        public float Popust {
             get {
                 return this.PopustField;
             }
@@ -456,6 +456,12 @@ namespace mVozac.ServiceReference2 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/InsertKarta", ReplyAction="http://tempuri.org/IService1/InsertKartaResponse")]
         System.Threading.Tasks.Task<int> InsertKartaAsync(mVozac.ServiceReference2.Karta k);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PotvrdiVoznju", ReplyAction="http://tempuri.org/IService1/PotvrdiVoznjuResponse")]
+        System.Threading.Tasks.Task<int> PotvrdiVoznjuAsync(string linija);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ProvjeriStatusVoznje", ReplyAction="http://tempuri.org/IService1/ProvjeriStatusVoznjeResponse")]
+        System.Threading.Tasks.Task<bool> ProvjeriStatusVoznjeAsync(string linija);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -543,6 +549,14 @@ namespace mVozac.ServiceReference2 {
         
         public System.Threading.Tasks.Task<int> InsertKartaAsync(mVozac.ServiceReference2.Karta k) {
             return base.Channel.InsertKartaAsync(k);
+        }
+        
+        public System.Threading.Tasks.Task<int> PotvrdiVoznjuAsync(string linija) {
+            return base.Channel.PotvrdiVoznjuAsync(linija);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ProvjeriStatusVoznjeAsync(string linija) {
+            return base.Channel.ProvjeriStatusVoznjeAsync(linija);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {

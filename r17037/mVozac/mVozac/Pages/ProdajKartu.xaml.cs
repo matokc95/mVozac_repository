@@ -61,7 +61,7 @@ namespace mVozac.Pages
             {
                 var dialog = new MessageDialog("Morate unjeti popust i liniju.");
                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                dialog.ShowAsync();
+                await dialog.ShowAsync();
             }
             else
             {
@@ -83,13 +83,13 @@ namespace mVozac.Pages
                 {
                     var dialog = new MessageDialog("Pogreška kod kreiranja karte.");
                     dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                    dialog.ShowAsync();
+                    await dialog.ShowAsync();
                 }
                 else
                 {
                     var dialog = new MessageDialog("Uspješno ste kreirali kartu!");
                     dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                    dialog.ShowAsync();
+                    await dialog.ShowAsync();
                 }
             }
         }
