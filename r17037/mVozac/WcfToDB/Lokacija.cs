@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace WcfToDB
 {
     [DataContract]
-    public class Linija
+    public class Lokacija
     {
         [DataMember]
-        public string NazivLinije { get; set; }
+        public double Latitude { get; set; }
         [DataMember]
-        public string LinijaID { get; set; }
+        public double Longitude { get; set; }
     }
 }

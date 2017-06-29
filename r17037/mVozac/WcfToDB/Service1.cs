@@ -433,5 +433,139 @@ namespace WcfToDB
                 }
             }
         }
+        public Linija GetLinijaID(string linija_naziv)
+        {
+            Linija line = new Linija();
+            try
+            {
+                command.CommandText = "select linija_id,naziv_linije from linija where naziv_linije=@linija_naziv";
+                command.Parameters.AddWithValue("linija_naziv", linija_naziv);
+
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    line.LinijaID = reader[0].ToString();
+                    line.NazivLinije = reader[1].ToString();
+                }
+                reader.Close();
+                return line;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
+        public StanicaPocetak SelectStanicaIDPocetak(int idLinije)
+        {
+            StanicaPocetak stanicaPocetak = new StanicaPocetak();
+            try
+            {
+                command.CommandText = "select s.naziv_stanice,m.pocetak,m.kraj from medustanice m join stanica s on m.stanica=s.stanica_id where m.pocetak=1";
+                command.Parameters.AddWithValue("idLinije", idLinije);
+
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    stanicaPocetak.StanicaNaziv = reader[0].ToString();
+                    stanicaPocetak.Pocetak = bool.Parse(reader[1].ToString());
+                    stanicaPocetak.Kraj = bool.Parse(reader[2].ToString());
+                }
+                reader.Close();
+                return stanicaPocetak;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
+        public StanicaZavrsetak SelectStanicaIDZavrsetak(int idLinije)
+        {
+            StanicaZavrsetak stanicaZavrsetak = new StanicaZavrsetak();
+            try
+            {
+                command.CommandText = "select s.naziv_stanice,m.pocetak,m.kraj from medustanice m join stanica s on m.stanica=s.stanica_id where m.pocetak=0";
+                command.Parameters.AddWithValue("idLinije", idLinije);
+
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    stanicaZavrsetak.StanicaNaziv = reader[0].ToString();
+                    stanicaZavrsetak.Pocetak = bool.Parse(reader[1].ToString());
+                    stanicaZavrsetak.Kraj = bool.Parse(reader[2].ToString());
+                }
+                reader.Close();
+                return stanicaZavrsetak;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
+        public Lokacija DohvatiLokaciju(string stanica)
+        {
+            Lokacija lokacijaPocetak = new Lokacija();
+            try
+            {
+                command.CommandText = "select g.latitude,g.longitude from grad g join stanica s on g.grad_id=(select grad from stanica where naziv_stanice=@naziv)";
+                command.Parameters.AddWithValue("naziv", stanica);
+
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    lokacijaPocetak.Latitude = double.Parse(reader[0].ToString());
+                    lokacijaPocetak.Longitude = double.Parse(reader[1].ToString());
+                }
+                reader.Close();
+                return lokacijaPocetak;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }

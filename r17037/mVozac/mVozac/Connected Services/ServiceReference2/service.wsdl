@@ -79,11 +79,29 @@
   <wsdl:message name="IService1_PotvrdiVoznju_OutputMessage">
     <wsdl:part name="parameters" element="tns:PotvrdiVoznjuResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_ProvjeriStatusVoznje_InputMessage">
-    <wsdl:part name="parameters" element="tns:ProvjeriStatusVoznje" />
+  <wsdl:message name="IService1_GetLinijaID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLinijaID" />
   </wsdl:message>
-  <wsdl:message name="IService1_ProvjeriStatusVoznje_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ProvjeriStatusVoznjeResponse" />
+  <wsdl:message name="IService1_GetLinijaID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLinijaIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectStanicaIDPocetak_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectStanicaIDPocetak" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectStanicaIDPocetak_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectStanicaIDPocetakResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectStanicaIDZavrsetak_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectStanicaIDZavrsetak" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectStanicaIDZavrsetak_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectStanicaIDZavrsetakResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DohvatiLokaciju_InputMessage">
+    <wsdl:part name="parameters" element="tns:DohvatiLokaciju" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DohvatiLokaciju_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DohvatiLokacijuResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
@@ -134,9 +152,21 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/PotvrdiVoznju" message="tns:IService1_PotvrdiVoznju_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/PotvrdiVoznjuResponse" message="tns:IService1_PotvrdiVoznju_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ProvjeriStatusVoznje">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ProvjeriStatusVoznje" message="tns:IService1_ProvjeriStatusVoznje_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ProvjeriStatusVoznjeResponse" message="tns:IService1_ProvjeriStatusVoznje_OutputMessage" />
+    <wsdl:operation name="GetLinijaID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetLinijaID" message="tns:IService1_GetLinijaID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetLinijaIDResponse" message="tns:IService1_GetLinijaID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectStanicaIDPocetak">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SelectStanicaIDPocetak" message="tns:IService1_SelectStanicaIDPocetak_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SelectStanicaIDPocetakResponse" message="tns:IService1_SelectStanicaIDPocetak_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectStanicaIDZavrsetak">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SelectStanicaIDZavrsetak" message="tns:IService1_SelectStanicaIDZavrsetak_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SelectStanicaIDZavrsetakResponse" message="tns:IService1_SelectStanicaIDZavrsetak_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DohvatiLokaciju">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DohvatiLokaciju" message="tns:IService1_DohvatiLokaciju_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DohvatiLokacijuResponse" message="tns:IService1_DohvatiLokaciju_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -249,8 +279,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ProvjeriStatusVoznje">
-      <soap:operation soapAction="http://tempuri.org/IService1/ProvjeriStatusVoznje" style="document" />
+    <wsdl:operation name="GetLinijaID">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetLinijaID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectStanicaIDPocetak">
+      <soap:operation soapAction="http://tempuri.org/IService1/SelectStanicaIDPocetak" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectStanicaIDZavrsetak">
+      <soap:operation soapAction="http://tempuri.org/IService1/SelectStanicaIDZavrsetak" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DohvatiLokaciju">
+      <soap:operation soapAction="http://tempuri.org/IService1/DohvatiLokaciju" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -47,4 +47,34 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Karta" nillable="true" type="tns:Karta" />
+  <xs:complexType name="Linija">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LinijaID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NazivLinije" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Linija" nillable="true" type="tns:Linija" />
+  <xs:complexType name="StanicaPocetak">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Kraj" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Pocetak" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StanicaNaziv" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StanicaPocetak" nillable="true" type="tns:StanicaPocetak" />
+  <xs:complexType name="StanicaZavrsetak">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Kraj" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Pocetak" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StanicaNaziv" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StanicaZavrsetak" nillable="true" type="tns:StanicaZavrsetak" />
+  <xs:complexType name="Lokacija">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Latitude" type="xs:double" />
+      <xs:element minOccurs="0" name="Longitude" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Lokacija" nillable="true" type="tns:Lokacija" />
 </xs:schema>

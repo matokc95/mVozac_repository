@@ -6,6 +6,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Services.Maps;
+using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -16,6 +18,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using mVozac.ServiceReference2;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,16 +32,12 @@ namespace mVozac.Pages
 
         public Tahometar()
         {
-            this.InitializeComponent();        
+            this.InitializeComponent();
         }
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            /* base.OnNavigatedTo(e);
-             TxtPrijavljeni.Text = e.Parameter.ToString();*/
-
-            // Set your current location.
-            
-
+            base.OnNavigatedTo(e);
+            TxtPrijavljeni.Text = e.Parameter.ToString();
         }
         private void BtnPovratak_Click(object sender, RoutedEventArgs e)
         {
@@ -76,5 +75,103 @@ namespace mVozac.Pages
                     break;
             }
         }//dodaj po potrebi
+
+        private async void btnRuta_ClickAsync(object sender, RoutedEventArgs e)
+        {
+           
+            // Start at Microsoft in Koprivnica, Cro.
+            BasicGeoposition startLocation = new BasicGeoposition() { Latitude = 46.163938, Longitude = 16.833475 };
+
+            // End at the city of Split, Cro.
+            BasicGeoposition endLocation = new BasicGeoposition() { Latitude = 43.508133, Longitude = 16.440193 };
+
+            // Get the route between the points.
+            MapRouteFinderResult routeResult =
+                  await MapRouteFinder.GetDrivingRouteAsync(
+                  new Geopoint(startLocation),
+                  new Geopoint(endLocation),
+                  MapRouteOptimization.Time,
+                  MapRouteRestrictions.None);
+
+            if (routeResult.Status == MapRouteFinderStatus.Success)
+            {
+                System.Text.StringBuilder routeInfo = new System.Text.StringBuilder();
+
+                // Display summary info about the route.
+                routeInfo.Append("Total estimated time (minutes) = ");
+                routeInfo.Append(routeResult.Route.EstimatedDuration.TotalMinutes.ToString());
+                routeInfo.Append("\nTotal length (kilometers) = ");
+                routeInfo.Append((routeResult.Route.LengthInMeters / 1000).ToString());
+
+                // Display the directions.
+                routeInfo.Append("\n\nDIRECTIONS\n");
+
+                foreach (MapRouteLeg leg in routeResult.Route.Legs)
+                {
+                    foreach (MapRouteManeuver maneuver in leg.Maneuvers)
+                    {
+                        routeInfo.AppendLine(maneuver.InstructionText);
+                    }
+                }
+                ShowRouteOnMap();
+                // Load the text box.
+                tbOutputText.Text = routeInfo.ToString();
+            }
+            else
+            {
+                tbOutputText.Text = "A problem occurred: " + routeResult.Status.ToString();
+            }
+        }
+        private async void ShowRouteOnMap()
+        {
+            Service1Client service = new Service1Client();
+            var lokacijaPocetak = await service.DohvatiLokacijuAsync(txtPolaziste.Text);
+            // Start at Microsoft in Redmond, Washington.
+            BasicGeoposition startLocation = new BasicGeoposition() { Latitude = lokacijaPocetak.Latitude, Longitude = lokacijaPocetak.Longitude };
+
+            var lokacijaZavrsetak = await service.DohvatiLokacijuAsync(txtOdrediste.Text);
+            // End at the city of Seattle, Washington.
+            BasicGeoposition endLocation = new BasicGeoposition() { Latitude = lokacijaZavrsetak.Latitude, Longitude = lokacijaZavrsetak.Longitude };
+
+
+            // Get the route between the points.
+            MapRouteFinderResult routeResult =
+                  await MapRouteFinder.GetDrivingRouteAsync(
+                  new Geopoint(startLocation),
+                  new Geopoint(endLocation),
+                  MapRouteOptimization.Time,
+                  MapRouteRestrictions.None);
+
+            if (routeResult.Status == MapRouteFinderStatus.Success)
+            {
+                // Use the route to initialize a MapRouteView.
+                MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                viewOfRoute.RouteColor = Colors.Yellow;
+                viewOfRoute.OutlineColor = Colors.Black;
+
+                // Add the new MapRouteView to the Routes collection
+                // of the MapControl.
+                MapControl1.Routes.Add(viewOfRoute);
+
+                // Fit the MapControl to the route.
+                await MapControl1.TrySetViewBoundsAsync(
+                      routeResult.Route.BoundingBox,
+                      null,
+                      Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
+            }
+        }
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Service1Client service = new Service1Client();
+            var res = await service.SelectVoznjuAsync(TxtPrijavljeni.Text);
+            string linija_naziv = res.NazivLinije;
+            var res2 = await service.GetLinijaIDAsync(linija_naziv);
+            int linija_id = int.Parse(res2.LinijaID);
+            var res3 = await service.SelectStanicaIDPocetakAsync(linija_id);
+            txtPolaziste.Text = res3.StanicaNaziv;
+            var res4 = await service.SelectStanicaIDZavrsetakAsync(linija_id);
+            txtOdrediste.Text = res4.StanicaNaziv;
+        }
     }
 }

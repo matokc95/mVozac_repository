@@ -420,6 +420,216 @@ namespace mVozac.ServiceReference2 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Linija", Namespace="http://schemas.datacontract.org/2004/07/WcfToDB")]
+    public partial class Linija : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string LinijaIDField;
+        
+        private string NazivLinijeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LinijaID {
+            get {
+                return this.LinijaIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LinijaIDField, value) != true)) {
+                    this.LinijaIDField = value;
+                    this.RaisePropertyChanged("LinijaID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NazivLinije {
+            get {
+                return this.NazivLinijeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NazivLinijeField, value) != true)) {
+                    this.NazivLinijeField = value;
+                    this.RaisePropertyChanged("NazivLinije");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StanicaPocetak", Namespace="http://schemas.datacontract.org/2004/07/WcfToDB")]
+    public partial class StanicaPocetak : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool KrajField;
+        
+        private bool PocetakField;
+        
+        private string StanicaNazivField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Kraj {
+            get {
+                return this.KrajField;
+            }
+            set {
+                if ((this.KrajField.Equals(value) != true)) {
+                    this.KrajField = value;
+                    this.RaisePropertyChanged("Kraj");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Pocetak {
+            get {
+                return this.PocetakField;
+            }
+            set {
+                if ((this.PocetakField.Equals(value) != true)) {
+                    this.PocetakField = value;
+                    this.RaisePropertyChanged("Pocetak");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StanicaNaziv {
+            get {
+                return this.StanicaNazivField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StanicaNazivField, value) != true)) {
+                    this.StanicaNazivField = value;
+                    this.RaisePropertyChanged("StanicaNaziv");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StanicaZavrsetak", Namespace="http://schemas.datacontract.org/2004/07/WcfToDB")]
+    public partial class StanicaZavrsetak : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool KrajField;
+        
+        private bool PocetakField;
+        
+        private string StanicaNazivField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Kraj {
+            get {
+                return this.KrajField;
+            }
+            set {
+                if ((this.KrajField.Equals(value) != true)) {
+                    this.KrajField = value;
+                    this.RaisePropertyChanged("Kraj");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Pocetak {
+            get {
+                return this.PocetakField;
+            }
+            set {
+                if ((this.PocetakField.Equals(value) != true)) {
+                    this.PocetakField = value;
+                    this.RaisePropertyChanged("Pocetak");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StanicaNaziv {
+            get {
+                return this.StanicaNazivField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StanicaNazivField, value) != true)) {
+                    this.StanicaNazivField = value;
+                    this.RaisePropertyChanged("StanicaNaziv");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Lokacija", Namespace="http://schemas.datacontract.org/2004/07/WcfToDB")]
+    public partial class Lokacija : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private double LatitudeField;
+        
+        private double LongitudeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((this.LatitudeField.Equals(value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((this.LongitudeField.Equals(value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference2.IService1")]
     public interface IService1 {
@@ -460,8 +670,17 @@ namespace mVozac.ServiceReference2 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PotvrdiVoznju", ReplyAction="http://tempuri.org/IService1/PotvrdiVoznjuResponse")]
         System.Threading.Tasks.Task<int> PotvrdiVoznjuAsync(string linija);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ProvjeriStatusVoznje", ReplyAction="http://tempuri.org/IService1/ProvjeriStatusVoznjeResponse")]
-        System.Threading.Tasks.Task<bool> ProvjeriStatusVoznjeAsync(string linija);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetLinijaID", ReplyAction="http://tempuri.org/IService1/GetLinijaIDResponse")]
+        System.Threading.Tasks.Task<mVozac.ServiceReference2.Linija> GetLinijaIDAsync(string linija_naziv);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SelectStanicaIDPocetak", ReplyAction="http://tempuri.org/IService1/SelectStanicaIDPocetakResponse")]
+        System.Threading.Tasks.Task<mVozac.ServiceReference2.StanicaPocetak> SelectStanicaIDPocetakAsync(int idLinije);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SelectStanicaIDZavrsetak", ReplyAction="http://tempuri.org/IService1/SelectStanicaIDZavrsetakResponse")]
+        System.Threading.Tasks.Task<mVozac.ServiceReference2.StanicaZavrsetak> SelectStanicaIDZavrsetakAsync(int idLinije);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DohvatiLokaciju", ReplyAction="http://tempuri.org/IService1/DohvatiLokacijuResponse")]
+        System.Threading.Tasks.Task<mVozac.ServiceReference2.Lokacija> DohvatiLokacijuAsync(string stanica);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -555,8 +774,20 @@ namespace mVozac.ServiceReference2 {
             return base.Channel.PotvrdiVoznjuAsync(linija);
         }
         
-        public System.Threading.Tasks.Task<bool> ProvjeriStatusVoznjeAsync(string linija) {
-            return base.Channel.ProvjeriStatusVoznjeAsync(linija);
+        public System.Threading.Tasks.Task<mVozac.ServiceReference2.Linija> GetLinijaIDAsync(string linija_naziv) {
+            return base.Channel.GetLinijaIDAsync(linija_naziv);
+        }
+        
+        public System.Threading.Tasks.Task<mVozac.ServiceReference2.StanicaPocetak> SelectStanicaIDPocetakAsync(int idLinije) {
+            return base.Channel.SelectStanicaIDPocetakAsync(idLinije);
+        }
+        
+        public System.Threading.Tasks.Task<mVozac.ServiceReference2.StanicaZavrsetak> SelectStanicaIDZavrsetakAsync(int idLinije) {
+            return base.Channel.SelectStanicaIDZavrsetakAsync(idLinije);
+        }
+        
+        public System.Threading.Tasks.Task<mVozac.ServiceReference2.Lokacija> DohvatiLokacijuAsync(string stanica) {
+            return base.Channel.DohvatiLokacijuAsync(stanica);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {

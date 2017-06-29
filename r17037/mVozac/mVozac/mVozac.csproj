@@ -95,7 +95,19 @@
     <None Include="Connected Services\ServiceReference2\mVozac.ServiceReference2.Korisnik.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference2\mVozac.ServiceReference2.Linija.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference2\mVozac.ServiceReference2.Lokacija.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference2\mVozac.ServiceReference2.Popust.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference2\mVozac.ServiceReference2.StanicaPocetak.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference2\mVozac.ServiceReference2.StanicaZavrsetak.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference2\mVozac.ServiceReference2.Voznja.datasource">

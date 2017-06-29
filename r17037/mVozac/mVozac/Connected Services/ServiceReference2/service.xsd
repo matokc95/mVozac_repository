@@ -171,17 +171,59 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ProvjeriStatusVoznje">
+  <xs:element name="GetLinijaID">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="linija" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="linija_naziv" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ProvjeriStatusVoznjeResponse">
+  <xs:element name="GetLinijaIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ProvjeriStatusVoznjeResult" type="xs:boolean" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WcfToDB" minOccurs="0" name="GetLinijaIDResult" nillable="true" type="q9:Linija" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SelectStanicaIDPocetak">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idLinije" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SelectStanicaIDPocetakResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WcfToDB" minOccurs="0" name="SelectStanicaIDPocetakResult" nillable="true" type="q10:StanicaPocetak" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SelectStanicaIDZavrsetak">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idLinije" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SelectStanicaIDZavrsetakResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WcfToDB" minOccurs="0" name="SelectStanicaIDZavrsetakResult" nillable="true" type="q11:StanicaZavrsetak" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DohvatiLokaciju">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="stanica" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DohvatiLokacijuResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WcfToDB" minOccurs="0" name="DohvatiLokacijuResult" nillable="true" type="q12:Lokacija" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
