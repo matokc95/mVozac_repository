@@ -65,5 +65,10 @@ namespace mVozac
         {
             this.Frame.Navigate(typeof(Statistika), TxtPrijavljeni.Text);
         }
+
+        private void btnPomoc_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Pomoc), null);
+        }
     }
 }
