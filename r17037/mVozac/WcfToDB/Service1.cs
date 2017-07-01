@@ -471,7 +471,7 @@ namespace WcfToDB
             StanicaPocetak stanicaPocetak = new StanicaPocetak();
             try
             {
-                command.CommandText = "select s.naziv_stanice,m.pocetak,m.kraj from medustanice m join stanica s on m.stanica=s.stanica_id where m.pocetak=1";
+                command.CommandText = "select s.naziv_stanice,m.pocetak,m.kraj from medustanice m join stanica s on m.stanica=s.stanica_id where m.pocetak=1 and m.linija=@idLinije";
                 command.Parameters.AddWithValue("idLinije", idLinije);
 
 
@@ -505,7 +505,7 @@ namespace WcfToDB
             StanicaZavrsetak stanicaZavrsetak = new StanicaZavrsetak();
             try
             {
-                command.CommandText = "select s.naziv_stanice,m.pocetak,m.kraj from medustanice m join stanica s on m.stanica=s.stanica_id where m.pocetak=0";
+                command.CommandText = "select s.naziv_stanice,m.pocetak,m.kraj from medustanice m join stanica s on m.stanica=s.stanica_id where m.pocetak=0 and m.linija=@idLinije";
                 command.Parameters.AddWithValue("idLinije", idLinije);
 
 
