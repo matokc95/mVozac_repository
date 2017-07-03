@@ -141,15 +141,26 @@ namespace mVozac.Pages
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Service1Client service = new Service1Client();
-            var res = await service.SelectVoznjuAsync(TxtPrijavljeni.Text);
-            string linija_naziv = res.NazivLinije;
-            var res2 = await service.GetLinijaIDAsync(linija_naziv);
-            int linija_id = int.Parse(res2.LinijaID);
-            var res3 = await service.SelectStanicaIDPocetakAsync(linija_id);
-            txtPolaziste.Text = res3.StanicaNaziv;
-            var res4 = await service.SelectStanicaIDZavrsetakAsync(linija_id);
-            txtOdrediste.Text = res4.StanicaNaziv;
+            try
+            {
+                Service1Client service = new Service1Client();
+                var res = await service.SelectVoznjuAsync(TxtPrijavljeni.Text);
+                string linija_naziv = res.NazivLinije;
+                var res2 = await service.GetLinijaIDAsync(linija_naziv);
+                int linija_id = int.Parse(res2.LinijaID);
+                var res3 = await service.SelectStanicaIDPocetakAsync(linija_id);
+                txtPolaziste.Text = res3.StanicaNaziv;
+                var res4 = await service.SelectStanicaIDZavrsetakAsync(linija_id);
+                txtOdrediste.Text = res4.StanicaNaziv;
+            }
+            catch(Exception ex)
+            {
+                var dialog2 = new MessageDialog("Korisnik nema definiranu vožnju!");
+                dialog2.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                await dialog2.ShowAsync();
+                this.Frame.GoBack();
+            }
+            
 
             
         }
