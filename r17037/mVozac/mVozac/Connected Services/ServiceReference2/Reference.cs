@@ -365,11 +365,26 @@ namespace mVozac.ServiceReference2 {
     [System.Runtime.Serialization.DataContractAttribute(Name="Karta", Namespace="http://schemas.datacontract.org/2004/07/WcfToDB")]
     public partial class Karta : object, System.ComponentModel.INotifyPropertyChanged {
         
+        private int KartaIDField;
+        
         private float PopustField;
         
         private int VozacField;
         
         private int VoznjaField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int KartaID {
+            get {
+                return this.KartaIDField;
+            }
+            set {
+                if ((this.KartaIDField.Equals(value) != true)) {
+                    this.KartaIDField = value;
+                    this.RaisePropertyChanged("KartaID");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public float Popust {
@@ -681,6 +696,12 @@ namespace mVozac.ServiceReference2 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DohvatiLokaciju", ReplyAction="http://tempuri.org/IService1/DohvatiLokacijuResponse")]
         System.Threading.Tasks.Task<mVozac.ServiceReference2.Lokacija> DohvatiLokacijuAsync(string stanica);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UkloniKartu", ReplyAction="http://tempuri.org/IService1/UkloniKartuResponse")]
+        System.Threading.Tasks.Task<mVozac.ServiceReference2.Karta> UkloniKartuAsync(int brojKarte);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteKarta", ReplyAction="http://tempuri.org/IService1/DeleteKartaResponse")]
+        System.Threading.Tasks.Task DeleteKartaAsync(int brojKarte);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -788,6 +809,14 @@ namespace mVozac.ServiceReference2 {
         
         public System.Threading.Tasks.Task<mVozac.ServiceReference2.Lokacija> DohvatiLokacijuAsync(string stanica) {
             return base.Channel.DohvatiLokacijuAsync(stanica);
+        }
+        
+        public System.Threading.Tasks.Task<mVozac.ServiceReference2.Karta> UkloniKartuAsync(int brojKarte) {
+            return base.Channel.UkloniKartuAsync(brojKarte);
+        }
+        
+        public System.Threading.Tasks.Task DeleteKartaAsync(int brojKarte) {
+            return base.Channel.DeleteKartaAsync(brojKarte);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {

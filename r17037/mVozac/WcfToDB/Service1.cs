@@ -372,7 +372,7 @@ namespace WcfToDB
                 }
             }
         }
-        
+
         public PonistiKartu SelectKarta()
         {
             PonistiKartu karta = new PonistiKartu();
@@ -387,7 +387,7 @@ namespace WcfToDB
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    karta.KartaID= int.Parse(reader[0].ToString());
+                    karta.KartaID = int.Parse(reader[0].ToString());
                     karta.ImeVozaca = reader[1].ToString();
                     karta.PrezimeVozaca = reader[2].ToString();
                     karta.KolPopusta = float.Parse(reader[3].ToString());
@@ -554,6 +554,69 @@ namespace WcfToDB
                 }
                 reader.Close();
                 return lokacijaPocetak;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public Karta UkloniKartu(int brojKarte)
+        {
+            Karta karta = new Karta();
+            karta.KartaID = 0;
+            try
+            {
+                command.CommandText = "SELECT karta_id, popust, vozac, voznja " +
+                    "FROM karta " +
+                    "WHERE karta_id = @broj_karte";
+                command.Parameters.AddWithValue("broj_karte", brojKarte);
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    karta.KartaID = int.Parse(reader[0].ToString());
+                    karta.Popust = float.Parse(reader[1].ToString());
+                    karta.Vozac = int.Parse(reader[2].ToString());
+                    karta.Voznja = int.Parse(reader[3].ToString());
+                }
+                return karta;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public void DeleteKarta(int brojKarte)
+        {
+            try
+            {
+                command.CommandText = "DELETE FROM karta " +
+                    "WHERE karta_id = @broj_karte";
+                command.Parameters.AddWithValue("broj_karte", brojKarte);
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
             }
             catch (Exception)
             {

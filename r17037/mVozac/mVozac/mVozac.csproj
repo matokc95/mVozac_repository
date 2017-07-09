@@ -92,6 +92,9 @@
     <None Include="Connected Services\ServiceReference2\mVozac.ServiceReference2.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference2\mVozac.ServiceReference2.Karta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference2\mVozac.ServiceReference2.Korisnik.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

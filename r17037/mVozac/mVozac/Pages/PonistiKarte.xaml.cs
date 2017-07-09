@@ -1,10 +1,12 @@
-﻿using System;
+﻿using mVozac.ServiceReference2;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -34,6 +36,37 @@ namespace mVozac.Pages
         private void BtnPovratak_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.GoBack();
+        }
+
+        private async void btnUkloni_Click(object sender, RoutedEventArgs e)
+        {
+            if (brojKarteTxt.Text.Length == 0)
+            {
+                var dialog = new MessageDialog("Niste unijeli broj karte!");
+                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                dialog.ShowAsync();
+            }
+            else
+            {
+                Service1Client serviceKarta = new Service1Client();
+                var res = await serviceKarta.UkloniKartuAsync(int.Parse(brojKarteTxt.Text));
+
+                if (res.KartaID == 0)
+                {
+                    var dialog = new MessageDialog("Karta sa unešenim brojem ne postoji!");
+                    dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                    dialog.ShowAsync();
+                }
+                else
+                {
+                    Service1Client brisiKartu = new Service1Client();
+                    await brisiKartu.DeleteKartaAsync(res.KartaID);
+
+                    var dialog = new MessageDialog("Karta sa unešenim brojem uspješno poništena!");
+                    dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                    dialog.ShowAsync();
+                }
+            }
         }
     }
 }

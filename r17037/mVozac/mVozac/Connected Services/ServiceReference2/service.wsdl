@@ -103,6 +103,18 @@
   <wsdl:message name="IService1_DohvatiLokaciju_OutputMessage">
     <wsdl:part name="parameters" element="tns:DohvatiLokacijuResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_UkloniKartu_InputMessage">
+    <wsdl:part name="parameters" element="tns:UkloniKartu" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UkloniKartu_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UkloniKartuResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteKarta_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteKarta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteKarta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteKartaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -167,6 +179,14 @@
     <wsdl:operation name="DohvatiLokaciju">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DohvatiLokaciju" message="tns:IService1_DohvatiLokaciju_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DohvatiLokacijuResponse" message="tns:IService1_DohvatiLokaciju_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UkloniKartu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UkloniKartu" message="tns:IService1_UkloniKartu_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UkloniKartuResponse" message="tns:IService1_UkloniKartu_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteKarta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteKarta" message="tns:IService1_DeleteKarta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteKartaResponse" message="tns:IService1_DeleteKarta_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -308,6 +328,24 @@
     </wsdl:operation>
     <wsdl:operation name="DohvatiLokaciju">
       <soap:operation soapAction="http://tempuri.org/IService1/DohvatiLokaciju" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UkloniKartu">
+      <soap:operation soapAction="http://tempuri.org/IService1/UkloniKartu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteKarta">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteKarta" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

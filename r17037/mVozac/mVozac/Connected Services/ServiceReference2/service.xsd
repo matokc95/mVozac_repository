@@ -227,4 +227,30 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="UkloniKartu">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="brojKarte" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UkloniKartuResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/WcfToDB" minOccurs="0" name="UkloniKartuResult" nillable="true" type="q13:Karta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteKarta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="brojKarte" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteKartaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
