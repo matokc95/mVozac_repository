@@ -23,6 +23,17 @@
             <TextBlock HorizontalAlignment="Left" Height="36" Margin="62,23.667,0,-57.667" Grid.Row="7" TextWrapping="Wrap" Text="Prijavljeni korisnik:" VerticalAlignment="Top" Width="126"/>
             <TextBox x:Name="TxtPrijavljeni" HorizontalAlignment="Left" Height="30" Margin="199,20.667,0,-50.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134" IsReadOnly="True"/>
             <Button Content="Povratak" Background="#FF30DABB" Name="BtnPovratak" HorizontalAlignment="Left" Margin="6,11,0,10.333" Width="78" VerticalAlignment="Stretch" Click="BtnPovratak_Click"/>
+            <TextBlock HorizontalAlignment="Left" Margin="80,111.667,0,-109.667" Grid.Row="7" TextWrapping="Wrap" Text="Broj karte:" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtBrojKarte" HorizontalAlignment="Left" Margin="199,99.667,0,-77.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
+            <Button x:Name="btnFind" Content="Pretraži" HorizontalAlignment="Left" Margin="164,162.667,0,-108.667" Grid.Row="7" VerticalAlignment="Top" Click="btnFind_Click"/>
+            <TextBlock HorizontalAlignment="Left" Margin="80,239.667,0,-153.667" Grid.Row="7" TextWrapping="Wrap" Text="Popust:" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtPopust" HorizontalAlignment="Left" Margin="199,227.667,0,-69.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
+            <TextBlock HorizontalAlignment="Left" Margin="87,292.667,0,-122.667" Grid.Row="7" TextWrapping="Wrap" Text="Vozač:" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtVozac" HorizontalAlignment="Left" Margin="199,280.667,0,-122.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
+            <TextBlock HorizontalAlignment="Left" Margin="92,351.667,0,-161.667" Grid.Row="7" TextWrapping="Wrap" Text="Linija:" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtLinija" HorizontalAlignment="Left" Margin="199,339.667,0,-129.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
+            <TextBlock HorizontalAlignment="Left" Margin="85,405.667,0,-163.667" Grid.Row="7" TextWrapping="Wrap" Text="Cijena:" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Margin="199,405.667,0,-143.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
 
         </Grid>
     </Grid>

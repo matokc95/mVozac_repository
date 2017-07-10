@@ -47,6 +47,7 @@
     <Compile Include="Bus.cs" />
     <Compile Include="IService1.cs" />
     <Compile Include="Karta.cs" />
+    <Compile Include="KartaIspis.cs" />
     <Compile Include="Linija.cs" />
     <Compile Include="Lokacija.cs" />
     <Compile Include="PonistiKartu.cs" />

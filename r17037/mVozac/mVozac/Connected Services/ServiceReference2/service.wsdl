@@ -115,6 +115,12 @@
   <wsdl:message name="IService1_DeleteKarta_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteKartaResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_FindKarta_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindKarta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_FindKarta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindKartaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -187,6 +193,10 @@
     <wsdl:operation name="DeleteKarta">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteKarta" message="tns:IService1_DeleteKarta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteKartaResponse" message="tns:IService1_DeleteKarta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindKarta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/FindKarta" message="tns:IService1_FindKarta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/FindKartaResponse" message="tns:IService1_FindKarta_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -346,6 +356,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteKarta">
       <soap:operation soapAction="http://tempuri.org/IService1/DeleteKarta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindKarta">
+      <soap:operation soapAction="http://tempuri.org/IService1/FindKarta" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

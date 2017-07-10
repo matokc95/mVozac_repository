@@ -50,6 +50,8 @@ namespace WcfToDB
         Karta UkloniKartu(int brojKarte);
         [OperationContract]
         void DeleteKarta(int brojKarte);
+        [OperationContract]
+        KartaIspis FindKarta(int brojKarte);
 
     }
 

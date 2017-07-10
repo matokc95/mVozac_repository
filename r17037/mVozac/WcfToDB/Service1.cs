@@ -195,7 +195,7 @@ namespace WcfToDB
             float price = -1;
             try
             {
-                command.CommandText = "select v.cijena, v.prihvacena, v.gotova, k.korinicko_ime " +
+                command.CommandText = "select v.cijena, v.prihvacena, v.gotova, k.korisnicko_ime " +
                     "from voznja v join linija l on v.linija = l.linija_id " +
                     "join korisnik k on v.vozac = k.korisnik_id " +
                     "where v.prihvacena = 1 " +
@@ -572,6 +572,7 @@ namespace WcfToDB
         {
             Karta karta = new Karta();
             karta.KartaID = 0;
+
             try
             {
                 command.CommandText = "SELECT karta_id, popust, vozac, voznja " +
@@ -603,6 +604,51 @@ namespace WcfToDB
                     connection.Close();
                 }
             }
+        }
+
+        public KartaIspis FindKarta(int brojKarte)
+        {
+            KartaIspis karta = new KartaIspis();
+            karta.KartaID = 0;
+
+            try
+            {
+                command.CommandText = "SELECT karta.karta_id, popust.naziv_popusta, korisnik.korisnicko_ime, linija.naziv_linije, voznja.cijena, popust.kolicina_popusta " +
+                    "FROM karta JOIN popust ON karta.popust = popust.popust_id " +
+                    "JOIN korisnik ON karta.vozac = korisnik.korisnik_id " +
+                    "JOIN voznja ON karta.voznja = voznja.voznja_id " +
+                    "JOIN linija ON voznja.linija = linija.linija_id " +
+                    "WHERE karta.karta_id = @broj_karte";
+                command.Parameters.AddWithValue("broj_karte", brojKarte);
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    karta.KartaID = int.Parse(reader[0].ToString());
+                    karta.Popust = reader[1].ToString();
+                    karta.Vozac = reader[2].ToString();
+                    karta.Linija = reader[3].ToString();
+                    karta.CijenaVoznje = float.Parse(reader[4].ToString());
+                    karta.KolicinaPopusta = float.Parse(reader[5].ToString());
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+
+            return karta;
         }
 
         public void DeleteKarta(int brojKarte)

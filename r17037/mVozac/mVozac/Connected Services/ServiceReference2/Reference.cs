@@ -645,6 +645,111 @@ namespace mVozac.ServiceReference2 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="KartaIspis", Namespace="http://schemas.datacontract.org/2004/07/WcfToDB")]
+    public partial class KartaIspis : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private float CijenaVoznjeField;
+        
+        private int KartaIDField;
+        
+        private float KolicinaPopustaField;
+        
+        private string LinijaField;
+        
+        private string PopustField;
+        
+        private string VozacField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float CijenaVoznje {
+            get {
+                return this.CijenaVoznjeField;
+            }
+            set {
+                if ((this.CijenaVoznjeField.Equals(value) != true)) {
+                    this.CijenaVoznjeField = value;
+                    this.RaisePropertyChanged("CijenaVoznje");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int KartaID {
+            get {
+                return this.KartaIDField;
+            }
+            set {
+                if ((this.KartaIDField.Equals(value) != true)) {
+                    this.KartaIDField = value;
+                    this.RaisePropertyChanged("KartaID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float KolicinaPopusta {
+            get {
+                return this.KolicinaPopustaField;
+            }
+            set {
+                if ((this.KolicinaPopustaField.Equals(value) != true)) {
+                    this.KolicinaPopustaField = value;
+                    this.RaisePropertyChanged("KolicinaPopusta");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Linija {
+            get {
+                return this.LinijaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LinijaField, value) != true)) {
+                    this.LinijaField = value;
+                    this.RaisePropertyChanged("Linija");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Popust {
+            get {
+                return this.PopustField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PopustField, value) != true)) {
+                    this.PopustField = value;
+                    this.RaisePropertyChanged("Popust");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Vozac {
+            get {
+                return this.VozacField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VozacField, value) != true)) {
+                    this.VozacField = value;
+                    this.RaisePropertyChanged("Vozac");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference2.IService1")]
     public interface IService1 {
@@ -702,6 +807,9 @@ namespace mVozac.ServiceReference2 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteKarta", ReplyAction="http://tempuri.org/IService1/DeleteKartaResponse")]
         System.Threading.Tasks.Task DeleteKartaAsync(int brojKarte);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/FindKarta", ReplyAction="http://tempuri.org/IService1/FindKartaResponse")]
+        System.Threading.Tasks.Task<mVozac.ServiceReference2.KartaIspis> FindKartaAsync(int brojKarte);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -817,6 +925,10 @@ namespace mVozac.ServiceReference2 {
         
         public System.Threading.Tasks.Task DeleteKartaAsync(int brojKarte) {
             return base.Channel.DeleteKartaAsync(brojKarte);
+        }
+        
+        public System.Threading.Tasks.Task<mVozac.ServiceReference2.KartaIspis> FindKartaAsync(int brojKarte) {
+            return base.Channel.FindKartaAsync(brojKarte);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {

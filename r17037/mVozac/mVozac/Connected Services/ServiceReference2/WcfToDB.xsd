@@ -78,4 +78,15 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Lokacija" nillable="true" type="tns:Lokacija" />
+  <xs:complexType name="KartaIspis">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CijenaVoznje" type="xs:float" />
+      <xs:element minOccurs="0" name="KartaID" type="xs:int" />
+      <xs:element minOccurs="0" name="KolicinaPopusta" type="xs:float" />
+      <xs:element minOccurs="0" name="Linija" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Popust" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Vozac" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KartaIspis" nillable="true" type="tns:KartaIspis" />
 </xs:schema>
