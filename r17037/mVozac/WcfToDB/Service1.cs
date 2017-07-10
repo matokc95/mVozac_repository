@@ -634,7 +634,6 @@ namespace WcfToDB
                     karta.CijenaVoznje = float.Parse(reader[4].ToString());
                     karta.KolicinaPopusta = float.Parse(reader[5].ToString());
                 }
-
             }
             catch (Exception)
             {
@@ -675,6 +674,39 @@ namespace WcfToDB
                     connection.Close();
                 }
             }
+        }
+
+        public List<string> ListaPopusta()
+        {
+            List<string> lista = new List<string>();
+
+            try
+            {
+                command.CommandText = "SELECT naziv_popusta " +
+                    "FROM popust";
+
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    lista.Add(reader[0].ToString());
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+
+            return lista;
         }
     }
 }

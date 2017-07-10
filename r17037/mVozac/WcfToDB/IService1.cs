@@ -52,6 +52,8 @@ namespace WcfToDB
         void DeleteKarta(int brojKarte);
         [OperationContract]
         KartaIspis FindKarta(int brojKarte);
+        [OperationContract]
+        List<string> ListaPopusta();
 
     }
 

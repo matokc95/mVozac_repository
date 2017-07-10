@@ -22,10 +22,13 @@ namespace mVozac.Pages
     /// </summary>
     public sealed partial class Pomoc : Page
     {
-        string tekst = "Raspored vožnje -> funkcionalnost kojom vozač autobusa vidi informacije o svojoj dnevnoj vožnji i prihvaća ih\n " +
+        string tekst = "Prodaja karata -> funkcionalnost kojom vozač prodaje kartu za svoju trenutnu vožnju.\n" +
+            "Poništavanje karte -> funkcionalnost kojom vozač može poništiti, odnosno obrisati kartu unošenjem ID broja karte.\n" +
+            "Pretraživanje karte -> funkcionalnost kojom vozač može provjeriti da li karta postoji, i ako postoji ispisuje podatke o njoj na temelju ID broja karte.\n" +
+            "Raspored vožnje -> funkcionalnost kojom vozač autobusa vidi informacije o svojoj dnevnoj vožnji i prihvaća ih\n " +
             "Tahometar -> ako je vozač autobusas potvrdio relaciju u funkcionalnosti 'Raspored vožnje', na ekranu mu se prikaže polazišni i " +
             "odredišni kolodvor i pritiskom na tipku 'Započni rutu' na karti mu se prikaže ruta, kao i navigacijske informacije.Postoji i mogućnost " +
-            "lociranja korisnikove lokacije koja se vrši pritiskom na gumb 'Moja lokacija'".Replace("\n",Environment.NewLine);
+            "lociranja korisnikove lokacije koja se vrši pritiskom na gumb 'Moja lokacija'".Replace("\n", Environment.NewLine);
         public Pomoc()
         {
             this.InitializeComponent();

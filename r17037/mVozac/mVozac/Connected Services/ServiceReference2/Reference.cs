@@ -810,6 +810,9 @@ namespace mVozac.ServiceReference2 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/FindKarta", ReplyAction="http://tempuri.org/IService1/FindKartaResponse")]
         System.Threading.Tasks.Task<mVozac.ServiceReference2.KartaIspis> FindKartaAsync(int brojKarte);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListaPopusta", ReplyAction="http://tempuri.org/IService1/ListaPopustaResponse")]
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<string>> ListaPopustaAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -929,6 +932,10 @@ namespace mVozac.ServiceReference2 {
         
         public System.Threading.Tasks.Task<mVozac.ServiceReference2.KartaIspis> FindKartaAsync(int brojKarte) {
             return base.Channel.FindKartaAsync(brojKarte);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<string>> ListaPopustaAsync() {
+            return base.Channel.ListaPopustaAsync();
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {
