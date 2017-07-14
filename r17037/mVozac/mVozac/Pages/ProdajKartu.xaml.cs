@@ -1,6 +1,7 @@
 ﻿using mVozac.ServiceReference2;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -31,8 +32,22 @@ namespace mVozac.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            /*ime.SelectionChanged += Ime_SelectionChangedAsync;
+            ObservableCollection<Popust> lista = new ObservableCollection<Popust>();
+            lista.Add(new Popust() { NazivPopusta = "a", KolicinaPopusta = 10 });
+            lista.Add(new Popust() { NazivPopusta = "b", KolicinaPopusta = 10 });
+            ime.ItemsSource = lista;*/
+            //lista.cha
             TxtPrijavljeni.Text = e.Parameter.ToString();
         }
+
+        private async void Ime_SelectionChangedAsync(object sender, SelectionChangedEventArgs e)
+        {
+            var dialog = new MessageDialog((ime.SelectedItem as Popust).NazivPopusta);
+            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+            await dialog.ShowAsync();
+        }
+
         private void BtnPovratak_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.GoBack();
@@ -77,6 +92,7 @@ namespace mVozac.Pages
                 karta.Vozac = resKartaVOzac;
                 var resKartaVoznja = await servis.GetVoznjaIDAsync(txtVoznja.Text, TxtPrijavljeni.Text);
                 karta.Voznja = resKartaVoznja;
+
 
                 var resInsert = await servis.InsertKartaAsync(karta);
                 if (resInsert == 0)

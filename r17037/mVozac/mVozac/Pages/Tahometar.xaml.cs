@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using mVozac.ServiceReference2;
+using Windows.Storage.Streams;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -53,9 +54,18 @@ namespace mVozac.Pages
 
                     //Dohvati lokaciju
                     Geolocator geolocator = new Geolocator();
+
                     Geoposition pos = await geolocator.GetGeopositionAsync();
                     Geopoint mojaLokacija = pos.Coordinate.Point;
+                    //MapControl1.MapElements.Add(new MapIcon() {  })
+                    var ikona = new MapIcon();
+                    ikona.Title = "test";
+                    ikona.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/arrow.png"));
+                    ikona.Location = mojaLokacija;
+                    MapControl1.MapElements.Add(ikona);
 
+
+                    MapControl1.MapElementClick += MapControl1_MapElementClick;
                     //Prikazi lokaciju na karti
                     MapControl1.Center = mojaLokacija;
                     MapControl1.ZoomLevel = 12;
@@ -74,7 +84,12 @@ namespace mVozac.Pages
                     await dialog2.ShowAsync();
                     break;
             }
-        }//dodaj po potrebi
+        }
+
+        private void MapControl1_MapElementClick(MapControl sender, MapElementClickEventArgs args)
+        {
+            //  args.
+        }
 
         private async void btnRuta_ClickAsync(object sender, RoutedEventArgs e)
         {
@@ -153,16 +168,16 @@ namespace mVozac.Pages
                 var res4 = await service.SelectStanicaIDZavrsetakAsync(linija_id);
                 txtOdrediste.Text = res4.StanicaNaziv;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 var dialog2 = new MessageDialog("Korisnik nema definiranu vožnju!");
                 dialog2.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                 await dialog2.ShowAsync();
                 this.Frame.GoBack();
             }
-            
 
-            
+
+
         }
     }
 }
