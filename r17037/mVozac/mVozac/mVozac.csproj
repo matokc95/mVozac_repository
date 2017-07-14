@@ -159,6 +159,9 @@
     <Compile Include="Pages\PretraziKarte.xaml.cs">
       <DependentUpon>PretraziKarte.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PrikazKarte.xaml.cs">
+      <DependentUpon>PrikazKarte.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ProdajKartu.xaml.cs">
       <DependentUpon>ProdajKartu.xaml</DependentUpon>
     </Compile>
@@ -244,6 +247,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PretraziKarte.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PrikazKarte.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

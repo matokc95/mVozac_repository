@@ -98,6 +98,67 @@ namespace mVozac.Pages
             var lokacijaPocetak = await service.DohvatiLokacijuAsync(txtPolaziste.Text);
             BasicGeoposition startLocation = new BasicGeoposition() { Latitude = lokacijaPocetak.Latitude, Longitude = lokacijaPocetak.Longitude };
 
+            //odredivanje puta od trenutne lokacije do pocetne stanice
+            Geolocator geolocator = new Geolocator();
+
+            Geoposition pos = await geolocator.GetGeopositionAsync();
+            Geopoint mojaLokacija = pos.Coordinate.Point;
+            
+            var ikona = new MapIcon();
+            ikona.Title = "Moja lokacija";
+            ikona.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/arrow.png"));
+            ikona.Location = mojaLokacija;
+            MapControl1.MapElements.Add(ikona);
+
+            MapRouteFinderResult routeResult1 =
+                  await MapRouteFinder.GetDrivingRouteAsync(
+                  mojaLokacija,
+                  new Geopoint(startLocation),
+                  MapRouteOptimization.Time,
+                  MapRouteRestrictions.None);
+
+            if (routeResult1.Status == MapRouteFinderStatus.Success)
+            {
+
+                MapRouteView viewOfRoute = new MapRouteView(routeResult1.Route);
+                viewOfRoute.RouteColor = Colors.Red;
+                viewOfRoute.OutlineColor = Colors.Black;
+
+                //dodavanje rute na mapcontrol
+                MapControl1.Routes.Add(viewOfRoute);
+
+                await MapControl1.TrySetViewBoundsAsync(
+                      routeResult1.Route.BoundingBox,
+                      null,
+                      Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
+
+                //kreiranje navigacijskog teksta za korisnika
+                System.Text.StringBuilder routeInfo = new System.Text.StringBuilder();
+
+                routeInfo.Append("Trajanje putovanja u minutama = ");
+                routeInfo.Append(routeResult1.Route.EstimatedDuration.TotalMinutes.ToString());
+                routeInfo.Append("\nDužina rute u kilometrima = ");
+                routeInfo.Append((routeResult1.Route.LengthInMeters / 1000).ToString());
+
+                // Display the directions.
+                routeInfo.Append("\n\nUPUTE:\n");
+
+                foreach (MapRouteLeg leg in routeResult1.Route.Legs)
+                {
+                    foreach (MapRouteManeuver maneuver in leg.Maneuvers)
+                    {
+                        routeInfo.AppendLine(maneuver.InstructionText);
+                    }
+                }
+
+                //prikaz informacije o ruti
+                tbOutputText.Text = routeInfo.ToString();
+            }
+            else
+            {
+                tbOutputText.Text = "Došlo je do pogreške: " + routeResult1.Status.ToString();
+            }
+            
             //odredivanje zavrsne stanice
             var lokacijaZavrsetak = await service.DohvatiLokacijuAsync(txtOdrediste.Text);
             BasicGeoposition endLocation = new BasicGeoposition() { Latitude = lokacijaZavrsetak.Latitude, Longitude = lokacijaZavrsetak.Longitude };
@@ -106,7 +167,7 @@ namespace mVozac.Pages
             //dohvacanje rute izmedu pocetne i zavrsne lokacije
             MapRouteFinderResult routeResult =
                   await MapRouteFinder.GetDrivingRouteAsync(
-                  new Geopoint(startLocation),
+                  mojaLokacija,
                   new Geopoint(endLocation),
                   MapRouteOptimization.Time,
                   MapRouteRestrictions.None);

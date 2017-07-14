@@ -106,6 +106,7 @@ namespace mVozac.Pages
                     var dialog = new MessageDialog("Uspješno ste kreirali kartu!");
                     dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                     await dialog.ShowAsync();
+                    this.Frame.Navigate(typeof(PrikazKarte), null);
                 }
             }
         }
