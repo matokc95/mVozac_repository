@@ -708,5 +708,39 @@ namespace WcfToDB
 
             return lista;
         }
+        public List<Grad> ListaMedustanica(string kor_ime)
+        {
+            List<Grad> lista = new List<Grad>();
+            Grad noviGrad = new Grad();
+            try
+            {
+                command.CommandText = "select g.naziv,g.latitude,g.longitude from grad g join stanica s on g.grad_id=s.grad join medustanice m on m.stanica=s.stanica_id join linija l on m.linija=l.linija_id join voznja v on v.linija=l.linija_id join korisnik k on k.korisnik_id=v.vozac where m.pocetak=0 and m.kraj=0 and k.korisnicko_ime=@kor";
+                command.Parameters.AddWithValue("kor", kor_ime);
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    noviGrad.NazivGrada = reader[0].ToString();
+                    noviGrad.Latitude = double.Parse(reader[1].ToString());
+                    noviGrad.Longitude = double.Parse(reader[2].ToString());
+                }
+                lista.Add(noviGrad);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+
+            return lista;
+        }
     }
 }

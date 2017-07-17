@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bus.cs" />
+    <Compile Include="Grad.cs" />
     <Compile Include="IService1.cs" />
     <Compile Include="Karta.cs" />
     <Compile Include="KartaIspis.cs" />

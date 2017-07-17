@@ -89,4 +89,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="KartaIspis" nillable="true" type="tns:KartaIspis" />
+  <xs:complexType name="ArrayOfGrad">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Grad" nillable="true" type="tns:Grad" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGrad" nillable="true" type="tns:ArrayOfGrad" />
+  <xs:complexType name="Grad">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Latitude" type="xs:double" />
+      <xs:element minOccurs="0" name="Longitude" type="xs:double" />
+      <xs:element minOccurs="0" name="NazivGrada" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Grad" nillable="true" type="tns:Grad" />
 </xs:schema>

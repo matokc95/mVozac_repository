@@ -54,6 +54,8 @@ namespace WcfToDB
         KartaIspis FindKarta(int brojKarte);
         [OperationContract]
         List<string> ListaPopusta();
+        [OperationContract]
+        List<Grad> ListaMedustanica(string kor_ime);
 
     }
 

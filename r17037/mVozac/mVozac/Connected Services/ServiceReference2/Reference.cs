@@ -750,6 +750,66 @@ namespace mVozac.ServiceReference2 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Grad", Namespace="http://schemas.datacontract.org/2004/07/WcfToDB")]
+    public partial class Grad : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private double LatitudeField;
+        
+        private double LongitudeField;
+        
+        private string NazivGradaField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((this.LatitudeField.Equals(value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((this.LongitudeField.Equals(value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NazivGrada {
+            get {
+                return this.NazivGradaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NazivGradaField, value) != true)) {
+                    this.NazivGradaField = value;
+                    this.RaisePropertyChanged("NazivGrada");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference2.IService1")]
     public interface IService1 {
@@ -813,6 +873,9 @@ namespace mVozac.ServiceReference2 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListaPopusta", ReplyAction="http://tempuri.org/IService1/ListaPopustaResponse")]
         System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<string>> ListaPopustaAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListaMedustanica", ReplyAction="http://tempuri.org/IService1/ListaMedustanicaResponse")]
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<mVozac.ServiceReference2.Grad>> ListaMedustanicaAsync(string kor_ime);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -936,6 +999,10 @@ namespace mVozac.ServiceReference2 {
         
         public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<string>> ListaPopustaAsync() {
             return base.Channel.ListaPopustaAsync();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<mVozac.ServiceReference2.Grad>> ListaMedustanicaAsync(string kor_ime) {
+            return base.Channel.ListaMedustanicaAsync(kor_ime);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {

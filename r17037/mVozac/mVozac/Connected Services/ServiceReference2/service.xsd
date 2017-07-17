@@ -280,4 +280,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ListaMedustanica">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kor_ime" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaMedustanicaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/WcfToDB" minOccurs="0" name="ListaMedustanicaResult" nillable="true" type="q16:ArrayOfGrad" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

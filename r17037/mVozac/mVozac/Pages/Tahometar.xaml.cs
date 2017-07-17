@@ -20,6 +20,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using mVozac.ServiceReference2;
 using Windows.Storage.Streams;
+using System.Collections.ObjectModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -110,6 +111,7 @@ namespace mVozac.Pages
             ikona.Location = mojaLokacija;
             MapControl1.MapElements.Add(ikona);
 
+
             MapRouteFinderResult routeResult1 =
                   await MapRouteFinder.GetDrivingRouteAsync(
                   mojaLokacija,
@@ -158,7 +160,23 @@ namespace mVozac.Pages
             {
                 tbOutputText.Text = "Došlo je do pogreške: " + routeResult1.Status.ToString();
             }
-            
+            //odredivanje medustanica
+            ObservableCollection<Grad> listaGradova = await service.ListaMedustanicaAsync(TxtPrijavljeni.Text);
+            if (listaGradova.Count > 1)
+            {
+                foreach (Grad grad in listaGradova)
+                {
+                    var ikonaMedustanice = new MapIcon();
+                    BasicGeoposition meduGrad = new BasicGeoposition();
+                    meduGrad.Latitude = grad.Latitude;
+                    meduGrad.Longitude = grad.Longitude;
+                    Geopoint lokacijaGrada = new Geopoint(meduGrad);
+                    ikonaMedustanice.Location = lokacijaGrada;
+                    ikonaMedustanice.Title = grad.NazivGrada;
+                    MapControl1.MapElements.Add(ikonaMedustanice);
+                }
+            }
+ 
             //odredivanje zavrsne stanice
             var lokacijaZavrsetak = await service.DohvatiLokacijuAsync(txtOdrediste.Text);
             BasicGeoposition endLocation = new BasicGeoposition() { Latitude = lokacijaZavrsetak.Latitude, Longitude = lokacijaZavrsetak.Longitude };
@@ -214,7 +232,16 @@ namespace mVozac.Pages
                 tbOutputText.Text = "Došlo je do pogreške: " + routeResult.Status.ToString();
             }
         }
-
+        /*
+        private async void OnPositionChanged(Geolocator sender, PositionChangedEventArgs e)
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                _rootPage.NotifyUser("Location updated.", NotifyType.StatusMessage);
+                UpdateLocationData(e.Position);
+            });
+        }
+        */
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try
