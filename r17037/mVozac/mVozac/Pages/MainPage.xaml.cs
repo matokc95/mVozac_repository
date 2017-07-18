@@ -42,8 +42,10 @@ namespace mVozac
                 Lozinka = TxtLozinka.Password
 
             };
+
             Service1Client service = new Service1Client();
             var res = await service.SelectKorisnikaAsync(kor);
+
             if (res.KorisnickoIme == kor.KorisnickoIme && res.Lozinka == kor.Lozinka)
             {
                 this.Frame.Navigate(typeof(Pocetna), res);
@@ -52,9 +54,8 @@ namespace mVozac
             {
                 var dialog = new MessageDialog("Neuspjela prijava!");
                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                dialog.ShowAsync();
+                await dialog.ShowAsync();
             }
-
         }
     }
 }

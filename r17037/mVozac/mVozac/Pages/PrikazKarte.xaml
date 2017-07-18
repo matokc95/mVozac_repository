@@ -20,9 +20,15 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="mVozač" TextAlignment="Center" FontSize="30"  Foreground="Black" Margin="118,29,107,-29.667" Grid.Row="0"/>
-            <TextBlock HorizontalAlignment="Left" Height="36" Margin="62,32.667,0,0" Grid.Row="7" TextWrapping="Wrap" Text="Prijavljeni korisnik:" VerticalAlignment="Top" Width="126"/>
-            <TextBox x:Name="TxtPrijavljeni" HorizontalAlignment="Left" Height="30" Margin="199,29.667,0,0" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134" IsReadOnly="True"/>
             <Button Content="Povratak" Background="#FF30DABB" Name="BtnPovratak" HorizontalAlignment="Left" Margin="6,11,0,0" Height="32" Width="78" VerticalAlignment="Top" Click="BtnPovratak_Click"/>
+            <TextBlock HorizontalAlignment="Left" Margin="74,90.667,0,-90.667" Grid.Row="7" TextWrapping="Wrap" Text="Popust:" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="81,157.667,0,-117.667" Grid.Row="7" TextWrapping="Wrap" Text="Vozač:" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="86,231.667,0,-191.667" Grid.Row="7" TextWrapping="Wrap" Text="Linija:" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="79,299.667,0,-239.667" Grid.Row="7" TextWrapping="Wrap" Text="Cijena:" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtPopust" HorizontalAlignment="Left" Margin="128,90.667,0,0" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+            <TextBox x:Name="txtVozac" HorizontalAlignment="Left" Margin="128,157.667,0,-13.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+            <TextBox x:Name="txtLinija" HorizontalAlignment="Left" Margin="128,231.667,0,-87.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+            <TextBox x:Name="txtCijena" HorizontalAlignment="Left" Margin="128,299.667,0,-123.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
 
         </Grid>
     </Grid>

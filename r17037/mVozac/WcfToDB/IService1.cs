@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -31,7 +32,7 @@ namespace WcfToDB
         [OperationContract]
         int GetPopustID(string naziv);
         [OperationContract]
-        int GetKorisnikID(string kor_ime);
+        int GetKorisnikID(string ime);
         [OperationContract]
         int GetVoznjaID(string linija, string vozac);
         [OperationContract]
@@ -56,7 +57,10 @@ namespace WcfToDB
         List<string> ListaPopusta();
         [OperationContract]
         List<Grad> ListaMedustanica(string kor_ime);
-
+        [OperationContract]
+        ObservableCollection<string> PopustiCombo();
+        [OperationContract]
+        ObservableCollection<string> LinijeCombo(int vozac_id);
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.

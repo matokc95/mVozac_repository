@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using mVozac.ServiceReference2;
+using mVozac.Pages;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -28,8 +30,14 @@ namespace mVozac.Pages
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            KartaIspis karta = (KartaIspis)e.Parameter;
+
+            txtCijena.Text = karta.CijenaVoznje.ToString();
+            txtLinija.Text = karta.Linija;
+            txtPopust.Text = karta.Popust;
+            txtVozac.Text = karta.Vozac;
+
             base.OnNavigatedTo(e);
-            TxtPrijavljeni.Text = e.Parameter.ToString();
         }
 
         private void BtnPovratak_Click(object sender, RoutedEventArgs e)

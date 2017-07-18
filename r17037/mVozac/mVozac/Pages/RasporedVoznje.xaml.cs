@@ -56,14 +56,14 @@ namespace mVozac.Pages
             {
                 var dialog = new MessageDialog("Korisnik nema definiranu rutu!");
                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                dialog.ShowAsync();
+                await dialog.ShowAsync();
             }
         }
 
         private async void btnPotvrdi_Click(object sender, RoutedEventArgs e)
         {
             Service1Client service = new Service1Client();
-          
+
             var res = await service.PotvrdiVoznjuAsync(txtLinija.Text);
             if (res == -1)
             {
@@ -77,7 +77,7 @@ namespace mVozac.Pages
                 dialog2.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                 await dialog2.ShowAsync();
                 this.Frame.GoBack();
-            }     
+            }
         }
     }
 }

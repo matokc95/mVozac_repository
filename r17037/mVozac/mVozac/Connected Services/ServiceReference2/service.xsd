@@ -118,7 +118,7 @@
   <xs:element name="GetKorisnikID">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="kor_ime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ime" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -291,6 +291,32 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/WcfToDB" minOccurs="0" name="ListaMedustanicaResult" nillable="true" type="q16:ArrayOfGrad" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopustiCombo">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PopustiComboResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PopustiComboResult" nillable="true" type="q17:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LinijeCombo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="vozac_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LinijeComboResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="LinijeComboResult" nillable="true" type="q18:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
