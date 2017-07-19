@@ -33,20 +33,23 @@ namespace mVozac.Pages
     {
         Geoposition position;
         Geopoint mojaLok;
+
         public Tahometar()
         {
             this.InitializeComponent();
         }
+
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             TxtPrijavljeni.Text = e.Parameter.ToString();
         }
+
         private void BtnPovratak_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.GoBack();
         }
-        
+
         private async void btnLokacija_Click(object sender, RoutedEventArgs e)
         {
             var accessStatus = await Geolocator.RequestAccessAsync();
@@ -86,7 +89,7 @@ namespace mVozac.Pages
                     break;
             }
         }
-        
+
         private void MapControl1_MapElementClick(MapControl sender, MapElementClickEventArgs args)
         {
             //  args.
@@ -197,7 +200,6 @@ namespace mVozac.Pages
 
             if (routeResult.Status == MapRouteFinderStatus.Success)
             {
-
                 MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
                 viewOfRoute.RouteColor = Colors.Yellow;
                 viewOfRoute.OutlineColor = Colors.Black;
@@ -248,7 +250,7 @@ namespace mVozac.Pages
             position = await geolocator.GetGeopositionAsync();
             mojaLok = position.Coordinate.Point;
         }*/
-        
+
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try
