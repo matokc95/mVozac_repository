@@ -15,7 +15,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using ZXing;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -30,7 +29,6 @@ namespace mVozac.Pages
         {
             this.InitializeComponent();
         }
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -45,10 +43,10 @@ namespace mVozac.Pages
             //var comboPopust = combo.PopustiComboAsync();
 
             //ime.ItemsSource = comboPopust;
-
-            TxtPrijavljeni.Text = e.Parameter.ToString();
             DohvatiPopuste();
             DohvatiVoznje();
+
+            TxtPrijavljeni.Text = e.Parameter.ToString();
         }
 
         private async void DohvatiPopuste()
@@ -64,10 +62,10 @@ namespace mVozac.Pages
         private async void DohvatiVoznje()
         {
             Service1Client vozac = new Service1Client();
-            var vozac_id = await vozac.GetKorisnikIDAsync(TxtPrijavljeni.Text);
+            var id = await vozac.GetKorisnikIDAsync(TxtPrijavljeni.Text);
 
             Service1Client combo = new Service1Client();
-            var comboVoznja = await combo.LinijeComboAsync(vozac_id);
+            var comboVoznja = await combo.LinijeComboAsync(id);
 
             cmbVoznja.ItemsSource = comboVoznja;
         }
@@ -132,6 +130,7 @@ namespace mVozac.Pages
 
                 this.Frame.Navigate(typeof(PrikazKarte), kartaIspis);
             }
+
         }
     }
 }

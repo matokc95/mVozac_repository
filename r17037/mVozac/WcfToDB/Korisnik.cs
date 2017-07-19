@@ -11,8 +11,6 @@ namespace WcfToDB
     public class Korisnik
     {
         [DataMember]
-        public int ID { get; set; }
-        [DataMember]
         public string Ime { get; set; }
         [DataMember]
         public string Prezime { get; set; }

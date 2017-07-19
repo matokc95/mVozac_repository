@@ -69,8 +69,6 @@ namespace mVozac.ServiceReference2 {
         
         private string EmailField;
         
-        private int IDField;
-        
         private string ImeField;
         
         private string KorisnickoImeField;
@@ -103,19 +101,6 @@ namespace mVozac.ServiceReference2 {
                 if ((object.ReferenceEquals(this.EmailField, value) != true)) {
                     this.EmailField = value;
                     this.RaisePropertyChanged("Email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
                 }
             }
         }

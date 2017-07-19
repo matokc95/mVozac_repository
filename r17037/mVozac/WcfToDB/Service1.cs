@@ -62,8 +62,7 @@ namespace WcfToDB
         {
             try
             {
-                command.CommandText = "INSERT INTO korisnik(ime, prezime, datum_rodenja, oib, korisnicko_ime, lozinka, email) " +
-                    "VALUES(@ime, @prezime, null, @oib, @korisnicko_ime, @lozinka, @email)";
+                command.CommandText = "insert into korisnik(ime,prezime,datum_rodenja,oib,korisnicko_ime,lozinka,email) values(@ime, @prezime, null, @oib, @korisnicko_ime, @lozinka, @email)";
                 command.Parameters.AddWithValue("ime", k.Ime);
                 command.Parameters.AddWithValue("prezime", k.Prezime);
                 //command.Parameters.AddWithValue("datum_rodenja", null);
@@ -289,8 +288,8 @@ namespace WcfToDB
             {
                 command.CommandText = "SELECT korisnik_id " +
                     "FROM korisnik " +
-                    "WHERE korisnicko_ime = @ime_korisnika";
-                command.Parameters.AddWithValue("ime_korisnika", ime);
+                    "WHERE korisnicko_ime = @korisnicko_ime";
+                command.Parameters.AddWithValue("korisnicko_ime", ime);
                 command.CommandType = CommandType.Text;
                 connection.Open();
 
