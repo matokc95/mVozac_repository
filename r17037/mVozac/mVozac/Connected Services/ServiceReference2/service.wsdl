@@ -134,6 +134,18 @@
   <wsdl:message name="IService1_ListaMedustanica_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListaMedustanicaResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_PopustiCombo_InputMessage">
+    <wsdl:part name="parameters" element="tns:PopustiCombo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PopustiCombo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PopustiComboResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LinijeCombo_InputMessage">
+    <wsdl:part name="parameters" element="tns:LinijeCombo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LinijeCombo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LinijeComboResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -218,6 +230,14 @@
     <wsdl:operation name="ListaMedustanica">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ListaMedustanica" message="tns:IService1_ListaMedustanica_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ListaMedustanicaResponse" message="tns:IService1_ListaMedustanica_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PopustiCombo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PopustiCombo" message="tns:IService1_PopustiCombo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PopustiComboResponse" message="tns:IService1_PopustiCombo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LinijeCombo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LinijeCombo" message="tns:IService1_LinijeCombo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LinijeComboResponse" message="tns:IService1_LinijeCombo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -404,6 +424,24 @@
     </wsdl:operation>
     <wsdl:operation name="ListaMedustanica">
       <soap:operation soapAction="http://tempuri.org/IService1/ListaMedustanica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PopustiCombo">
+      <soap:operation soapAction="http://tempuri.org/IService1/PopustiCombo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinijeCombo">
+      <soap:operation soapAction="http://tempuri.org/IService1/LinijeCombo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

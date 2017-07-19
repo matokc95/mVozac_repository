@@ -44,7 +44,7 @@ namespace mVozac.Pages
             {
                 var dialog = new MessageDialog("Niste unijeli broj karte!");
                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                dialog.ShowAsync();
+                await dialog.ShowAsync();
             }
             else
             {
@@ -55,7 +55,7 @@ namespace mVozac.Pages
                 {
                     var dialog = new MessageDialog("Karta sa unešenim brojem ne postoji!");
                     dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                    dialog.ShowAsync();
+                    await dialog.ShowAsync();
                 }
                 else
                 {
@@ -64,7 +64,7 @@ namespace mVozac.Pages
 
                     var dialog = new MessageDialog("Karta sa unešenim brojem uspješno poništena!");
                     dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                    dialog.ShowAsync();
+                    await dialog.ShowAsync();
                 }
             }
         }

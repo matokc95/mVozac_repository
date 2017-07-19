@@ -367,6 +367,8 @@ namespace mVozac.ServiceReference2 {
         
         private int KartaIDField;
         
+        private bool PonistenaField;
+        
         private float PopustField;
         
         private int VozacField;
@@ -382,6 +384,19 @@ namespace mVozac.ServiceReference2 {
                 if ((this.KartaIDField.Equals(value) != true)) {
                     this.KartaIDField = value;
                     this.RaisePropertyChanged("KartaID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Ponistena {
+            get {
+                return this.PonistenaField;
+            }
+            set {
+                if ((this.PonistenaField.Equals(value) != true)) {
+                    this.PonistenaField = value;
+                    this.RaisePropertyChanged("Ponistena");
                 }
             }
         }
@@ -839,7 +854,7 @@ namespace mVozac.ServiceReference2 {
         System.Threading.Tasks.Task<int> GetPopustIDAsync(string naziv);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetKorisnikID", ReplyAction="http://tempuri.org/IService1/GetKorisnikIDResponse")]
-        System.Threading.Tasks.Task<int> GetKorisnikIDAsync(string kor_ime);
+        System.Threading.Tasks.Task<int> GetKorisnikIDAsync(string ime);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetVoznjaID", ReplyAction="http://tempuri.org/IService1/GetVoznjaIDResponse")]
         System.Threading.Tasks.Task<int> GetVoznjaIDAsync(string linija, string vozac);
@@ -876,6 +891,12 @@ namespace mVozac.ServiceReference2 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListaMedustanica", ReplyAction="http://tempuri.org/IService1/ListaMedustanicaResponse")]
         System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<mVozac.ServiceReference2.Grad>> ListaMedustanicaAsync(string kor_ime);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PopustiCombo", ReplyAction="http://tempuri.org/IService1/PopustiComboResponse")]
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<string>> PopustiComboAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LinijeCombo", ReplyAction="http://tempuri.org/IService1/LinijeComboResponse")]
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<string>> LinijeComboAsync(int vozac_id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -953,8 +974,8 @@ namespace mVozac.ServiceReference2 {
             return base.Channel.GetPopustIDAsync(naziv);
         }
         
-        public System.Threading.Tasks.Task<int> GetKorisnikIDAsync(string kor_ime) {
-            return base.Channel.GetKorisnikIDAsync(kor_ime);
+        public System.Threading.Tasks.Task<int> GetKorisnikIDAsync(string ime) {
+            return base.Channel.GetKorisnikIDAsync(ime);
         }
         
         public System.Threading.Tasks.Task<int> GetVoznjaIDAsync(string linija, string vozac) {
@@ -1003,6 +1024,14 @@ namespace mVozac.ServiceReference2 {
         
         public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<mVozac.ServiceReference2.Grad>> ListaMedustanicaAsync(string kor_ime) {
             return base.Channel.ListaMedustanicaAsync(kor_ime);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<string>> PopustiComboAsync() {
+            return base.Channel.PopustiComboAsync();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<string>> LinijeComboAsync(int vozac_id) {
+            return base.Channel.LinijeComboAsync(vozac_id);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {

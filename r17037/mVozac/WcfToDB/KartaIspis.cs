@@ -11,7 +11,7 @@ namespace WcfToDB
     public class KartaIspis
     {
         [DataMember]
-        public int KartaID { get; set; }
+        public int KartaID;
         [DataMember]
         public string Popust { get; set; }
         [DataMember]

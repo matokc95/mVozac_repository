@@ -66,7 +66,6 @@ namespace mVozac.Pages
                     ikona.Location = mojaLokacija;
                     MapControl1.MapElements.Add(ikona);
 
-
                     MapControl1.MapElementClick += MapControl1_MapElementClick;
                     //Prikazi lokaciju na karti
                     MapControl1.Center = mojaLokacija;
@@ -103,8 +102,13 @@ namespace mVozac.Pages
             //odredivanje puta od trenutne lokacije do pocetne stanice
             Geolocator geolocator = new Geolocator();
 
+<<<<<<< HEAD
             pos = await geolocator.GetGeopositionAsync();
             mojaLokacija = pos.Coordinate.Point;
+=======
+            Geoposition pos = await geolocator.GetGeopositionAsync();
+            Geopoint mojaLokacija = pos.Coordinate.Point;
+>>>>>>> f38ad8b37ed9f0d86458658ac8fa7b6dac92072c
 
             var ikona = new MapIcon();
             ikona.Title = "Moja lokacija";
@@ -161,6 +165,7 @@ namespace mVozac.Pages
             {
                 tbOutputText.Text = "Došlo je do pogreške: " + routeResult1.Status.ToString();
             }
+
             //odredivanje medustanica
             ObservableCollection<Grad> listaGradova = await service.ListaMedustanicaAsync(TxtPrijavljeni.Text);
             if (listaGradova.Count > 1)
@@ -177,11 +182,10 @@ namespace mVozac.Pages
                     MapControl1.MapElements.Add(ikonaMedustanice);
                 }
             }
- 
+
             //odredivanje zavrsne stanice
             var lokacijaZavrsetak = await service.DohvatiLokacijuAsync(txtOdrediste.Text);
             BasicGeoposition endLocation = new BasicGeoposition() { Latitude = lokacijaZavrsetak.Latitude, Longitude = lokacijaZavrsetak.Longitude };
-
 
             //dohvacanje rute izmedu pocetne i zavrsne lokacije
             MapRouteFinderResult routeResult =
@@ -233,7 +237,12 @@ namespace mVozac.Pages
                 tbOutputText.Text = "Došlo je do pogreške: " + routeResult.Status.ToString();
             }
         }
+<<<<<<< HEAD
         
+=======
+
+        /*
+>>>>>>> f38ad8b37ed9f0d86458658ac8fa7b6dac92072c
         private async void OnPositionChanged(Geolocator sender, PositionChangedEventArgs e)
         {
              UpdateLocation();
@@ -244,6 +253,11 @@ namespace mVozac.Pages
             pos = await geolocator.GetGeopositionAsync();
             mojaLokacija = pos.Coordinate.Point;
         }
+<<<<<<< HEAD
+=======
+        */
+
+>>>>>>> f38ad8b37ed9f0d86458658ac8fa7b6dac92072c
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -263,11 +277,9 @@ namespace mVozac.Pages
                 var dialog2 = new MessageDialog("Korisnik nema definiranu vožnju!");
                 dialog2.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                 await dialog2.ShowAsync();
+
                 this.Frame.GoBack();
             }
-
-
-
         }
     }
 }

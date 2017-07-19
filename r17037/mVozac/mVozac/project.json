@@ -4,7 +4,8 @@
     "Microsoft.EntityFrameworkCore.Sqlite.Core": "2.0.0-preview1-final",
     "Microsoft.EntityFrameworkCore.Sqlite.Design": "2.0.0-preview1-final",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
-    "MyToolkit.Extended": "2.5.16"
+    "MyToolkit.Extended": "2.5.16",
+    "ZXing.Net": "0.15.0"
   },
   "frameworks": {
     "uap10.0": {}

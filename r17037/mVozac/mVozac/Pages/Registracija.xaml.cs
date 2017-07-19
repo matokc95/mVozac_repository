@@ -38,7 +38,7 @@ namespace mVozac
             {
                 var dialog = new MessageDialog("Niste unijeli sva polja!");
                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                dialog.ShowAsync();
+                await dialog.ShowAsync();
             }
             else
             {
@@ -58,13 +58,13 @@ namespace mVozac
                 {
                     var dialog = new MessageDialog("Neuspjela registracija!");
                     dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                    dialog.ShowAsync();
+                    await dialog.ShowAsync();
                 }
                 else
                 {
                     var dialog = new MessageDialog("Uspješno ste se registrirali!");
                     dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                    dialog.ShowAsync();
+                    await dialog.ShowAsync();
                     this.Frame.Navigate(typeof(MainPage));
                 }
 
