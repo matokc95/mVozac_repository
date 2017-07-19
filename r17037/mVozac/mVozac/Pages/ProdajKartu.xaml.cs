@@ -43,10 +43,10 @@ namespace mVozac.Pages
             //var comboPopust = combo.PopustiComboAsync();
 
             //ime.ItemsSource = comboPopust;
-            DohvatiPopuste();
-            DohvatiVoznje();
 
             TxtPrijavljeni.Text = e.Parameter.ToString();
+            DohvatiPopuste();
+            DohvatiVoznje();
         }
 
         private async void DohvatiPopuste()

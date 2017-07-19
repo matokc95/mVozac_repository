@@ -46,7 +46,7 @@ namespace mVozac.Pages
         {
             this.Frame.GoBack();
         }
-        
+
         private async void btnLokacija_Click(object sender, RoutedEventArgs e)
         {
             var accessStatus = await Geolocator.RequestAccessAsync();
@@ -86,7 +86,7 @@ namespace mVozac.Pages
                     break;
             }
         }
-        
+
         private void MapControl1_MapElementClick(MapControl sender, MapElementClickEventArgs args)
         {
             //  args.
@@ -107,13 +107,11 @@ namespace mVozac.Pages
             position = await geolocator.GetGeopositionAsync();
             //mojaLok = position.Coordinate.Point;
 
-
             var ikona = new MapIcon();
             ikona.Title = "Moja lokacija";
             ikona.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/arrow.png"));
             ikona.Location = mojaLok;
             MapControl1.MapElements.Add(ikona);
-
 
             MapRouteFinderResult routeResult1 =
                   await MapRouteFinder.GetDrivingRouteAsync(
@@ -124,7 +122,6 @@ namespace mVozac.Pages
 
             if (routeResult1.Status == MapRouteFinderStatus.Success)
             {
-
                 MapRouteView viewOfRoute = new MapRouteView(routeResult1.Route);
                 viewOfRoute.RouteColor = Colors.Red;
                 viewOfRoute.OutlineColor = Colors.Black;
@@ -195,7 +192,6 @@ namespace mVozac.Pages
 
             if (routeResult.Status == MapRouteFinderStatus.Success)
             {
-
                 MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
                 viewOfRoute.RouteColor = Colors.Yellow;
                 viewOfRoute.OutlineColor = Colors.Black;
@@ -235,11 +231,12 @@ namespace mVozac.Pages
                 tbOutputText.Text = "Došlo je do pogreške: " + routeResult.Status.ToString();
             }
         }
+
         private async void OnPositionChanged(Geolocator sender, PositionChangedEventArgs e)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                mojaLok=e.Position.Coordinate.Point;
+                mojaLok = e.Position.Coordinate.Point;
             });
         }
 
