@@ -31,8 +31,8 @@ namespace mVozac.Pages
     /// </summary>
     public sealed partial class Tahometar : Page
     {
-        Geoposition pos;
-        Geopoint mojaLokacija;
+        Geoposition position;
+        Geopoint mojaLok;
         public Tahometar()
         {
             this.InitializeComponent();
@@ -57,18 +57,18 @@ namespace mVozac.Pages
                     //Dohvati lokaciju
                     Geolocator geolocator = new Geolocator();
 
-                    pos = await geolocator.GetGeopositionAsync();
-                    mojaLokacija = pos.Coordinate.Point;
+                    position = await geolocator.GetGeopositionAsync();
+                    mojaLok = position.Coordinate.Point;
                     //MapControl1.MapElements.Add(new MapIcon() {  })
                     var ikona = new MapIcon();
                     ikona.Title = "test";
                     ikona.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/arrow.png"));
-                    ikona.Location = mojaLokacija;
+                    ikona.Location = mojaLok;
                     MapControl1.MapElements.Add(ikona);
 
                     MapControl1.MapElementClick += MapControl1_MapElementClick;
                     //Prikazi lokaciju na karti
-                    MapControl1.Center = mojaLokacija;
+                    MapControl1.Center = mojaLok;
                     MapControl1.ZoomLevel = 12;
                     MapControl1.LandmarksVisible = true;
                     break;
@@ -102,13 +102,13 @@ namespace mVozac.Pages
             //odredivanje puta od trenutne lokacije do pocetne stanice
             Geolocator geolocator = new Geolocator();
 
-<<<<<<< HEAD
-            pos = await geolocator.GetGeopositionAsync();
-            mojaLokacija = pos.Coordinate.Point;
-=======
+
+            position = await geolocator.GetGeopositionAsync();
+            mojaLok = position.Coordinate.Point;
+
             Geoposition pos = await geolocator.GetGeopositionAsync();
             Geopoint mojaLokacija = pos.Coordinate.Point;
->>>>>>> f38ad8b37ed9f0d86458658ac8fa7b6dac92072c
+
 
             var ikona = new MapIcon();
             ikona.Title = "Moja lokacija";
@@ -168,18 +168,18 @@ namespace mVozac.Pages
 
             //odredivanje medustanica
             ObservableCollection<Grad> listaGradova = await service.ListaMedustanicaAsync(TxtPrijavljeni.Text);
-            if (listaGradova.Count > 1)
+            if (listaGradova[0].NazivGrada != null)
             {
                 foreach (Grad grad in listaGradova)
                 {
-                    var ikonaMedustanice = new MapIcon();
+                    var ikoneMedustanica = new MapIcon();
                     BasicGeoposition meduGrad = new BasicGeoposition();
                     meduGrad.Latitude = grad.Latitude;
                     meduGrad.Longitude = grad.Longitude;
                     Geopoint lokacijaGrada = new Geopoint(meduGrad);
-                    ikonaMedustanice.Location = lokacijaGrada;
-                    ikonaMedustanice.Title = grad.NazivGrada;
-                    MapControl1.MapElements.Add(ikonaMedustanice);
+                    ikoneMedustanica.Location = lokacijaGrada;
+                    ikoneMedustanica.Title = grad.NazivGrada;
+                    MapControl1.MapElements.Add(ikoneMedustanica);
                 }
             }
 
@@ -237,12 +237,7 @@ namespace mVozac.Pages
                 tbOutputText.Text = "Došlo je do pogreške: " + routeResult.Status.ToString();
             }
         }
-<<<<<<< HEAD
-        
-=======
-
         /*
->>>>>>> f38ad8b37ed9f0d86458658ac8fa7b6dac92072c
         private async void OnPositionChanged(Geolocator sender, PositionChangedEventArgs e)
         {
              UpdateLocation();
@@ -250,14 +245,10 @@ namespace mVozac.Pages
         private async void UpdateLocation()
         {
             Geolocator geolocator = new Geolocator();
-            pos = await geolocator.GetGeopositionAsync();
-            mojaLokacija = pos.Coordinate.Point;
-        }
-<<<<<<< HEAD
-=======
-        */
-
->>>>>>> f38ad8b37ed9f0d86458658ac8fa7b6dac92072c
+            position = await geolocator.GetGeopositionAsync();
+            mojaLok = position.Coordinate.Point;
+        }*/
+        
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try
