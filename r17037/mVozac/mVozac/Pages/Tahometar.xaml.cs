@@ -31,7 +31,8 @@ namespace mVozac.Pages
     /// </summary>
     public sealed partial class Tahometar : Page
     {
-
+        Geoposition pos;
+        Geopoint mojaLokacija;
         public Tahometar()
         {
             this.InitializeComponent();
@@ -45,7 +46,7 @@ namespace mVozac.Pages
         {
             this.Frame.GoBack();
         }
-
+        
         private async void btnLokacija_Click(object sender, RoutedEventArgs e)
         {
             var accessStatus = await Geolocator.RequestAccessAsync();
@@ -56,8 +57,8 @@ namespace mVozac.Pages
                     //Dohvati lokaciju
                     Geolocator geolocator = new Geolocator();
 
-                    Geoposition pos = await geolocator.GetGeopositionAsync();
-                    Geopoint mojaLokacija = pos.Coordinate.Point;
+                    pos = await geolocator.GetGeopositionAsync();
+                    mojaLokacija = pos.Coordinate.Point;
                     //MapControl1.MapElements.Add(new MapIcon() {  })
                     var ikona = new MapIcon();
                     ikona.Title = "test";
@@ -86,7 +87,7 @@ namespace mVozac.Pages
                     break;
             }
         }
-
+        
         private void MapControl1_MapElementClick(MapControl sender, MapElementClickEventArgs args)
         {
             //  args.
@@ -102,9 +103,9 @@ namespace mVozac.Pages
             //odredivanje puta od trenutne lokacije do pocetne stanice
             Geolocator geolocator = new Geolocator();
 
-            Geoposition pos = await geolocator.GetGeopositionAsync();
-            Geopoint mojaLokacija = pos.Coordinate.Point;
-            
+            pos = await geolocator.GetGeopositionAsync();
+            mojaLokacija = pos.Coordinate.Point;
+
             var ikona = new MapIcon();
             ikona.Title = "Moja lokacija";
             ikona.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/arrow.png"));
@@ -232,16 +233,17 @@ namespace mVozac.Pages
                 tbOutputText.Text = "Došlo je do pogreške: " + routeResult.Status.ToString();
             }
         }
-        /*
+        
         private async void OnPositionChanged(Geolocator sender, PositionChangedEventArgs e)
         {
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                _rootPage.NotifyUser("Location updated.", NotifyType.StatusMessage);
-                UpdateLocationData(e.Position);
-            });
+             UpdateLocation();
         }
-        */
+        private async void UpdateLocation()
+        {
+            Geolocator geolocator = new Geolocator();
+            pos = await geolocator.GetGeopositionAsync();
+            mojaLokacija = pos.Coordinate.Point;
+        }
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try
