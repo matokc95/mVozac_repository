@@ -101,25 +101,23 @@ namespace mVozac.Pages
 
             //odredivanje puta od trenutne lokacije do pocetne stanice
             Geolocator geolocator = new Geolocator();
-
+            geolocator.DesiredAccuracy = PositionAccuracy.High;
+            geolocator.PositionChanged += OnPositionChanged;
 
             position = await geolocator.GetGeopositionAsync();
-            mojaLok = position.Coordinate.Point;
-
-            Geoposition pos = await geolocator.GetGeopositionAsync();
-            Geopoint mojaLokacija = pos.Coordinate.Point;
+            //mojaLok = position.Coordinate.Point;
 
 
             var ikona = new MapIcon();
             ikona.Title = "Moja lokacija";
             ikona.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/arrow.png"));
-            ikona.Location = mojaLokacija;
+            ikona.Location = mojaLok;
             MapControl1.MapElements.Add(ikona);
 
 
             MapRouteFinderResult routeResult1 =
                   await MapRouteFinder.GetDrivingRouteAsync(
-                  mojaLokacija,
+                  mojaLok,
                   new Geopoint(startLocation),
                   MapRouteOptimization.Time,
                   MapRouteRestrictions.None);
@@ -190,7 +188,7 @@ namespace mVozac.Pages
             //dohvacanje rute izmedu pocetne i zavrsne lokacije
             MapRouteFinderResult routeResult =
                   await MapRouteFinder.GetDrivingRouteAsync(
-                  mojaLokacija,
+                  mojaLok,
                   new Geopoint(endLocation),
                   MapRouteOptimization.Time,
                   MapRouteRestrictions.None);
@@ -237,18 +235,14 @@ namespace mVozac.Pages
                 tbOutputText.Text = "Došlo je do pogreške: " + routeResult.Status.ToString();
             }
         }
-        /*
         private async void OnPositionChanged(Geolocator sender, PositionChangedEventArgs e)
         {
-             UpdateLocation();
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                mojaLok=e.Position.Coordinate.Point;
+            });
         }
-        private async void UpdateLocation()
-        {
-            Geolocator geolocator = new Geolocator();
-            position = await geolocator.GetGeopositionAsync();
-            mojaLok = position.Coordinate.Point;
-        }*/
-        
+
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try
