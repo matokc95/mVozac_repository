@@ -95,7 +95,6 @@ namespace mVozac.Pages
             var resCijena = await serviceVoznja.SelectVoznjaCijenaAsync(cmbVoznja.SelectedItem.ToString(), TxtPrijavljeni.Text);
 
             float ukupnaCijena = resCijena - (resCijena * (resPopust.KolicinaPopusta / 100));
-            txtPrice.Text = ukupnaCijena.ToString();
 
             Karta karta = new Karta();
             Service1Client servis = new Service1Client();
@@ -127,10 +126,10 @@ namespace mVozac.Pages
                 kartaIspis.Linija = cmbVoznja.SelectedItem.ToString();
                 kartaIspis.Popust = ime.SelectedItem.ToString();
                 kartaIspis.Vozac = TxtPrijavljeni.Text;
+                kartaIspis.KartaID = await servis.GetCountAsync();
 
                 this.Frame.Navigate(typeof(PrikazKarte), kartaIspis);
             }
-
         }
     }
 }

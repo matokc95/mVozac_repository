@@ -26,8 +26,6 @@
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Popust:" VerticalAlignment="Top" Margin="100,143.667,0,0" Grid.Row="7"/>
             <TextBlock HorizontalAlignment="Left" Margin="62,185.667,0,-3.667" Grid.Row="7" TextWrapping="Wrap" Text="Vožnja:" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Height="4" Margin="199,207.667,0,-157.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="13"/>
-            <TextBlock HorizontalAlignment="Left" Margin="94,334.667,0,-184.667" Grid.Row="7" TextWrapping="Wrap" Text="Cijena:" VerticalAlignment="Top"/>
-            <TextBox Name="txtPrice" HorizontalAlignment="Left" Margin="172,334.667,0,-196.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" IsReadOnly="True"/>
             <Button Name="btnIzdaj" Content="Izdaj kartu" HorizontalAlignment="Left" Margin="200,251.667,0,-113.667" Grid.Row="7" VerticalAlignment="Top" Click="btnIzdaj_ClickAsync"/>
             <TextBlock Text="Izdavanje karte" TextAlignment="Center" FontSize="30"  Foreground="Black" Margin="94,77.667,87,38.333" Grid.Row="7"/>
             <ComboBox x:Name="ime" HorizontalAlignment="Left" Margin="172,138.667,0,0" Grid.Row="7" VerticalAlignment="Top" Width="161"/>

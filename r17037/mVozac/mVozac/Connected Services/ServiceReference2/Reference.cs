@@ -897,6 +897,9 @@ namespace mVozac.ServiceReference2 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LinijeCombo", ReplyAction="http://tempuri.org/IService1/LinijeComboResponse")]
         System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<string>> LinijeComboAsync(int vozac_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCount", ReplyAction="http://tempuri.org/IService1/GetCountResponse")]
+        System.Threading.Tasks.Task<int> GetCountAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1032,6 +1035,10 @@ namespace mVozac.ServiceReference2 {
         
         public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<string>> LinijeComboAsync(int vozac_id) {
             return base.Channel.LinijeComboAsync(vozac_id);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetCountAsync() {
+            return base.Channel.GetCountAsync();
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {

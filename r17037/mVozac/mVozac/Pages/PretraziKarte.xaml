@@ -5,7 +5,7 @@
     xmlns:local="using:mVozac"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Height="740.429" Width="401.238">
+    mc:Ignorable="d" Height="740.429" Width="401.238" Loaded="Page_Loaded">
     <Grid x:Name="LayoutRoot" Background="White">
         <Grid Margin="5,0,0,0">
             <Grid.RowDefinitions>
@@ -34,6 +34,7 @@
             <TextBox x:Name="txtLinija" HorizontalAlignment="Left" Margin="199,339.667,0,-129.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
             <TextBlock HorizontalAlignment="Left" Margin="85,405.667,0,-163.667" Grid.Row="7" TextWrapping="Wrap" Text="Cijena:" VerticalAlignment="Top"/>
             <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Margin="199,405.667,0,-143.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
+            <CaptureElement x:Name="captureElement" HorizontalAlignment="Left" Height="100" Margin="164,506.667,0,-312.667" Grid.Row="7" VerticalAlignment="Top" Width="100"/>
 
         </Grid>
     </Grid>

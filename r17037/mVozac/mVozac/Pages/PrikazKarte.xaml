@@ -29,6 +29,7 @@
             <TextBox x:Name="txtVozac" HorizontalAlignment="Left" Margin="128,157.667,0,-13.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
             <TextBox x:Name="txtLinija" HorizontalAlignment="Left" Margin="128,231.667,0,-87.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
             <TextBox x:Name="txtCijena" HorizontalAlignment="Left" Margin="128,299.667,0,-123.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+            <Image x:Name="qrCode" HorizontalAlignment="Left" Height="100" Margin="159,388.667,0,-280.667" Grid.Row="7" VerticalAlignment="Top" Width="100"/>
 
         </Grid>
     </Grid>

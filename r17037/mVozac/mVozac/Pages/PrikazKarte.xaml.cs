@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using mVozac.ServiceReference2;
 using mVozac.Pages;
+using ZXing.Mobile;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -36,6 +37,24 @@ namespace mVozac.Pages
             txtLinija.Text = karta.Linija;
             txtPopust.Text = karta.Popust;
             txtVozac.Text = karta.Vozac;
+
+            var writer = new ZXing.Mobile.BarcodeWriter
+            {
+                Format = ZXing.BarcodeFormat.QR_CODE,
+                Options = new ZXing.Common.EncodingOptions
+                {
+                    Height = 300,
+                    Width = 300
+                },
+                Renderer = new ZXing.Mobile.WriteableBitmapRenderer()
+                {
+                    Foreground = Windows.UI.Colors.Black
+                }
+            };
+
+            var writeableBitmap = writer.Write(karta.KartaID.ToString());
+
+            qrCode.Source = writeableBitmap;
 
             base.OnNavigatedTo(e);
         }

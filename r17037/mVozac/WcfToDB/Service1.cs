@@ -861,5 +861,38 @@ namespace WcfToDB
 
             return lista;
         }
+
+        public int GetCount()
+        {
+            int counter = 0;
+
+            try
+            {
+                command.CommandText = "SELECT COUNT(*) " +
+                    "FROM karta";
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    counter = int.Parse(reader[0].ToString());
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+
+            return ++counter;
+        }
     }
 }
