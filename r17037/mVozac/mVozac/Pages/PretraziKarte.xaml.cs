@@ -46,6 +46,7 @@ namespace mVozac.Pages
             TxtPrijavljeni.Text = e.Parameter.ToString();
         }
 
+        /*
         private async Task InitializeQeCode()
         {
             DeviceInformationCollection webcamList = await DeviceInformation.FindAllAsync(DeviceClass.VideoCapture);
@@ -67,6 +68,7 @@ namespace mVozac.Pages
             captureElement.Source = _mediaCapture;
             await _mediaCapture.StartPreviewAsync();
         }
+        */
 
         private void BtnPovratak_Click(object sender, RoutedEventArgs e)
         {
@@ -113,7 +115,26 @@ namespace mVozac.Pages
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            await InitializeQeCode();
+            //await InitializeQeCode();
+
+            DeviceInformationCollection webcamList = await DeviceInformation.FindAllAsync(DeviceClass.VideoCapture);
+
+            DeviceInformation backWebCam = (from webcam in webcamList
+                                            where webcam.IsEnabled
+                                            select webcam).FirstOrDefault();
+
+            _mediaCapture = new MediaCapture();
+
+            await _mediaCapture.InitializeAsync(new MediaCaptureInitializationSettings
+            {
+                VideoDeviceId = backWebCam.Id,
+                AudioDeviceId = "",
+                StreamingCaptureMode = StreamingCaptureMode.Video,
+                PhotoCaptureSource = PhotoCaptureSource.VideoPreview
+            });
+
+            captureElement.Source = _mediaCapture;
+            await _mediaCapture.StartPreviewAsync();
 
             var imgProp = new ImageEncodingProperties
             {
