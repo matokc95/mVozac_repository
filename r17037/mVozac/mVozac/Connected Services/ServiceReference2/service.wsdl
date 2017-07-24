@@ -152,6 +152,18 @@
   <wsdl:message name="IService1_GetCount_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCountResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_PonisteneKarte_InputMessage">
+    <wsdl:part name="parameters" element="tns:PonisteneKarte" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PonisteneKarte_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PonisteneKarteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AktivirajKartu_InputMessage">
+    <wsdl:part name="parameters" element="tns:AktivirajKartu" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AktivirajKartu_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AktivirajKartuResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -248,6 +260,14 @@
     <wsdl:operation name="GetCount">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCount" message="tns:IService1_GetCount_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCountResponse" message="tns:IService1_GetCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PonisteneKarte">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PonisteneKarte" message="tns:IService1_PonisteneKarte_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PonisteneKarteResponse" message="tns:IService1_PonisteneKarte_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AktivirajKartu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AktivirajKartu" message="tns:IService1_AktivirajKartu_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AktivirajKartuResponse" message="tns:IService1_AktivirajKartu_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -461,6 +481,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetCount">
       <soap:operation soapAction="http://tempuri.org/IService1/GetCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PonisteneKarte">
+      <soap:operation soapAction="http://tempuri.org/IService1/PonisteneKarte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AktivirajKartu">
+      <soap:operation soapAction="http://tempuri.org/IService1/AktivirajKartu" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

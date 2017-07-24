@@ -673,6 +673,8 @@ namespace mVozac.ServiceReference2 {
         
         private string LinijaField;
         
+        private int PonistenaField;
+        
         private string PopustField;
         
         private string VozacField;
@@ -725,6 +727,19 @@ namespace mVozac.ServiceReference2 {
                 if ((object.ReferenceEquals(this.LinijaField, value) != true)) {
                     this.LinijaField = value;
                     this.RaisePropertyChanged("Linija");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Ponistena {
+            get {
+                return this.PonistenaField;
+            }
+            set {
+                if ((this.PonistenaField.Equals(value) != true)) {
+                    this.PonistenaField = value;
+                    this.RaisePropertyChanged("Ponistena");
                 }
             }
         }
@@ -900,6 +915,12 @@ namespace mVozac.ServiceReference2 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCount", ReplyAction="http://tempuri.org/IService1/GetCountResponse")]
         System.Threading.Tasks.Task<int> GetCountAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PonisteneKarte", ReplyAction="http://tempuri.org/IService1/PonisteneKarteResponse")]
+        System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<int>> PonisteneKarteAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AktivirajKartu", ReplyAction="http://tempuri.org/IService1/AktivirajKartuResponse")]
+        System.Threading.Tasks.Task AktivirajKartuAsync(int broj_karte);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1039,6 +1060,14 @@ namespace mVozac.ServiceReference2 {
         
         public System.Threading.Tasks.Task<int> GetCountAsync() {
             return base.Channel.GetCountAsync();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<int>> PonisteneKarteAsync() {
+            return base.Channel.PonisteneKarteAsync();
+        }
+        
+        public System.Threading.Tasks.Task AktivirajKartuAsync(int broj_karte) {
+            return base.Channel.AktivirajKartuAsync(broj_karte);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync() {

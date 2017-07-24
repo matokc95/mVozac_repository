@@ -332,4 +332,28 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="PonisteneKarte">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PonisteneKarteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PonisteneKarteResult" nillable="true" type="q19:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AktivirajKartu">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="broj_karte" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AktivirajKartuResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

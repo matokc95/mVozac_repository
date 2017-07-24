@@ -29,20 +29,10 @@ namespace mVozac.Pages
         {
             this.InitializeComponent();
         }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            //ime.SelectionChanged += Ime_SelectionChangedAsync;
-            //ObservableCollection<Popust> lista = new ObservableCollection<Popust>();
-            //lista.Add(new Popust() { NazivPopusta = "a", KolicinaPopusta = 10 });
-            //lista.Add(new Popust() { NazivPopusta = "b", KolicinaPopusta = 10 });
-            //ime.ItemsSource = lista;
-            //lista.cha
-
-            //Service1Client combo = new Service1Client();
-            //var comboPopust = combo.PopustiComboAsync();
-
-            //ime.ItemsSource = comboPopust;
 
             TxtPrijavljeni.Text = e.Parameter.ToString();
             DohvatiPopuste();
@@ -51,11 +41,8 @@ namespace mVozac.Pages
 
         private async void DohvatiPopuste()
         {
-            //ime.SelectionChanged += Ime_SelectionChangedAsync;
-
             Service1Client combo = new Service1Client();
             var comboPopust = await combo.PopustiComboAsync();
-
             ime.ItemsSource = comboPopust;
         }
 
@@ -69,15 +56,6 @@ namespace mVozac.Pages
 
             cmbVoznja.ItemsSource = comboVoznja;
         }
-
-        /*
-        private async void Ime_SelectionChangedAsync(object sender, SelectionChangedEventArgs e)
-        {
-            var dialog = new MessageDialog(ime.SelectedItem.ToString());
-            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-            await dialog.ShowAsync();
-        }
-        */
 
         private void BtnPovratak_Click(object sender, RoutedEventArgs e)
         {
@@ -116,11 +94,6 @@ namespace mVozac.Pages
             }
             else
             {
-                /*
-                var dialog = new MessageDialog("Uspješno ste kreirali kartu!");
-                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                await dialog.ShowAsync();
-                */
                 kartaIspis.CijenaVoznje = ukupnaCijena;
                 kartaIspis.KolicinaPopusta = resPopust.KolicinaPopusta;
                 kartaIspis.Linija = cmbVoznja.SelectedItem.ToString();

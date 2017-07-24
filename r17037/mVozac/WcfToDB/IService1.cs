@@ -63,6 +63,10 @@ namespace WcfToDB
         ObservableCollection<string> LinijeCombo(int vozac_id);
         [OperationContract]
         int GetCount();
+        [OperationContract]
+        ObservableCollection<int> PonisteneKarte();
+        [OperationContract]
+        void AktivirajKartu(int broj_karte);
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.

@@ -29,7 +29,7 @@
             <Button Content="Raspored vožnje" Name="RasporedVoznje" FontSize="13" HorizontalAlignment="Left" Margin="37,185.667,0,-202.667" Grid.Row="7" VerticalAlignment="Top" Height="51" Width="118" Click="RasporedVoznje_Click"/>
             <Button Content="Poništi karte" Name="PonistiKarte" FontSize="13" HorizontalAlignment="Left" Margin="226,185.667,0,-202.667" Grid.Row="7" VerticalAlignment="Top" Height="51" Width="118" Click="PonistiKarte_Click"/>
             <Button Content="Tahometar" Name="Tahometar" FontSize="13" HorizontalAlignment="Left" Margin="34,266.667,0,-283.667" Grid.Row="7" VerticalAlignment="Top" Height="51" Width="118" Click="Tahometar_Click"/>
-            <Button Content="Statistika" Name="Statistika" FontSize="13" HorizontalAlignment="Left" Margin="226,266.667,0,-283.667" Grid.Row="7" VerticalAlignment="Top" Height="51" Width="118" Click="Statistika_Click"/>
+            <Button Content="Poništene karte" Name="Statistika" FontSize="13" HorizontalAlignment="Left" Margin="226,266.667,0,-283.667" Grid.Row="7" VerticalAlignment="Top" Height="51" Width="118" Click="Statistika_Click"/>
 
         </Grid>
     </Grid>
