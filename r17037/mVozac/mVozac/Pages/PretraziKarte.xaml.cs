@@ -46,71 +46,9 @@ namespace mVozac.Pages
             TxtPrijavljeni.Text = e.Parameter.ToString();
         }
 
-        /*
-        private async Task InitializeQeCode()
-        {
-            DeviceInformationCollection webcamList = await DeviceInformation.FindAllAsync(DeviceClass.VideoCapture);
-
-            DeviceInformation backWebCam = (from webcam in webcamList
-                                            where webcam.IsEnabled
-                                            select webcam).FirstOrDefault();
-
-            _mediaCapture = new MediaCapture();
-
-            await _mediaCapture.InitializeAsync(new MediaCaptureInitializationSettings
-            {
-                VideoDeviceId = backWebCam.Id,
-                AudioDeviceId = "",
-                StreamingCaptureMode = StreamingCaptureMode.Video,
-                PhotoCaptureSource = PhotoCaptureSource.VideoPreview
-            });
-
-            captureElement.Source = _mediaCapture;
-            await _mediaCapture.StartPreviewAsync();
-        }
-        */
-
         private void BtnPovratak_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.GoBack();
-        }
-
-        private async void btnFind_Click(object sender, RoutedEventArgs e)
-        {
-            if (txtBrojKarte.Text.Length == 0)
-            {
-                var dialog = new MessageDialog("Niste unijeli broj karte!");
-                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                await dialog.ShowAsync();
-            }
-            else
-            {
-                Service1Client serviceKarta = new Service1Client();
-                var res = await serviceKarta.FindKartaAsync(int.Parse(txtBrojKarte.Text));
-
-                if (res.KartaID == 0)
-                {
-                    var dialog = new MessageDialog("Karta sa unešenim brojem ne postoji!");
-                    dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                    await dialog.ShowAsync();
-
-                    txtPopust.Text = "";
-                    txtVozac.Text = "";
-                    txtLinija.Text = "";
-                    txtPrice.Text = "";
-                }
-                else
-                {
-                    float price = res.CijenaVoznje;
-
-                    float ukupnaCijena = price - (price * (res.KolicinaPopusta / 100));
-
-                    txtPopust.Text = res.Popust;
-                    txtVozac.Text = res.Vozac;
-                    txtLinija.Text = res.Linija;
-                    txtPrice.Text = ukupnaCijena.ToString();
-                }
-            }
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
@@ -159,21 +97,35 @@ namespace mVozac.Pages
 
                 SoftwareBitmapLuminanceSource luminanceSource = new SoftwareBitmapLuminanceSource(sbmp);
 
-                //BarcodeReader reader = new BarcodeReader(); //change IBarcodeReader to BarcodeReader
-                //var generic = new BarcodeReaderGeneric<WriteableBitmap>(); //This code for what?
-
                 var result = bcReader.Decode(luminanceSource);
 
                 if (result != null)
                 {
-                    /*
-                    var msgbox = new MessageDialog(result.Text);
-                    await msgbox.ShowAsync();
-                    */
+                    Service1Client serviceKarta = new Service1Client();
+                    var res = await serviceKarta.FindKartaAsync(int.Parse(result.Text));
 
-                    var dialog = new MessageDialog(result.Text);
-                    dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                    await dialog.ShowAsync();
+                    if (res.KartaID == 0)
+                    {
+                        var dialog = new MessageDialog("Karta sa unešenim brojem ne postoji!");
+                        dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                        await dialog.ShowAsync();
+
+                        txtPopust.Text = "";
+                        txtVozac.Text = "";
+                        txtLinija.Text = "";
+                        txtPrice.Text = "";
+                    }
+                    else
+                    {
+                        float price = res.CijenaVoznje;
+
+                        float ukupnaCijena = price - (price * (res.KolicinaPopusta / 100));
+
+                        txtPopust.Text = res.Popust;
+                        txtVozac.Text = res.Vozac;
+                        txtLinija.Text = res.Linija;
+                        txtPrice.Text = ukupnaCijena.ToString();
+                    }
                 }
             }
         }

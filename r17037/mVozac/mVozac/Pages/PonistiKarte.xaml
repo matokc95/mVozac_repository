@@ -23,9 +23,7 @@
             <TextBlock HorizontalAlignment="Left" Height="36" Margin="62,23.667,0,-57.667" Grid.Row="7" TextWrapping="Wrap" Text="Prijavljeni korisnik:" VerticalAlignment="Top" Width="126"/>
             <TextBox x:Name="TxtPrijavljeni" HorizontalAlignment="Left" Height="30" Margin="199,20.667,0,-50.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134" IsReadOnly="True"/>
             <Button Content="Povratak" Background="#FF30DABB" Name="BtnPovratak" HorizontalAlignment="Left" Margin="6,11,0,10.333" Width="78" VerticalAlignment="Stretch" Click="BtnPovratak_Click"/>
-            <TextBlock HorizontalAlignment="Left" Margin="62,128.667,0,-126.667" Grid.Row="7" TextWrapping="Wrap" Text="Broj karte:" VerticalAlignment="Top"/>
-            <TextBox x:Name="brojKarteTxt" HorizontalAlignment="Left" Margin="134,116.667,0,-94.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="199" PlaceholderText="Unesite broj karte"/>
-            <Button x:Name="btnUkloni" Content="Ukloni" HorizontalAlignment="Left" Margin="168,228.667,0,-142.667" Grid.Row="7" VerticalAlignment="Top" Width="70" Click="btnUkloni_Click"/>
+            <CaptureElement x:Name="captureElement" HorizontalAlignment="Left" Height="200" Margin="89,64.667,0,-162.667" Grid.Row="7" VerticalAlignment="Top" Width="200"/>
         </Grid>
     </Grid>
 
