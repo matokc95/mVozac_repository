@@ -159,14 +159,21 @@ namespace mVozac.Pages
 
                 SoftwareBitmapLuminanceSource luminanceSource = new SoftwareBitmapLuminanceSource(sbmp);
 
-                BarcodeReader reader = new BarcodeReader(); //change IBarcodeReader to BarcodeReader
-                var generic = new BarcodeReaderGeneric<WriteableBitmap>(); //This code for what?
-                var result = reader.Decode(luminanceSource);
+                //BarcodeReader reader = new BarcodeReader(); //change IBarcodeReader to BarcodeReader
+                //var generic = new BarcodeReaderGeneric<WriteableBitmap>(); //This code for what?
+
+                var result = bcReader.Decode(luminanceSource);
 
                 if (result != null)
                 {
+                    /*
                     var msgbox = new MessageDialog(result.Text);
                     await msgbox.ShowAsync();
+                    */
+
+                    var dialog = new MessageDialog(result.Text);
+                    dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                    await dialog.ShowAsync();
                 }
             }
         }
