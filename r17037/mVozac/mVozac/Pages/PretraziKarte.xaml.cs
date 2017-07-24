@@ -53,8 +53,6 @@ namespace mVozac.Pages
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            //await InitializeQeCode();
-
             DeviceInformationCollection webcamList = await DeviceInformation.FindAllAsync(DeviceClass.VideoCapture);
 
             DeviceInformation backWebCam = (from webcam in webcamList

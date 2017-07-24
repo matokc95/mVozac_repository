@@ -39,11 +39,13 @@ namespace mVozac.Pages
         {
             this.InitializeComponent();
         }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             TxtPrijavljeni.Text = e.Parameter.ToString();
         }
+
         private void BtnPovratak_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.GoBack();
@@ -51,8 +53,6 @@ namespace mVozac.Pages
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            //await InitializeQeCode();
-
             DeviceInformationCollection webcamList = await DeviceInformation.FindAllAsync(DeviceClass.VideoCapture);
 
             DeviceInformation backWebCam = (from webcam in webcamList
@@ -69,7 +69,7 @@ namespace mVozac.Pages
                 PhotoCaptureSource = PhotoCaptureSource.VideoPreview
             });
 
-            captureElement.Source = _mediaCapture;
+            captureElementDelete.Source = _mediaCapture;
             await _mediaCapture.StartPreviewAsync();
 
             var imgProp = new ImageEncodingProperties
