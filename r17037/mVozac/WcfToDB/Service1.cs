@@ -655,7 +655,7 @@ namespace WcfToDB
                     "JOIN korisnik ON karta.vozac = korisnik.korisnik_id " +
                     "JOIN voznja ON karta.voznja = voznja.voznja_id " +
                     "JOIN linija ON voznja.linija = linija.linija_id " +
-                    "WHERE karta.karta_id = @broj_karte "; ;
+                    "WHERE karta.karta_id = @broj_karte ";
                 command.Parameters.AddWithValue("broj_karte", brojKarte);
                 command.CommandType = CommandType.Text;
                 connection.Open();

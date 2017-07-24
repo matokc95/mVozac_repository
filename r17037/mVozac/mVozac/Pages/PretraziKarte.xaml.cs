@@ -113,27 +113,30 @@ namespace mVozac.Pages
                         txtLinija.Text = "";
                         txtPrice.Text = "";
                     }
-                    if (res.Ponistena == 1)
-                    {
-                        var dialog = new MessageDialog("Karta je poništena!");
-                        dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                        await dialog.ShowAsync();
-
-                        txtPopust.Text = "";
-                        txtVozac.Text = "";
-                        txtLinija.Text = "";
-                        txtPrice.Text = "";
-                    }
                     else
                     {
-                        float price = res.CijenaVoznje;
+                        if (res.Ponistena == 1)
+                        {
+                            var dialog = new MessageDialog("Karta je poništena!");
+                            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                            await dialog.ShowAsync();
 
-                        float ukupnaCijena = price - (price * (res.KolicinaPopusta / 100));
+                            txtPopust.Text = "";
+                            txtVozac.Text = "";
+                            txtLinija.Text = "";
+                            txtPrice.Text = "";
+                        }
+                        else
+                        {
+                            float price = res.CijenaVoznje;
 
-                        txtPopust.Text = res.Popust;
-                        txtVozac.Text = res.Vozac;
-                        txtLinija.Text = res.Linija;
-                        txtPrice.Text = ukupnaCijena.ToString();
+                            float ukupnaCijena = price - (price * (res.KolicinaPopusta / 100));
+
+                            txtPopust.Text = res.Popust;
+                            txtVozac.Text = res.Vozac;
+                            txtLinija.Text = res.Linija;
+                            txtPrice.Text = ukupnaCijena.ToString();
+                        }
                     }
                 }
             }
