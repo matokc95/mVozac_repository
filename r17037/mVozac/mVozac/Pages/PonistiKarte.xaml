@@ -5,7 +5,7 @@
     xmlns:local="using:mVozac"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Height="740.429" Width="401.238">
+    mc:Ignorable="d" Height="740.429" Width="401.238" Loaded="Page_Loaded_1">
     <Grid x:Name="LayoutRoot" Background="White">
         <Grid Margin="5,0,0,0">
             <Grid.RowDefinitions>

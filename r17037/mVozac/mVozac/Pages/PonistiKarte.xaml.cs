@@ -51,7 +51,7 @@ namespace mVozac.Pages
             this.Frame.GoBack();
         }
 
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_Loaded_1(object sender, RoutedEventArgs e)
         {
             DeviceInformationCollection webcamList = await DeviceInformation.FindAllAsync(DeviceClass.VideoCapture);
 
