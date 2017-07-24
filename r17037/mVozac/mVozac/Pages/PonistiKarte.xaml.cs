@@ -113,7 +113,7 @@ namespace mVozac.Pages
                         Service1Client brisiKartu = new Service1Client();
                         await brisiKartu.DeleteKartaAsync(res.KartaID);
 
-                        var dialog = new MessageDialog("Karta sa unešenim brojem uspješno poništena!");
+                        var dialog = new MessageDialog("Karta uspješno poništena!");
                         dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                         await dialog.ShowAsync();
                     }

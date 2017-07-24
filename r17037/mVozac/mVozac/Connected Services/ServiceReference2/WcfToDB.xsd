@@ -85,6 +85,7 @@
       <xs:element minOccurs="0" name="KartaID" type="xs:int" />
       <xs:element minOccurs="0" name="KolicinaPopusta" type="xs:float" />
       <xs:element minOccurs="0" name="Linija" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ponistena" type="xs:int" />
       <xs:element minOccurs="0" name="Popust" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Vozac" nillable="true" type="xs:string" />
     </xs:sequence>

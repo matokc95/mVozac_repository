@@ -22,5 +22,7 @@ namespace WcfToDB
         public float CijenaVoznje { get; set; }
         [DataMember]
         public float KolicinaPopusta { get; set; }
+        [DataMember]
+        public int Ponistena { get; set; }
     }
 }

@@ -650,12 +650,12 @@ namespace WcfToDB
 
             try
             {
-                command.CommandText = "SELECT karta.karta_id, popust.naziv_popusta, korisnik.korisnicko_ime, linija.naziv_linije, voznja.cijena, popust.kolicina_popusta " +
+                command.CommandText = "SELECT karta.karta_id, popust.naziv_popusta, korisnik.korisnicko_ime, linija.naziv_linije, voznja.cijena, popust.kolicina_popusta, karta.ponistena " +
                     "FROM karta JOIN popust ON karta.popust = popust.popust_id " +
                     "JOIN korisnik ON karta.vozac = korisnik.korisnik_id " +
                     "JOIN voznja ON karta.voznja = voznja.voznja_id " +
                     "JOIN linija ON voznja.linija = linija.linija_id " +
-                    "WHERE karta.karta_id = @broj_karte";
+                    "WHERE karta.karta_id = @broj_karte "; ;
                 command.Parameters.AddWithValue("broj_karte", brojKarte);
                 command.CommandType = CommandType.Text;
                 connection.Open();
@@ -669,6 +669,7 @@ namespace WcfToDB
                     karta.Linija = reader[3].ToString();
                     karta.CijenaVoznje = float.Parse(reader[4].ToString());
                     karta.KolicinaPopusta = float.Parse(reader[5].ToString());
+                    karta.Ponistena = int.Parse(reader[6].ToString());
                 }
             }
             catch (Exception)
@@ -747,7 +748,7 @@ namespace WcfToDB
         public ObservableCollection<Grad> ListaMedustanica(string kor_ime)
         {
             ObservableCollection<Grad> lista = new ObservableCollection<Grad>();
-            
+
 
             try
             {
@@ -775,7 +776,7 @@ namespace WcfToDB
                     lista.Add(noviGrad);
                 }
 
-                
+
             }
             catch (Exception)
             {
@@ -895,6 +896,66 @@ namespace WcfToDB
             }
 
             return ++counter;
+        }
+
+        public ObservableCollection<int> PonisteneKarte()
+        {
+            ObservableCollection<int> lista = new ObservableCollection<int>();
+
+            try
+            {
+                command.CommandText = "SELECT karta_id " +
+                    "FROM karta " +
+                    "WHERE ponistena = 1";
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    lista.Add(int.Parse(reader[0].ToString()));
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+
+            return lista;
+        }
+
+        public void AktivirajKartu(int broj_karte)
+        {
+            try
+            {
+                command.CommandText = "UPDATE karta " +
+                    "SET ponistena = 0 " +
+                    "WHERE karta_id = @broj_karte";
+                command.Parameters.AddWithValue("broj_karte", broj_karte);
+                command.CommandType = CommandType.Text;
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
         }
     }
 }

@@ -104,7 +104,18 @@ namespace mVozac.Pages
 
                     if (res.KartaID == 0)
                     {
-                        var dialog = new MessageDialog("Karta sa unešenim brojem ne postoji!");
+                        var dialog = new MessageDialog("Karta ne postoji!");
+                        dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                        await dialog.ShowAsync();
+
+                        txtPopust.Text = "";
+                        txtVozac.Text = "";
+                        txtLinija.Text = "";
+                        txtPrice.Text = "";
+                    }
+                    if (res.Ponistena == 1)
+                    {
+                        var dialog = new MessageDialog("Karta je poništena!");
                         dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                         await dialog.ShowAsync();
 
