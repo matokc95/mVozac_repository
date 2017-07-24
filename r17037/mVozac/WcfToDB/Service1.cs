@@ -538,7 +538,7 @@ namespace WcfToDB
                     "FROM medustanice m " +
                     "JOIN stanica s ON m.stanica=s.stanica_id " +
                     "WHERE m.pocetak=0 " +
-                    "AND m.linija=@idLinije";
+                    "AND m.kraj=1 AND m.linija=@idLinije";
                 command.Parameters.AddWithValue("idLinije", idLinije);
                 command.CommandType = CommandType.Text;
                 connection.Open();
@@ -744,10 +744,10 @@ namespace WcfToDB
             return lista;
         }
 
-        public List<Grad> ListaMedustanica(string kor_ime)
+        public ObservableCollection<Grad> ListaMedustanica(string kor_ime)
         {
-            List<Grad> lista = new List<Grad>();
-            Grad noviGrad = new Grad();
+            ObservableCollection<Grad> lista = new ObservableCollection<Grad>();
+            
 
             try
             {
@@ -768,12 +768,14 @@ namespace WcfToDB
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
+                    Grad noviGrad = new Grad();
                     noviGrad.NazivGrada = reader[0].ToString();
                     noviGrad.Latitude = double.Parse(reader[1].ToString());
                     noviGrad.Longitude = double.Parse(reader[2].ToString());
+                    lista.Add(noviGrad);
                 }
 
-                lista.Add(noviGrad);
+                
             }
             catch (Exception)
             {

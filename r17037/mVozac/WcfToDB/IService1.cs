@@ -56,7 +56,7 @@ namespace WcfToDB
         [OperationContract]
         List<string> ListaPopusta();
         [OperationContract]
-        List<Grad> ListaMedustanica(string kor_ime);
+        ObservableCollection<Grad> ListaMedustanica(string kor_ime);
         [OperationContract]
         ObservableCollection<string> PopustiCombo();
         [OperationContract]
