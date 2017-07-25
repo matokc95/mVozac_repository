@@ -119,7 +119,7 @@ namespace mVozac.Pages
                         }
                         else
                         {
-                            if (res.Ponistena == 1)
+                            if (res.Ponistena == true)
                             {
                                 var dialog = new MessageDialog("Karta je poništena!");
                                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });

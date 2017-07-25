@@ -23,6 +23,6 @@ namespace WcfToDB
         [DataMember]
         public float KolicinaPopusta { get; set; }
         [DataMember]
-        public int Ponistena { get; set; }
+        public bool Ponistena { get; set; }
     }
 }

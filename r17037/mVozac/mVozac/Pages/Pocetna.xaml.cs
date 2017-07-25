@@ -24,7 +24,7 @@ namespace mVozac
             this.InitializeComponent();
 
         }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             Korisnik s = (Korisnik)e.Parameter;
             TxtPrijavljeni.Text = s.KorisnickoIme;

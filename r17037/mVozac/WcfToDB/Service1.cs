@@ -626,7 +626,7 @@ namespace WcfToDB
                     karta.Popust = float.Parse(reader[1].ToString());
                     karta.Vozac = int.Parse(reader[2].ToString());
                     karta.Voznja = int.Parse(reader[3].ToString());
-                    karta.Ponistena = int.Parse(reader[4].ToString());
+                    karta.Ponistena = bool.Parse(reader[4].ToString());
                 }
             }
             catch (Exception)
@@ -670,7 +670,7 @@ namespace WcfToDB
                     karta.Linija = reader[3].ToString();
                     karta.CijenaVoznje = float.Parse(reader[4].ToString());
                     karta.KolicinaPopusta = float.Parse(reader[5].ToString());
-                    karta.Ponistena = int.Parse(reader[6].ToString());
+                    karta.Ponistena = bool.Parse(reader[6].ToString());
                 }
             }
             catch (Exception)
