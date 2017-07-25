@@ -46,9 +46,9 @@ namespace mVozac.Pages
             TxtPrijavljeni.Text = e.Parameter.ToString();
         }
 
-        private async void BtnPovratak_Click(object sender, RoutedEventArgs e)
+        private void BtnPovratak_Click(object sender, RoutedEventArgs e)
         {
-            await _mediaCapture.StopPreviewAsync();
+            _mediaCapture.Dispose();
             this.Frame.GoBack();
         }
 
