@@ -612,7 +612,7 @@ namespace WcfToDB
 
             try
             {
-                command.CommandText = "SELECT karta_id, popust, vozac, voznja " +
+                command.CommandText = "SELECT karta_id, popust, vozac, voznja, ponistena " +
                     "FROM karta " +
                     "WHERE karta_id = @broj_karte";
                 command.Parameters.AddWithValue("broj_karte", brojKarte);
@@ -626,6 +626,7 @@ namespace WcfToDB
                     karta.Popust = float.Parse(reader[1].ToString());
                     karta.Vozac = int.Parse(reader[2].ToString());
                     karta.Voznja = int.Parse(reader[3].ToString());
+                    karta.Ponistena = int.Parse(reader[4].ToString());
                 }
             }
             catch (Exception)

@@ -114,12 +114,21 @@ namespace mVozac.Pages
                         }
                         else
                         {
-                            Service1Client brisiKartu = new Service1Client();
-                            await brisiKartu.DeleteKartaAsync(res.KartaID);
+                            if (res.Ponistena == 1)
+                            {
+                                var dialog = new MessageDialog("Karta je već poništena!");
+                                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                                await dialog.ShowAsync();
+                            }
+                            else
+                            {
+                                Service1Client brisiKartu = new Service1Client();
+                                await brisiKartu.DeleteKartaAsync(res.KartaID);
 
-                            var dialog = new MessageDialog("Karta uspješno poništena!");
-                            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                            await dialog.ShowAsync();
+                                var dialog = new MessageDialog("Karta uspješno poništena!");
+                                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                                await dialog.ShowAsync();
+                            }
                         }
                     }
                 }

@@ -19,6 +19,6 @@ namespace WcfToDB
         [DataMember]
         public int Voznja { get; set; }
         [DataMember]
-        public bool Ponistena { get; set; }
+        public int Ponistena { get; set; }
     }
 }

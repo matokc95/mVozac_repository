@@ -367,7 +367,7 @@ namespace mVozac.ServiceReference2 {
         
         private int KartaIDField;
         
-        private bool PonistenaField;
+        private int PonistenaField;
         
         private float PopustField;
         
@@ -389,7 +389,7 @@ namespace mVozac.ServiceReference2 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Ponistena {
+        public int Ponistena {
             get {
                 return this.PonistenaField;
             }
