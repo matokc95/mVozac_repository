@@ -84,40 +84,30 @@ namespace mVozac.Pages
             while (true)
             {
                 var stream = new InMemoryRandomAccessStream();
-                await _mediaCapture.CapturePhotoToStreamAsync(imgProp, stream);
 
-                stream.Seek(0);
-                var wbm = new WriteableBitmap(600, 800);
-                await wbm.SetSourceAsync(stream);
-
-                SoftwareBitmap sbmp = SoftwareBitmap.CreateCopyFromBuffer
-                    (wbm.PixelBuffer, BitmapPixelFormat.Bgra8, wbm.PixelWidth, wbm.PixelHeight);
-
-                SoftwareBitmapLuminanceSource luminanceSource = new SoftwareBitmapLuminanceSource(sbmp);
-
-                var result = bcReader.Decode(luminanceSource);
-
-                if (result != null)
+                try
                 {
-                    Service1Client serviceKarta = new Service1Client();
-                    var res = await serviceKarta.FindKartaAsync(int.Parse(result.Text));
+                    await _mediaCapture.CapturePhotoToStreamAsync(imgProp, stream);
 
-                    if (res.KartaID == 0)
-                    {
-                        var dialog = new MessageDialog("Karta ne postoji!");
-                        dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                        await dialog.ShowAsync();
+                    stream.Seek(0);
+                    var wbm = new WriteableBitmap(600, 800);
+                    await wbm.SetSourceAsync(stream);
 
-                        txtPopust.Text = "";
-                        txtVozac.Text = "";
-                        txtLinija.Text = "";
-                        txtPrice.Text = "";
-                    }
-                    else
+                    SoftwareBitmap sbmp = SoftwareBitmap.CreateCopyFromBuffer
+                        (wbm.PixelBuffer, BitmapPixelFormat.Bgra8, wbm.PixelWidth, wbm.PixelHeight);
+
+                    SoftwareBitmapLuminanceSource luminanceSource = new SoftwareBitmapLuminanceSource(sbmp);
+
+                    var result = bcReader.Decode(luminanceSource);
+
+                    if (result != null)
                     {
-                        if (res.Ponistena == 1)
+                        Service1Client serviceKarta = new Service1Client();
+                        var res = await serviceKarta.FindKartaAsync(int.Parse(result.Text));
+
+                        if (res.KartaID == 0)
                         {
-                            var dialog = new MessageDialog("Karta je poništena!");
+                            var dialog = new MessageDialog("Karta ne postoji!");
                             dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                             await dialog.ShowAsync();
 
@@ -128,16 +118,38 @@ namespace mVozac.Pages
                         }
                         else
                         {
-                            float price = res.CijenaVoznje;
+                            if (res.Ponistena == 1)
+                            {
+                                var dialog = new MessageDialog("Karta je poništena!");
+                                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                                await dialog.ShowAsync();
 
-                            float ukupnaCijena = price - (price * (res.KolicinaPopusta / 100));
+                                txtPopust.Text = "";
+                                txtVozac.Text = "";
+                                txtLinija.Text = "";
+                                txtPrice.Text = "";
+                            }
+                            else
+                            {
+                                float price = res.CijenaVoznje;
 
-                            txtPopust.Text = res.Popust;
-                            txtVozac.Text = res.Vozac;
-                            txtLinija.Text = res.Linija;
-                            txtPrice.Text = ukupnaCijena.ToString();
+                                float ukupnaCijena = price - (price * (res.KolicinaPopusta / 100));
+
+                                txtPopust.Text = res.Popust;
+                                txtVozac.Text = res.Vozac;
+                                txtLinija.Text = res.Linija;
+                                txtPrice.Text = ukupnaCijena.ToString();
+                            }
                         }
                     }
+                }
+                catch (Exception ex)
+                {
+                    var dialog = new MessageDialog(ex.Message);
+                    dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                    await dialog.ShowAsync();
+
+                    throw;
                 }
             }
         }
