@@ -33,7 +33,7 @@ namespace mVozac.Pages
     /// </summary>
     public sealed partial class PonistiKarte : Page
     {
-        MediaCapture _mediaCapture;
+        private MediaCapture _mediaCapture;
 
         public PonistiKarte()
         {
@@ -48,7 +48,7 @@ namespace mVozac.Pages
 
         private void BtnPovratak_Click(object sender, RoutedEventArgs e)
         {
-            
+
             this.Frame.GoBack();
         }
 
@@ -103,6 +103,8 @@ namespace mVozac.Pages
 
                     if (result != null)
                     {
+                        await _mediaCapture.StopPreviewAsync();
+
                         Service1Client serviceKarta = new Service1Client();
                         var res = await serviceKarta.UkloniKartuAsync(int.Parse(result.Text));
 

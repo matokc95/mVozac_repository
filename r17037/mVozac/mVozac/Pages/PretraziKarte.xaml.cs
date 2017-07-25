@@ -33,7 +33,7 @@ namespace mVozac.Pages
     /// </summary>
     public sealed partial class PretraziKarte : Page
     {
-        MediaCapture _mediaCapture;
+        private MediaCapture _mediaCapture;
 
         public PretraziKarte()
         {
@@ -102,6 +102,8 @@ namespace mVozac.Pages
 
                     if (result != null)
                     {
+                        await _mediaCapture.StopPreviewAsync();
+
                         Service1Client serviceKarta = new Service1Client();
                         var res = await serviceKarta.FindKartaAsync(int.Parse(result.Text));
 
