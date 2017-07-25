@@ -121,7 +121,7 @@ namespace mVozac.Pages
                         {
                             if (res.Ponistena == true)
                             {
-                                var dialog = new MessageDialog("Karta je poništena!");
+                                var dialog = new MessageDialog("Karta se ne može pretražiti jer je poništena!");
                                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                                 await dialog.ShowAsync();
 
