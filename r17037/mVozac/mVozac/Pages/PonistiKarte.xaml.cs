@@ -84,39 +84,51 @@ namespace mVozac.Pages
             while (true)
             {
                 var stream = new InMemoryRandomAccessStream();
-                await _mediaCapture.CapturePhotoToStreamAsync(imgProp, stream);
 
-                stream.Seek(0);
-                var wbm = new WriteableBitmap(600, 800);
-                await wbm.SetSourceAsync(stream);
-
-                SoftwareBitmap sbmp = SoftwareBitmap.CreateCopyFromBuffer
-                    (wbm.PixelBuffer, BitmapPixelFormat.Bgra8, wbm.PixelWidth, wbm.PixelHeight);
-
-                SoftwareBitmapLuminanceSource luminanceSource = new SoftwareBitmapLuminanceSource(sbmp);
-
-                var result = bcReader.Decode(luminanceSource);
-
-                if (result != null)
+                try
                 {
-                    Service1Client serviceKarta = new Service1Client();
-                    var res = await serviceKarta.UkloniKartuAsync(int.Parse(result.Text));
+                    await _mediaCapture.CapturePhotoToStreamAsync(imgProp, stream);
 
-                    if (res.KartaID == 0)
-                    {
-                        var dialog = new MessageDialog("Karta sa unešenim brojem ne postoji!");
-                        dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                        await dialog.ShowAsync();
-                    }
-                    else
-                    {
-                        Service1Client brisiKartu = new Service1Client();
-                        await brisiKartu.DeleteKartaAsync(res.KartaID);
+                    stream.Seek(0);
+                    var wbm = new WriteableBitmap(600, 800);
+                    await wbm.SetSourceAsync(stream);
 
-                        var dialog = new MessageDialog("Karta uspješno poništena!");
-                        dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                        await dialog.ShowAsync();
+                    SoftwareBitmap sbmp = SoftwareBitmap.CreateCopyFromBuffer
+                        (wbm.PixelBuffer, BitmapPixelFormat.Bgra8, wbm.PixelWidth, wbm.PixelHeight);
+
+                    SoftwareBitmapLuminanceSource luminanceSource = new SoftwareBitmapLuminanceSource(sbmp);
+
+                    var result = bcReader.Decode(luminanceSource);
+
+                    if (result != null)
+                    {
+                        Service1Client serviceKarta = new Service1Client();
+                        var res = await serviceKarta.UkloniKartuAsync(int.Parse(result.Text));
+
+                        if (res.KartaID == 0)
+                        {
+                            var dialog = new MessageDialog("Karta sa unešenim brojem ne postoji!");
+                            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                            await dialog.ShowAsync();
+                        }
+                        else
+                        {
+                            Service1Client brisiKartu = new Service1Client();
+                            await brisiKartu.DeleteKartaAsync(res.KartaID);
+
+                            var dialog = new MessageDialog("Karta uspješno poništena!");
+                            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                            await dialog.ShowAsync();
+                        }
                     }
+                }
+                catch (Exception ex)
+                {
+                    var dialog = new MessageDialog(ex.Message);
+                    dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                    await dialog.ShowAsync();
+
+                    //throw;
                 }
             }
         }
