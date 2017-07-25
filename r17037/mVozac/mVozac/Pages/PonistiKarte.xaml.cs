@@ -48,6 +48,7 @@ namespace mVozac.Pages
 
         private void BtnPovratak_Click(object sender, RoutedEventArgs e)
         {
+            
             this.Frame.GoBack();
         }
 
@@ -127,7 +128,6 @@ namespace mVozac.Pages
                     var dialog = new MessageDialog(ex.Message);
                     dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                     await dialog.ShowAsync();
-
                     //throw;
                 }
             }
