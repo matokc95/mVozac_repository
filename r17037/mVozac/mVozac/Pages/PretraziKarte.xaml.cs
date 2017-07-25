@@ -149,7 +149,7 @@ namespace mVozac.Pages
                     dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                     await dialog.ShowAsync();
 
-                    throw;
+                    //throw;
                 }
             }
         }
