@@ -46,9 +46,9 @@ namespace mVozac.Pages
             TxtPrijavljeni.Text = e.Parameter.ToString();
         }
 
-        private void BtnPovratak_Click(object sender, RoutedEventArgs e)
+        private async void BtnPovratak_Click(object sender, RoutedEventArgs e)
         {
-
+            await _mediaCapture.StopPreviewAsync();
             this.Frame.GoBack();
         }
 
@@ -103,8 +103,6 @@ namespace mVozac.Pages
 
                     if (result != null)
                     {
-                        await _mediaCapture.StopPreviewAsync();
-
                         Service1Client serviceKarta = new Service1Client();
                         var res = await serviceKarta.UkloniKartuAsync(int.Parse(result.Text));
 
