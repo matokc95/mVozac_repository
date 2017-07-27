@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using mVozac.ServiceReference2;
 using Windows.UI.Popups;
+using Windows.System;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -55,6 +56,15 @@ namespace mVozac
                 var dialog = new MessageDialog("Neuspjela prijava!");
                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                 await dialog.ShowAsync();
+            }
+        }
+
+        private async void TxtLozinka_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Enter)
+            {
+                Login_ClickAsync(sender,e);
+
             }
         }
     }

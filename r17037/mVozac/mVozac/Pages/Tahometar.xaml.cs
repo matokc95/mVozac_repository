@@ -31,8 +31,10 @@ namespace mVozac.Pages
     /// </summary>
     public sealed partial class Tahometar : Page
     {
-        Geoposition position;
+        Geoposition pozicija;
         Geopoint mojaLok;
+        private MapIcon ikona;
+
         public Tahometar()
         {
             this.InitializeComponent();
@@ -47,51 +49,6 @@ namespace mVozac.Pages
             this.Frame.GoBack();
         }
 
-        private async void btnLokacija_Click(object sender, RoutedEventArgs e)
-        {
-            var accessStatus = await Geolocator.RequestAccessAsync();
-            switch (accessStatus)
-            {
-                case GeolocationAccessStatus.Allowed:
-
-                    //Dohvati lokaciju
-                    Geolocator geolocator = new Geolocator();
-
-                    position = await geolocator.GetGeopositionAsync();
-                    mojaLok = position.Coordinate.Point;
-                    //MapControl1.MapElements.Add(new MapIcon() {  })
-                    var ikona = new MapIcon();
-                    ikona.Title = "test";
-                    ikona.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/arrow.png"));
-                    ikona.Location = mojaLok;
-                    MapControl1.MapElements.Add(ikona);
-
-                    MapControl1.MapElementClick += MapControl1_MapElementClick;
-                    //Prikazi lokaciju na karti
-                    MapControl1.Center = mojaLok;
-                    MapControl1.ZoomLevel = 12;
-                    MapControl1.LandmarksVisible = true;
-                    break;
-
-                case GeolocationAccessStatus.Denied:
-                    var dialog = new MessageDialog("Lokaciju nije moguće dohvatiti!");
-                    dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                    await dialog.ShowAsync();
-                    break;
-
-                case GeolocationAccessStatus.Unspecified:
-                    var dialog2 = new MessageDialog("Error!");
-                    dialog2.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                    await dialog2.ShowAsync();
-                    break;
-            }
-        }
-
-        private void MapControl1_MapElementClick(MapControl sender, MapElementClickEventArgs args)
-        {
-            //  args.
-        }
-
         private async void btnRuta_ClickAsync(object sender, RoutedEventArgs e)
         {
             //odredivanje pocetne stanice
@@ -99,17 +56,19 @@ namespace mVozac.Pages
             var lokacijaPocetak = await service.DohvatiLokacijuAsync(txtPolaziste.Text);
             BasicGeoposition startLocation = new BasicGeoposition() { Latitude = lokacijaPocetak.Latitude, Longitude = lokacijaPocetak.Longitude };
 
+
+            ikona = new MapIcon();
+            ikona.Title = "Moja lokacija";
+            ikona.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/arrow.png"));
+
+
             //odredivanje puta od trenutne lokacije do pocetne stanice
             Geolocator geolocator = new Geolocator();
             geolocator.DesiredAccuracy = PositionAccuracy.High;
             geolocator.PositionChanged += OnPositionChanged;
 
-            position = await geolocator.GetGeopositionAsync();
-            //mojaLok = position.Coordinate.Point;
+            pozicija = await geolocator.GetGeopositionAsync();
 
-            var ikona = new MapIcon();
-            ikona.Title = "Moja lokacija";
-            ikona.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/arrow.png"));
             ikona.Location = mojaLok;
             MapControl1.MapElements.Add(ikona);
 
@@ -133,32 +92,12 @@ namespace mVozac.Pages
                       routeResult1.Route.BoundingBox,
                       null,
                       Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
-
-                //kreiranje navigacijskog teksta za korisnika
-                System.Text.StringBuilder routeInfo = new System.Text.StringBuilder();
-
-                routeInfo.Append("Trajanje putovanja u minutama = ");
-                routeInfo.Append(routeResult1.Route.EstimatedDuration.TotalMinutes.ToString());
-                routeInfo.Append("\nDužina rute u kilometrima = ");
-                routeInfo.Append((routeResult1.Route.LengthInMeters / 1000).ToString());
-
-                // Display the directions.
-                routeInfo.Append("\n\nUPUTE:\n");
-
-                foreach (MapRouteLeg leg in routeResult1.Route.Legs)
-                {
-                    foreach (MapRouteManeuver maneuver in leg.Maneuvers)
-                    {
-                        routeInfo.AppendLine(maneuver.InstructionText);
-                    }
-                }
-
-                //prikaz informacije o ruti
-                tbOutputText.Text = routeInfo.ToString();
             }
             else
             {
-                tbOutputText.Text = "Došlo je do pogreške: " + routeResult1.Status.ToString();
+                var dialog2 = new MessageDialog("Došlo je do pogreške!");
+                dialog2.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                await dialog2.ShowAsync();
             }
 
             //odredivanje medustanica
@@ -203,32 +142,12 @@ namespace mVozac.Pages
                       routeResult.Route.BoundingBox,
                       null,
                       Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
-
-                //kreiranje navigacijskog teksta za korisnika
-                System.Text.StringBuilder routeInfo = new System.Text.StringBuilder();
-
-                routeInfo.Append("Trajanje putovanja u minutama = ");
-                routeInfo.Append(routeResult.Route.EstimatedDuration.TotalMinutes.ToString());
-                routeInfo.Append("\nDužina rute u kilometrima = ");
-                routeInfo.Append((routeResult.Route.LengthInMeters / 1000).ToString());
-
-                // Display the directions.
-                routeInfo.Append("\n\nUPUTE:\n");
-
-                foreach (MapRouteLeg leg in routeResult.Route.Legs)
-                {
-                    foreach (MapRouteManeuver maneuver in leg.Maneuvers)
-                    {
-                        routeInfo.AppendLine(maneuver.InstructionText);
-                    }
-                }
-
-                //prikaz informacije o ruti
-                tbOutputText.Text = routeInfo.ToString();
             }
             else
             {
-                tbOutputText.Text = "Došlo je do pogreške: " + routeResult.Status.ToString();
+                var dialog2 = new MessageDialog("Došlo je do pogreške!!");
+                dialog2.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                await dialog2.ShowAsync();
             }
         }
 
@@ -237,6 +156,7 @@ namespace mVozac.Pages
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
                 mojaLok = e.Position.Coordinate.Point;
+                ikona.Location = mojaLok;
             });
         }
 
@@ -245,14 +165,14 @@ namespace mVozac.Pages
             try
             {
                 Service1Client service = new Service1Client();
-                var res = await service.SelectVoznjuAsync(TxtPrijavljeni.Text);
-                string linija_naziv = res.NazivLinije;
-                var res2 = await service.GetLinijaIDAsync(linija_naziv);
-                int linija_id = int.Parse(res2.LinijaID);
-                var res3 = await service.SelectStanicaIDPocetakAsync(linija_id);
-                txtPolaziste.Text = res3.StanicaNaziv;
-                var res4 = await service.SelectStanicaIDZavrsetakAsync(linija_id);
-                txtOdrediste.Text = res4.StanicaNaziv;
+                var resNaziv = await service.SelectVoznjuAsync(TxtPrijavljeni.Text);
+                string nazivLinije = resNaziv.NazivLinije;
+                var resLinija = await service.GetLinijaIDAsync(nazivLinije);
+                int idLinije = int.Parse(resLinija.LinijaID);
+                var resStanicaPocetak = await service.SelectStanicaIDPocetakAsync(idLinije);
+                txtPolaziste.Text = resStanicaPocetak.StanicaNaziv;
+                var resStanicaZavrsetak = await service.SelectStanicaIDZavrsetakAsync(idLinije);
+                txtOdrediste.Text = resStanicaZavrsetak.StanicaNaziv;
             }
             catch (Exception ex)
             {

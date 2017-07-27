@@ -20,7 +20,7 @@
             <TextBlock Text="Korisničko ime" Foreground="Black" FontSize="30"/>
             <TextBox  BorderBrush="LightGray" Name="TxtKorIme" Margin="0,0,10.2,0"/>
             <TextBlock  Foreground="Black" Text="Lozinka" Margin="9,-7,0,0" FontSize="30"/>
-            <PasswordBox BorderBrush="LightGray" Name="TxtLozinka" Margin="0,0,10.2,0" />
+            <PasswordBox BorderBrush="LightGray" Name="TxtLozinka" Margin="0,0,10.2,0" KeyDown="TxtLozinka_KeyDown" />
 
             <Button Content="Prijavi se" Background="Bisque" Name="Login" Click="Login_ClickAsync" />
 
