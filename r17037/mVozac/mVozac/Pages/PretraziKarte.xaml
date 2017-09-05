@@ -32,6 +32,7 @@
             <TextBlock HorizontalAlignment="Left" Margin="80,529.667,0,-255.667" Grid.Row="7" TextWrapping="Wrap" Text="Cijena:" VerticalAlignment="Top"/>
             <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Margin="199,529.667,0,-267.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
             <CaptureElement x:Name="captureElement" HorizontalAlignment="Left" Height="200" Margin="92,75.667,0,0" Grid.Row="7" VerticalAlignment="Top" Width="200"/>
+            <TextBox x:Name="txtPonistena" HorizontalAlignment="Left" Margin="118,609.667,0,-315.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="171" IsReadOnly="True"/>
 
         </Grid>
     </Grid>

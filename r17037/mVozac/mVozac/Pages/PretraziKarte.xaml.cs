@@ -44,6 +44,7 @@ namespace mVozac.Pages
         {
             base.OnNavigatedTo(e);
             TxtPrijavljeni.Text = e.Parameter.ToString();
+            txtPonistena.Opacity = 0;
         }
 
         private void BtnPovratak_Click(object sender, RoutedEventArgs e)
@@ -116,19 +117,28 @@ namespace mVozac.Pages
                             txtVozac.Text = "";
                             txtLinija.Text = "";
                             txtPrice.Text = "";
+                            txtPonistena.Text = "";
                         }
                         else
                         {
                             if (res.Ponistena == true)
                             {
+                                /*
                                 var dialog = new MessageDialog("Karta se ne može pretražiti jer je poništena!");
                                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                                 await dialog.ShowAsync();
+                                */
 
-                                txtPopust.Text = "";
-                                txtVozac.Text = "";
-                                txtLinija.Text = "";
-                                txtPrice.Text = "";
+                                float price = res.CijenaVoznje;
+
+                                float ukupnaCijena = price - (price * (res.KolicinaPopusta / 100));
+
+                                txtPopust.Text = res.Popust;
+                                txtVozac.Text = res.Vozac;
+                                txtLinija.Text = res.Linija;
+                                txtPrice.Text = ukupnaCijena.ToString();
+                                txtPonistena.Opacity = 100;
+                                txtPonistena.Text = "Karta je poništena";
                             }
                             else
                             {
@@ -140,6 +150,7 @@ namespace mVozac.Pages
                                 txtVozac.Text = res.Vozac;
                                 txtLinija.Text = res.Linija;
                                 txtPrice.Text = ukupnaCijena.ToString();
+                                txtPonistena.Opacity = 0;
                             }
                         }
                     }
