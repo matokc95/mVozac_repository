@@ -896,7 +896,7 @@ namespace WcfToDB
                 }
             }
 
-            return ++counter;
+            return counter;
         }
 
         public ObservableCollection<int> PonisteneKarte()
