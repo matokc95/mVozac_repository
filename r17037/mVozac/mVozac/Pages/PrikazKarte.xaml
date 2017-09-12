@@ -25,10 +25,10 @@
             <TextBlock HorizontalAlignment="Left" Margin="81,157.667,0,-117.667" Grid.Row="7" TextWrapping="Wrap" Text="Vozač:" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Margin="86,231.667,0,-191.667" Grid.Row="7" TextWrapping="Wrap" Text="Linija:" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Margin="79,299.667,0,-239.667" Grid.Row="7" TextWrapping="Wrap" Text="Cijena:" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtPopust" HorizontalAlignment="Left" Margin="128,90.667,0,0" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
-            <TextBox x:Name="txtVozac" HorizontalAlignment="Left" Margin="128,157.667,0,-13.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
-            <TextBox x:Name="txtLinija" HorizontalAlignment="Left" Margin="128,231.667,0,-87.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
-            <TextBox x:Name="txtCijena" HorizontalAlignment="Left" Margin="128,299.667,0,-123.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+            <TextBox x:Name="txtPopust" HorizontalAlignment="Left" Margin="128,90.667,0,0" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+            <TextBox x:Name="txtVozac" HorizontalAlignment="Left" Margin="128,157.667,0,-13.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+            <TextBox x:Name="txtLinija" HorizontalAlignment="Left" Margin="128,231.667,0,-87.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+            <TextBox x:Name="txtCijena" HorizontalAlignment="Left" Margin="128,299.667,0,-123.667" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
             <Image x:Name="qrCode" HorizontalAlignment="Left" Height="100" Margin="159,388.667,0,-280.667" Grid.Row="7" VerticalAlignment="Top" Width="100"/>
 
         </Grid>
