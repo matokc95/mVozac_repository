@@ -22,26 +22,26 @@
 
             <TextBlock Text="Registracija korisnika" TextAlignment="Center" Grid.Row="0" FontSize="30"  Foreground="Black" Margin="73,-1,0,0.333"/>
 
-            <TextBlock Text="Ime :" Foreground="Black" Margin="6,10.667,6,137.667" Grid.Row="7"/>
-            <TextBox Name="TxtName" BorderBrush="LightGray" Margin="120,2.667,0,133.667" Grid.Row="7"/>
+            <TextBlock Text="Ime :" Foreground="Black" Margin="6,13.667,306,173.667" Grid.Row="7"/>
+            <TextBox Name="TxtName" BorderBrush="LightGray" Margin="120,51.667,10,137.667" Grid.Row="7"/>
 
             <TextBlock Text="Prezime: " Foreground="Black" Margin="4,58.667,52,96.667" Grid.Row="7"/>
-            <TextBox Name="TxtPrezime" BorderBrush="LightGray" Margin="120,51.667,0,137.667" Grid.Row="7" />
+            <TextBox Name="TxtPrezime" BorderBrush="LightGray" Margin="120,6.667,10,182.667" Grid.Row="7" />
 
             <TextBlock Text="Korisnicko ime: " Margin="6,185.667,4,-29.333" Foreground="Black" Grid.Row="7" />
-            <TextBox Name="TxtKorIme" BorderBrush="LightGray" Margin="120,186.667,0,7.667" Grid.Row="7" />
+            <TextBox Name="TxtKorIme" BorderBrush="LightGray" Margin="120,180.667,10,7.667" Grid.Row="7" />
 
-            <TextBlock Text="Lozinka : " Margin="6,228.667,6,-33.333" Foreground="Black" Grid.Row="7" />
-            <PasswordBox Name="TxtPwd" BorderBrush="LightGray" Grid.Row="7" Margin="120,224.667,0,-33.333" />
+            <TextBlock Text="Lozinka : " Margin="6,231.667,6,-36.333" Foreground="Black" Grid.Row="7" />
+            <PasswordBox Name="TxtPwd" BorderBrush="LightGray" Grid.Row="7" Margin="120,224.667,10,-33.333" />
 
-            <TextBlock Text="E-mail adresa : " Grid.Row="7" Margin="6,292.667,6,-116.333" Foreground="Black" />
-            <TextBox Name="TxtAddr" BorderBrush="LightGray" Grid.Row="7" Margin="120,286.667,0,-112.333"/>
+            <TextBlock Text="E-mail adresa : " Grid.Row="7" Margin="6,274.667,6,-98.333" Foreground="Black" />
+            <TextBox Name="TxtAddr" BorderBrush="LightGray" Grid.Row="7" Margin="120,267.667,10,-78.333"/>
 
             <Button BorderBrush="Transparent"  Background="#FF30DABB" Content="Registriraj se"  Name="BtnRegister" Click="Register_ClickAsync" Grid.Row="7" Margin="5,365.667,0,-171.333"/>
-            <TextBlock Text="Datum rođenja: " Margin="2,97.667,8,58.667" Grid.Row="7" TextWrapping="Wrap" />
-            <DatePicker Name="DatumPicker" Margin="121,93.667,0,95.667" Grid.Row="7" />
-            <TextBlock Text="OIB: " Margin="6,134.667,4,18.667" Grid.Row="7" />
-            <TextBox Name="TxtOIB" Margin="119,135.667,0,50.667" Grid.Row="7" />
+            <TextBlock Text="Datum rođenja: " Margin="5,100.667,5,95.667" Grid.Row="7" TextWrapping="Wrap" />
+            <DatePicker Name="DatumPicker" Margin="121,95.667,0,98.667" Grid.Row="7" Width="290" />
+            <TextBlock Text="OIB: " Margin="6,144.667,4,49.667" Grid.Row="7" />
+            <TextBox Name="TxtOIB" BorderBrush="LightGray" Margin="119,135.667,10,50.667" Grid.Row="7" />
 
         </Grid>
     </Grid>
