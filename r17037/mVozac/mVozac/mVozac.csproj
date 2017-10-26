@@ -147,8 +147,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Pages\Prijava.xaml.cs">
+      <DependentUpon>Prijava.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Pocetna.xaml.cs">
       <DependentUpon>Pocetna.xaml</DependentUpon>
@@ -233,7 +233,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Pages\MainPage.xaml">
+    <Page Include="Pages\Prijava.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

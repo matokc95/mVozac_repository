@@ -33,7 +33,7 @@ namespace mVozac
 
         private void BtnOdjava_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            this.Frame.Navigate(typeof(Prijava));
         }
 
         private void ProdajKartu_Click(object sender, RoutedEventArgs e)

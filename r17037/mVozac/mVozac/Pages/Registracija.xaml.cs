@@ -26,7 +26,7 @@ namespace mVozac
 
         private void Povratak_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage), null);
+            this.Frame.Navigate(typeof(Prijava), null);
         }
 
 
@@ -65,7 +65,7 @@ namespace mVozac
                     var dialog = new MessageDialog("Uspješno ste se registrirali!");
                     dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                     await dialog.ShowAsync();
-                    this.Frame.Navigate(typeof(MainPage));
+                    this.Frame.Navigate(typeof(Prijava));
                 }
 
             }
