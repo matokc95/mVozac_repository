@@ -34,6 +34,7 @@ namespace mVozac.Pages
         Geoposition pozicija;
         Geopoint mojaLok;
         private MapIcon ikona;
+        Service1Client service = new Service1Client();
 
         public Tahometar()
         {
@@ -52,15 +53,8 @@ namespace mVozac.Pages
         private async void btnRuta_ClickAsync(object sender, RoutedEventArgs e)
         {
             //odredivanje pocetne stanice
-            Service1Client service = new Service1Client();
             var lokacijaPocetak = await service.DohvatiLokacijuAsync(txtPolaziste.Text);
             BasicGeoposition startLocation = new BasicGeoposition() { Latitude = lokacijaPocetak.Latitude, Longitude = lokacijaPocetak.Longitude };
-
-
-            ikona = new MapIcon();
-            ikona.Title = "Moja lokacija";
-            ikona.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/arrow.png"));
-
 
             //odredivanje puta od trenutne lokacije do pocetne stanice
             Geolocator geolocator = new Geolocator();
@@ -69,6 +63,9 @@ namespace mVozac.Pages
 
             pozicija = await geolocator.GetGeopositionAsync();
 
+            ikona = new MapIcon();
+            ikona.Title = "Moja lokacija";
+            ikona.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/arrow.png"));
             ikona.Location = mojaLok;
             MapControl1.MapElements.Add(ikona);
 
@@ -164,7 +161,6 @@ namespace mVozac.Pages
         {
             try
             {
-                Service1Client service = new Service1Client();
                 var resNaziv = await service.SelectVoznjuAsync(TxtPrijavljeni.Text);
                 string nazivLinije = resNaziv.NazivLinije;
                 var resLinija = await service.GetLinijaIDAsync(nazivLinije);
