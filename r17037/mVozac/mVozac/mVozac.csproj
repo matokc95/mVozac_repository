@@ -153,9 +153,6 @@
     <Compile Include="Pages\Pocetna.xaml.cs">
       <DependentUpon>Pocetna.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Pomoc.xaml.cs">
-      <DependentUpon>Pomoc.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\PonistiKarte.xaml.cs">
       <DependentUpon>PonistiKarte.xaml</DependentUpon>
     </Compile>
@@ -238,10 +235,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Pocetna.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Pomoc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

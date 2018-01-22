@@ -52,11 +52,11 @@ namespace mVozac.Pages
 
         private async void btnRuta_ClickAsync(object sender, RoutedEventArgs e)
         {
-            //odredivanje pocetne stanice
+            //odredivanje polazišta
             var lokacijaPocetak = await service.DohvatiLokacijuAsync(txtPolaziste.Text);
             BasicGeoposition startLocation = new BasicGeoposition() { Latitude = lokacijaPocetak.Latitude, Longitude = lokacijaPocetak.Longitude };
 
-            //odredivanje puta od trenutne lokacije do pocetne stanice
+            //odredivanje puta od trenutne lokacije do polazišta
             Geolocator geolocator = new Geolocator();
             geolocator.DesiredAccuracy = PositionAccuracy.High;
             geolocator.PositionChanged += OnPositionChanged;
@@ -116,7 +116,7 @@ namespace mVozac.Pages
                     }
                 }
 
-                //odredivanje zavrsne stanice
+                //odredivanje odredišta
                 var lokacijaZavrsetak = await service.DohvatiLokacijuAsync(txtOdrediste.Text);
                 BasicGeoposition endLocation = new BasicGeoposition() { Latitude = lokacijaZavrsetak.Latitude, Longitude = lokacijaZavrsetak.Longitude };
 

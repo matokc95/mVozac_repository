@@ -21,7 +21,7 @@
             <Button BorderBrush="Transparent"  Background="#FF30DABB" Content="Odjava"  Name="BtnOdjava" Margin="6,11,0,10.333" Height="32" Width="66" Click="BtnOdjava_Click"/>
 
             <TextBlock Text="mVozač" TextAlignment="Center" FontSize="30"  Foreground="Black" Margin="118,29,107,-29.667" Grid.Row="0"/>
-            <Button Content="Pomoć" Name="btnPomoc" HorizontalAlignment="Left" Height="32" Margin="319,10,0,0" VerticalAlignment="Top" Width="66" Click="btnPomoc_Click"/>
+            <Button Content="Pomoć" Name="btnPomoc" HorizontalAlignment="Left" Height="32" Margin="319,10,0,0" VerticalAlignment="Top" Width="66" Click="btnPomoc_ClickAsync"/>
             <TextBlock HorizontalAlignment="Left" Height="36" Margin="62,23.667,0,-57.667" Grid.Row="7" TextWrapping="Wrap" Text="Prijavljeni korisnik:" VerticalAlignment="Top" Width="126"/>
             <TextBox x:Name="TxtPrijavljeni" HorizontalAlignment="Left" Height="30" Margin="199,20.667,0,-50.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="134" IsReadOnly="True"/>
             <Button x:Name="ProdajKartu" Content="Prodaj kartu" FontSize="13" HorizontalAlignment="Left" Margin="37,98.667,0,-115.667" Grid.Row="7" VerticalAlignment="Top" Height="51" Width="118" Click="ProdajKartu_Click"/>

@@ -24,10 +24,12 @@ namespace mVozac.Pages
     /// </summary>
     public sealed partial class RasporedVoznje : Page
     {
+        Service1Client service = new Service1Client();
         public RasporedVoznje()
         {
             this.InitializeComponent();
         }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -40,7 +42,6 @@ namespace mVozac.Pages
 
         private async void Page_Loading(FrameworkElement sender, object args)
         {
-            Service1Client service = new Service1Client();
             var res = await service.SelectVoznjuAsync(TxtPrijavljeni.Text);
             if (res.ImeVozaca != null)
             {
@@ -62,8 +63,6 @@ namespace mVozac.Pages
 
         private async void btnPotvrdi_Click(object sender, RoutedEventArgs e)
         {
-            Service1Client service = new Service1Client();
-
             var res = await service.PotvrdiVoznjuAsync(txtLinija.Text);
             if (res == -1)
             {

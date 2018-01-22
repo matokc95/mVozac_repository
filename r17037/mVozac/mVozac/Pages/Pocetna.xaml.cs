@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using mVozac.ServiceReference2;
 using mVozac.Pages;
+using Windows.UI.Popups;
 
 namespace mVozac
 {
@@ -66,9 +67,19 @@ namespace mVozac
             this.Frame.Navigate(typeof(Statistika), TxtPrijavljeni.Text);
         }
 
-        private void btnPomoc_Click(object sender, RoutedEventArgs e)
+        private async void btnPomoc_ClickAsync(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Pomoc), null);
+            var uriBing = new Uri(@"https://github.com/foivz/r17037/wiki/Korisni%C4%8Dka-dokumentacija");
+
+            var success = await Windows.System.Launcher.LaunchUriAsync(uriBing);
+
+            if (!success)
+            {
+                var dialog = new MessageDialog("Lokacija se ne može otvoriti u pregledniku!");
+                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                await dialog.ShowAsync();
+            }
         }
+        //this.Frame.Navigate(typeof(Pomoc), null);
     }
 }
