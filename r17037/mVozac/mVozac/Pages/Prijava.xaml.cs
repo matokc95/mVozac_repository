@@ -25,9 +25,11 @@ namespace mVozac
     /// </summary>
     public sealed partial class Prijava : Page
     {
+        Service1Client service;
         public Prijava()
         {
             this.InitializeComponent();
+            service = new Service1Client();
         }
 
         private void SignUp_Click(object sender, RoutedEventArgs e)
@@ -44,7 +46,7 @@ namespace mVozac
 
             };
 
-            Service1Client service = new Service1Client();
+            
             var res = await service.SelectKorisnikaAsync(kor);
 
             if (res.KorisnickoIme == kor.KorisnickoIme && res.Lozinka == kor.Lozinka)

@@ -34,11 +34,12 @@ namespace mVozac.Pages
         Geoposition pozicija;
         Geopoint mojaLok;
         private MapIcon ikona;
-        Service1Client service = new Service1Client();
+        Service1Client service;
 
         public Tahometar()
         {
             this.InitializeComponent();
+            service = new Service1Client();
         }
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
