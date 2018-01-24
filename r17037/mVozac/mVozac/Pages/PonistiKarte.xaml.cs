@@ -49,6 +49,7 @@ namespace mVozac.Pages
         private void BtnPovratak_Click(object sender, RoutedEventArgs e)
         {
             _mediaCapture.Dispose();
+            _mediaCapture = null;
             this.Frame.GoBack();
         }
 
@@ -90,6 +91,10 @@ namespace mVozac.Pages
                 {
                     await _mediaCapture.CapturePhotoToStreamAsync(imgProp, stream);
 
+                    if (_mediaCapture == null)
+                    {
+                        return;
+                    }
                     stream.Seek(0);
                     var wbm = new WriteableBitmap(600, 800);
                     await wbm.SetSourceAsync(stream);

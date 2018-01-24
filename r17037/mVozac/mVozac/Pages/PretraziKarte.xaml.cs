@@ -38,6 +38,7 @@ namespace mVozac.Pages
         public PretraziKarte()
         {
             this.InitializeComponent();
+            _mediaCapture = new MediaCapture();
         }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
@@ -50,7 +51,8 @@ namespace mVozac.Pages
         private void BtnPovratak_Click(object sender, RoutedEventArgs e)
         {
             _mediaCapture.Dispose();
-            this.Frame.GoBack();
+            _mediaCapture = null;
+            Frame.GoBack();
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
@@ -61,7 +63,7 @@ namespace mVozac.Pages
                                             where webcam.IsEnabled
                                             select webcam).FirstOrDefault();
 
-            _mediaCapture = new MediaCapture();
+            
 
             await _mediaCapture.InitializeAsync(new MediaCaptureInitializationSettings
             {
@@ -91,6 +93,10 @@ namespace mVozac.Pages
                 {
                     await _mediaCapture.CapturePhotoToStreamAsync(imgProp, stream);
 
+                    if (_mediaCapture == null)
+                    {
+                        return;
+                    }
                     stream.Seek(0);
                     var wbm = new WriteableBitmap(600, 800);
                     await wbm.SetSourceAsync(stream);
