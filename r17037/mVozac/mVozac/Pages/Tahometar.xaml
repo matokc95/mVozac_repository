@@ -17,6 +17,18 @@
         <TextBox HorizontalAlignment="Left" x:Name="txtPolaziste" Margin="120,53,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="251"/>
         <TextBlock HorizontalAlignment="Left" Margin="45,89,0,0" TextWrapping="Wrap" Text="Odredište:" VerticalAlignment="Top" Width="74"/>
         <TextBox HorizontalAlignment="Left" x:Name="txtOdrediste" Margin="120,85,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="251"/>
+        <Image x:Name="crvena" HorizontalAlignment="Left" Height="13" Margin="10,132,0,0" VerticalAlignment="Top" Width="33" RenderTransformOrigin="0.515,1.307" Source="ms-appx:///Assets/red-line.png">
+            <Image.RenderTransform>
+                <CompositeTransform ScaleY="-1" TranslateY="-20.982"/>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="zuta" HorizontalAlignment="Left" Height="13" Margin="12,147,0,0" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0.5,0.5" Source="ms-appx:///Assets/YellowLine.png">
+            <Image.RenderTransform>
+                <CompositeTransform ScaleY="-1"/>
+            </Image.RenderTransform>
+        </Image>
+        <TextBlock Name="txtLegendaCrvena" HorizontalAlignment="Left" Margin="53,120,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="120"/>
+        <TextBlock Name="txtLegendaZuta" HorizontalAlignment="Left" Margin="53,141,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="120"/>
     </Grid>
 
 </Page>

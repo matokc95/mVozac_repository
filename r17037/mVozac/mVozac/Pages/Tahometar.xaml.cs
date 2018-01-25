@@ -39,6 +39,12 @@ namespace mVozac.Pages
         public Tahometar()
         {
             this.InitializeComponent();
+            //sakrivanje legende
+            crvena.Visibility = Visibility.Collapsed;
+            txtLegendaCrvena.Visibility = Visibility.Collapsed;
+            zuta.Visibility = Visibility.Collapsed;
+            txtLegendaZuta.Visibility = Visibility.Collapsed;
+
             service = new Service1Client();
         }
         protected async override void OnNavigatedTo(NavigationEventArgs e)
@@ -53,11 +59,13 @@ namespace mVozac.Pages
 
         private async void btnRuta_ClickAsync(object sender, RoutedEventArgs e)
         {
+
             //odredivanje polazišta
             var lokacijaPocetak = await service.DohvatiLokacijuAsync(txtPolaziste.Text);
             BasicGeoposition startLocation = new BasicGeoposition() { Latitude = lokacijaPocetak.Latitude, Longitude = lokacijaPocetak.Longitude };
 
-            //odredivanje puta od trenutne lokacije do polazišta
+            
+            //azuriranje trenutne lokacije korisnika
             Geolocator geolocator = new Geolocator();
             geolocator.DesiredAccuracy = PositionAccuracy.High;
             geolocator.PositionChanged += OnPositionChanged;
@@ -72,33 +80,8 @@ namespace mVozac.Pages
                 ikona.Location = mojaLok;
                 MapControl1.MapElements.Add(ikona);
 
-                MapRouteFinderResult routeResult1 =
-                      await MapRouteFinder.GetDrivingRouteAsync(
-                      mojaLok,
-                      new Geopoint(startLocation),
-                      MapRouteOptimization.Time,
-                      MapRouteRestrictions.None);
-
-                if (routeResult1.Status == MapRouteFinderStatus.Success)
-                {
-                    MapRouteView viewOfRoute = new MapRouteView(routeResult1.Route);
-                    viewOfRoute.RouteColor = Colors.Red;
-                    viewOfRoute.OutlineColor = Colors.Black;
-
-                    //dodavanje rute na mapcontrol
-                    MapControl1.Routes.Add(viewOfRoute);
-
-                    await MapControl1.TrySetViewBoundsAsync(
-                          routeResult1.Route.BoundingBox,
-                          null,
-                          Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
-                }
-                else
-                {
-                    var dialog = new MessageDialog("Došlo je do pogreške!");
-                    dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                    await dialog.ShowAsync();
-                }
+                //odredivanje puta od trenutne lokacije do polazišta
+                PrintRoute(mojaLok, startLocation, Colors.Red);
 
                 //odredivanje medustanica
                 ObservableCollection<Grad> listaGradova = await service.ListaMedustanicaAsync(TxtPrijavljeni.Text);
@@ -122,33 +105,17 @@ namespace mVozac.Pages
                 BasicGeoposition endLocation = new BasicGeoposition() { Latitude = lokacijaZavrsetak.Latitude, Longitude = lokacijaZavrsetak.Longitude };
 
                 //dohvacanje rute izmedu pocetne i zavrsne lokacije
-                MapRouteFinderResult routeResult =
-                      await MapRouteFinder.GetDrivingRouteAsync(
-                      mojaLok,
-                      new Geopoint(endLocation),
-                      MapRouteOptimization.Time,
-                      MapRouteRestrictions.None);
+                PrintRoute(new Geopoint(startLocation),endLocation,Colors.Yellow);
 
-                if (routeResult.Status == MapRouteFinderStatus.Success)
-                {
-                    MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
-                    viewOfRoute.RouteColor = Colors.Yellow;
-                    viewOfRoute.OutlineColor = Colors.Black;
-
-                    //dodavanje rute na mapcontrol
-                    MapControl1.Routes.Add(viewOfRoute);
-
-                    await MapControl1.TrySetViewBoundsAsync(
-                          routeResult.Route.BoundingBox,
-                          null,
-                          Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
-                }
-                else
-                {
-                    var dialog = new MessageDialog("Došlo je do pogreške!!");
-                    dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
-                    await dialog.ShowAsync();
-                }
+                //dodavanje legende
+                crvena.Visibility = Visibility.Visible;
+                txtLegendaCrvena.Visibility = Visibility.Visible;
+                txtLegendaCrvena.FontSize = 9;
+                txtLegendaCrvena.Text = "Putanja od trenutne lokacije do polazišta";
+                zuta.Visibility = Visibility.Visible;
+                txtLegendaZuta.Visibility = Visibility.Visible;
+                txtLegendaZuta.FontSize = 9;
+                txtLegendaZuta.Text = "Putanja od polazišta do odredišta";
             }
             catch
             {
@@ -159,6 +126,36 @@ namespace mVozac.Pages
             
 
             
+        }
+        private async void PrintRoute(Geopoint start, BasicGeoposition end, Color routeColor)
+        {
+            MapRouteFinderResult routeResult =
+                      await MapRouteFinder.GetDrivingRouteAsync(
+                      start,
+                      new Geopoint(end),
+                      MapRouteOptimization.Time,
+                      MapRouteRestrictions.None);
+
+            if (routeResult.Status == MapRouteFinderStatus.Success)
+            {
+                MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                viewOfRoute.RouteColor = routeColor;
+                viewOfRoute.OutlineColor = Colors.Black;
+
+                //dodavanje rute na mapcontrol
+                MapControl1.Routes.Add(viewOfRoute);
+
+                await MapControl1.TrySetViewBoundsAsync(
+                      routeResult.Route.BoundingBox,
+                      null,
+                      Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
+            }
+            else
+            {
+                var dialog = new MessageDialog("Došlo je do pogreške!!");
+                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                await dialog.ShowAsync();
+            }
         }
 
         private async void OnPositionChanged(Geolocator sender, PositionChangedEventArgs e)
@@ -201,5 +198,6 @@ namespace mVozac.Pages
                 this.Frame.GoBack();
             }
         }
+        
     }
 }
