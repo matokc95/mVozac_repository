@@ -872,7 +872,7 @@ namespace WcfToDB
 
             try
             {
-                command.CommandText = "SELECT COUNT(*) " +
+                command.CommandText = "SELECT MAX(karta_id) AS idKarte " +
                     "FROM karta";
                 command.CommandType = CommandType.Text;
                 connection.Open();
