@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace WcfToDB
 {
     [DataContract]
-    public class StanicaZavrsetak
+    public class Stanica
     {
         [DataMember]
         public string StanicaNaziv { get; set; }

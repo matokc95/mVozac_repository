@@ -489,9 +489,9 @@ namespace WcfToDB
 
             return line;
         }
-        public StanicaPocetak SelectStanicaIDPocetak(int idLinije)
+        public Stanica SelectStanicaIDPocetak(int idLinije)
         {
-            StanicaPocetak stanicaPocetak = new StanicaPocetak();
+            Stanica stanicaPocetak = new Stanica();
 
             try
             {
@@ -528,9 +528,9 @@ namespace WcfToDB
 
             return stanicaPocetak;
         }
-        public StanicaZavrsetak SelectStanicaIDZavrsetak(int idLinije)
+        public Stanica SelectStanicaIDZavrsetak(int idLinije)
         {
-            StanicaZavrsetak stanicaZavrsetak = new StanicaZavrsetak();
+            Stanica stanicaZavrsetak = new Stanica();
 
             try
             {

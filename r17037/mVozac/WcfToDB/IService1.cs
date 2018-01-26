@@ -42,9 +42,7 @@ namespace WcfToDB
         [OperationContract]
         Linija GetLinijaID(string linija_naziv);
         [OperationContract]
-        StanicaPocetak SelectStanicaIDPocetak(int idLinije);
-        [OperationContract]
-        StanicaZavrsetak SelectStanicaIDZavrsetak(int idLinije);
+        Stanica SelectStanicaIDZavrsetak(int idLinije);
         [OperationContract]
         Lokacija DohvatiLokaciju(string stanica);
         [OperationContract]
