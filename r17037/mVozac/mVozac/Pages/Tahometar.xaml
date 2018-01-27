@@ -21,7 +21,8 @@
             <Image.RenderTransform>
                 <CompositeTransform ScaleY="-1" TranslateY="-20.982"/>
             </Image.RenderTransform>
-        </Image>
+        </Image>
+
         <Image x:Name="zuta" HorizontalAlignment="Left" Height="13" Margin="12,147,0,0" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0.5,0.5" Source="ms-appx:///Assets/YellowLine.png">
             <Image.RenderTransform>
                 <CompositeTransform ScaleY="-1"/>
