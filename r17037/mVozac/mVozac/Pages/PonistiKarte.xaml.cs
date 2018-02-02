@@ -34,6 +34,7 @@ namespace mVozac.Pages
     public sealed partial class PonistiKarte : Page
     {
         private MediaCapture _mediaCapture;
+        private Service1Client servis = new Service1Client();
 
         public PonistiKarte()
         {
@@ -108,8 +109,9 @@ namespace mVozac.Pages
 
                     if (result != null)
                     {
-                        Service1Client serviceKarta = new Service1Client();
-                        var res = await serviceKarta.UkloniKartuAsync(int.Parse(result.Text));
+                        //Service1Client serviceKarta = new Service1Client();
+                        //var res = await serviceKarta.UkloniKartuAsync(int.Parse(result.Text));
+                        var res = await servis.UkloniKartuAsync(int.Parse(result.Text));
 
                         if (res.KartaID == 0)
                         {
@@ -127,8 +129,9 @@ namespace mVozac.Pages
                             }
                             else
                             {
-                                Service1Client brisiKartu = new Service1Client();
-                                await brisiKartu.DeleteKartaAsync(res.KartaID);
+                                //Service1Client brisiKartu = new Service1Client();
+                                //await brisiKartu.DeleteKartaAsync(res.KartaID);
+                                await servis.DeleteKartaAsync(res.KartaID);
 
                                 var dialog = new MessageDialog("Karta uspješno poništena!");
                                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });

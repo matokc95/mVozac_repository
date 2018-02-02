@@ -25,6 +25,8 @@ namespace mVozac.Pages
     /// </summary>
     public sealed partial class ProdajKartu : Page
     {
+        private Service1Client servis = new Service1Client();
+
         public ProdajKartu()
         {
             this.InitializeComponent();
@@ -41,18 +43,18 @@ namespace mVozac.Pages
 
         private async void DohvatiPopuste()
         {
-            Service1Client combo = new Service1Client();
-            var comboPopust = await combo.PopustiComboAsync();
+            //Service1Client combo = new Service1Client();
+            var comboPopust = await servis.PopustiComboAsync();
             ime.ItemsSource = comboPopust;
         }
 
         private async void DohvatiVoznje()
         {
-            Service1Client vozac = new Service1Client();
-            var id = await vozac.GetKorisnikIDAsync(TxtPrijavljeni.Text);
+            //Service1Client vozac = new Service1Client();
+            var id = await servis.GetKorisnikIDAsync(TxtPrijavljeni.Text);
 
-            Service1Client combo = new Service1Client();
-            var comboVoznja = await combo.LinijeComboAsync(id);
+            //Service1Client combo = new Service1Client();
+            var comboVoznja = await servis.LinijeComboAsync(id);
 
             cmbVoznja.ItemsSource = comboVoznja;
         }
@@ -64,18 +66,21 @@ namespace mVozac.Pages
 
         private async void btnIzdaj_ClickAsync(object sender, RoutedEventArgs e)
         {
+            //private Service1Client service = new Service1Client();
             KartaIspis kartaIspis = new KartaIspis();
 
-            Service1Client servicePopust = new Service1Client();
-            var resPopust = await servicePopust.SelectPopustAsync(ime.SelectedItem.ToString());
+            //Service1Client servicePopust = new Service1Client();
+            //var resPopust = await servicePopust.SelectPopustAsync(ime.SelectedItem.ToString());
+            var resPopust = await servis.SelectPopustAsync(ime.SelectedItem.ToString());
 
-            Service1Client serviceVoznja = new Service1Client();
-            var resCijena = await serviceVoznja.SelectVoznjaCijenaAsync(cmbVoznja.SelectedItem.ToString(), TxtPrijavljeni.Text);
+            //Service1Client serviceVoznja = new Service1Client();
+            //var resCijena = await serviceVoznja.SelectVoznjaCijenaAsync(cmbVoznja.SelectedItem.ToString(), TxtPrijavljeni.Text);
+            var resCijena = await servis.SelectVoznjaCijenaAsync(cmbVoznja.SelectedItem.ToString(), TxtPrijavljeni.Text);
 
             float ukupnaCijena = resCijena - (resCijena * (resPopust.KolicinaPopusta / 100));
 
             Karta karta = new Karta();
-            Service1Client servis = new Service1Client();
+            //Service1Client servis = new Service1Client();
 
             var resKartaPopust = await servis.GetPopustIDAsync(ime.SelectedItem.ToString());
             karta.Popust = resKartaPopust;
