@@ -44,6 +44,8 @@ namespace WcfToDB
         [OperationContract]
         Stanica SelectStanicaIDZavrsetak(int idLinije);
         [OperationContract]
+        Stanica SelectStanicaIDPocetak(int idLinije);
+        [OperationContract]
         Lokacija DohvatiLokaciju(string stanica);
         [OperationContract]
         Karta UkloniKartu(int brojKarte);
