@@ -34,6 +34,7 @@ namespace mVozac.Pages
     public sealed partial class PretraziKarte : Page
     {
         private MediaCapture _mediaCapture;
+        private Service1Client servis = new Service1Client();
 
         public PretraziKarte()
         {
@@ -110,8 +111,9 @@ namespace mVozac.Pages
 
                     if (result != null)
                     {
-                        Service1Client serviceKarta = new Service1Client();
-                        var res = await serviceKarta.FindKartaAsync(int.Parse(result.Text));
+                        //Service1Client serviceKarta = new Service1Client();
+                        //var res = await serviceKarta.FindKartaAsync(int.Parse(result.Text));
+                        var res = await servis.FindKartaAsync(int.Parse(result.Text));
 
                         if (res.KartaID == 0)
                         {

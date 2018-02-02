@@ -25,6 +25,8 @@ namespace mVozac.Pages
     /// </summary>
     public sealed partial class Statistika : Page
     {
+        private Service1Client servis = new Service1Client();
+
         public Statistika()
         {
             this.InitializeComponent();
@@ -39,7 +41,7 @@ namespace mVozac.Pages
 
         private async void DohvatiKarte()
         {
-            Service1Client servis = new Service1Client();
+            //Service1Client servis = new Service1Client();
             var comboKarte = await servis.PonisteneKarteAsync();
             cmbKarte.ItemsSource = comboKarte;
         }
@@ -53,8 +55,9 @@ namespace mVozac.Pages
         {
             if (cmbKarte.Items.Count != 0)
             {
-                Service1Client activate = new Service1Client();
-                await activate.AktivirajKartuAsync(int.Parse(cmbKarte.SelectedItem.ToString()));
+                //Service1Client activate = new Service1Client();
+                //await activate.AktivirajKartuAsync(int.Parse(cmbKarte.SelectedItem.ToString()));
+                await servis.AktivirajKartuAsync(int.Parse(cmbKarte.SelectedItem.ToString()));
 
                 var dialog = new MessageDialog("Karta uspješno aktivirana!");
                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
