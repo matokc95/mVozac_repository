@@ -129,33 +129,44 @@ namespace mVozac.Pages
         }
         private async void PrintRoute(Geopoint start, BasicGeoposition end, Color routeColor)
         {
-            MapRouteFinderResult routeResult =
+            try
+            {
+                MapRouteFinderResult routeResult =
                       await MapRouteFinder.GetDrivingRouteAsync(
                       start,
                       new Geopoint(end),
                       MapRouteOptimization.Time,
                       MapRouteRestrictions.None);
 
-            if (routeResult.Status == MapRouteFinderStatus.Success)
-            {
-                MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
-                viewOfRoute.RouteColor = routeColor;
-                viewOfRoute.OutlineColor = Colors.Black;
+                if (routeResult.Status == MapRouteFinderStatus.Success)
+                {
+                    MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                    viewOfRoute.RouteColor = routeColor;
+                    viewOfRoute.OutlineColor = Colors.Black;
+                    
 
-                //dodavanje rute na mapcontrol
-                MapControl1.Routes.Add(viewOfRoute);
+                    //dodavanje rute na mapcontrol
+                    MapControl1.Routes.Add(viewOfRoute);
 
-                await MapControl1.TrySetViewBoundsAsync(
-                      routeResult.Route.BoundingBox,
-                      null,
-                      Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
+                    await MapControl1.TrySetViewBoundsAsync(
+                          routeResult.Route.BoundingBox,
+                          null,
+                          Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
+                }
+                else
+                {
+                    var dialog = new MessageDialog("Došlo je do pogreške!!");
+                    dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                    await dialog.ShowAsync();
+                }
             }
-            else
+            catch
             {
-                var dialog = new MessageDialog("Došlo je do pogreške!!");
+                var dialog = new MessageDialog("Došlo je do pogreške u određivanju rute!!");
                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                 await dialog.ShowAsync();
             }
+            
         }
 
         private async void OnPositionChanged(Geolocator sender, PositionChangedEventArgs e)
