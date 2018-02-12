@@ -28,7 +28,7 @@
             <TextBlock HorizontalAlignment="Left" Height="4" Margin="199,207.667,0,-157.667" Grid.Row="7" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="13"/>
             <Button Name="btnIzdaj" Content="Izdaj kartu" HorizontalAlignment="Left" Margin="200,251.667,0,-113.667" Grid.Row="7" VerticalAlignment="Top" Click="btnIzdaj_ClickAsync"/>
             <TextBlock Text="Izdavanje karte" TextAlignment="Center" FontSize="30"  Foreground="Black" Margin="94,77.667,87,38.333" Grid.Row="7"/>
-            <ComboBox x:Name="ime" HorizontalAlignment="Left" Margin="172,138.667,0,0" Grid.Row="7" VerticalAlignment="Top" Width="161"/>
+            <ComboBox x:Name="cmbPopust" HorizontalAlignment="Left" Margin="172,138.667,0,0" Grid.Row="7" VerticalAlignment="Top" Width="161"/>
             <ComboBox x:Name="cmbVoznja" HorizontalAlignment="Left" Margin="128,175.667,0,-5.667" Grid.Row="7" VerticalAlignment="Top" Width="205"/>
 
         </Grid>

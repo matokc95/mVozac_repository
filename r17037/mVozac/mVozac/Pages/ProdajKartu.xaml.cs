@@ -45,7 +45,7 @@ namespace mVozac.Pages
         {
             //Service1Client combo = new Service1Client();
             var comboPopust = await servis.PopustiComboAsync();
-            ime.ItemsSource = comboPopust;
+            cmbPopust.ItemsSource = comboPopust;
         }
 
         private async void DohvatiVoznje()
@@ -66,47 +66,56 @@ namespace mVozac.Pages
 
         private async void btnIzdaj_ClickAsync(object sender, RoutedEventArgs e)
         {
-            //private Service1Client service = new Service1Client();
-            KartaIspis kartaIspis = new KartaIspis();
-
-            //Service1Client servicePopust = new Service1Client();
-            //var resPopust = await servicePopust.SelectPopustAsync(ime.SelectedItem.ToString());
-            var resPopust = await servis.SelectPopustAsync(ime.SelectedItem.ToString());
-
-            //Service1Client serviceVoznja = new Service1Client();
-            //var resCijena = await serviceVoznja.SelectVoznjaCijenaAsync(cmbVoznja.SelectedItem.ToString(), TxtPrijavljeni.Text);
-            var resCijena = await servis.SelectVoznjaCijenaAsync(cmbVoznja.SelectedItem.ToString(), TxtPrijavljeni.Text);
-
-            float ukupnaCijena = resCijena - (resCijena * (resPopust.KolicinaPopusta / 100));
-
-            Karta karta = new Karta();
-            //Service1Client servis = new Service1Client();
-
-            var resKartaPopust = await servis.GetPopustIDAsync(ime.SelectedItem.ToString());
-            karta.Popust = resKartaPopust;
-            var resKartaVOzac = await servis.GetKorisnikIDAsync(TxtPrijavljeni.Text);
-            karta.Vozac = resKartaVOzac;
-            var resKartaVoznja = await servis.GetVoznjaIDAsync(cmbVoznja.SelectedItem.ToString(), TxtPrijavljeni.Text);
-            karta.Voznja = resKartaVoznja;
-
-            var resInsert = await servis.InsertKartaAsync(karta);
-
-            if (resInsert == 0)
+            if ((cmbPopust.SelectedIndex == -1) || (cmbVoznja.SelectedIndex == -1))
             {
-                var dialog = new MessageDialog("Pogreška kod kreiranja karte.");
+                var dialog = new MessageDialog("Molimo odaberite popust i Vožnju.");
                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                 await dialog.ShowAsync();
             }
             else
             {
-                kartaIspis.CijenaVoznje = ukupnaCijena;
-                kartaIspis.KolicinaPopusta = resPopust.KolicinaPopusta;
-                kartaIspis.Linija = cmbVoznja.SelectedItem.ToString();
-                kartaIspis.Popust = ime.SelectedItem.ToString();
-                kartaIspis.Vozac = TxtPrijavljeni.Text;
-                kartaIspis.KartaID = await servis.GetCountAsync();
+                //private Service1Client service = new Service1Client();
+                KartaIspis kartaIspis = new KartaIspis();
 
-                this.Frame.Navigate(typeof(PrikazKarte), kartaIspis);
+                //Service1Client servicePopust = new Service1Client();
+                //var resPopust = await servicePopust.SelectPopustAsync(ime.SelectedItem.ToString());
+                var resPopust = await servis.SelectPopustAsync(cmbPopust.SelectedItem.ToString());
+
+                //Service1Client serviceVoznja = new Service1Client();
+                //var resCijena = await serviceVoznja.SelectVoznjaCijenaAsync(cmbVoznja.SelectedItem.ToString(), TxtPrijavljeni.Text);
+                var resCijena = await servis.SelectVoznjaCijenaAsync(cmbVoznja.SelectedItem.ToString(), TxtPrijavljeni.Text);
+
+                float ukupnaCijena = resCijena - (resCijena * (resPopust.KolicinaPopusta / 100));
+
+                Karta karta = new Karta();
+                //Service1Client servis = new Service1Client();
+
+                var resKartaPopust = await servis.GetPopustIDAsync(cmbPopust.SelectedItem.ToString());
+                karta.Popust = resKartaPopust;
+                var resKartaVOzac = await servis.GetKorisnikIDAsync(TxtPrijavljeni.Text);
+                karta.Vozac = resKartaVOzac;
+                var resKartaVoznja = await servis.GetVoznjaIDAsync(cmbVoznja.SelectedItem.ToString(), TxtPrijavljeni.Text);
+                karta.Voznja = resKartaVoznja;
+
+                var resInsert = await servis.InsertKartaAsync(karta);
+
+                if (resInsert == 0)
+                {
+                    var dialog = new MessageDialog("Pogreška kod kreiranja karte.");
+                    dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    kartaIspis.CijenaVoznje = ukupnaCijena;
+                    kartaIspis.KolicinaPopusta = resPopust.KolicinaPopusta;
+                    kartaIspis.Linija = cmbVoznja.SelectedItem.ToString();
+                    kartaIspis.Popust = cmbPopust.SelectedItem.ToString();
+                    kartaIspis.Vozac = TxtPrijavljeni.Text;
+                    kartaIspis.KartaID = await servis.GetCountAsync();
+
+                    this.Frame.Navigate(typeof(PrikazKarte), kartaIspis);
+                }
             }
         }
     }
