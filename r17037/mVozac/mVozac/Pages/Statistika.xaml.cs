@@ -67,7 +67,7 @@ namespace mVozac.Pages
             }
             else
             {
-                var dialog = new MessageDialog("Nema poništenih karata.");
+                var dialog = new MessageDialog("Morate odabrati kartu ili nema poništenih karta.");
                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                 await dialog.ShowAsync();
             }
