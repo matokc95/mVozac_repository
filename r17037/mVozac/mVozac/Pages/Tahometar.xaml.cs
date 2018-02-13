@@ -22,13 +22,10 @@ using mVozac.ServiceReference2;
 using Windows.Storage.Streams;
 using System.Collections.ObjectModel;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace mVozac.Pages
 {
-    /// <summary>
-    /// Klasa za ostvarivanje funkcionalnosti Tahometra
-    /// </summary>
+
     public sealed partial class Tahometar : Page
     {
         private Geoposition pozicija;
@@ -58,11 +55,7 @@ namespace mVozac.Pages
         {
             this.Frame.GoBack();
         }
-        /// <summary>
-        /// Određuje trenutnu lokaciju korisnika i daje informacije o dnevnoj ruti
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private async void btnRuta_ClickAsync(object sender, RoutedEventArgs e)
         {
 
@@ -129,16 +122,6 @@ namespace mVozac.Pages
                 await dialog.ShowAsync();
             }
         }
-<<<<<<< HEAD
-        /// <summary>
-        /// Metoda za iscrtavanje rute na karti
-        /// </summary>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <param name="routeColor"></param>
-=======
-
->>>>>>> 1134ed4815b3796101564645597d03ebf95e1a71
         private async void PrintRoute(Geopoint start, BasicGeoposition end, Color routeColor)
         {
             try
@@ -178,11 +161,7 @@ namespace mVozac.Pages
                 await dialog.ShowAsync();
             }
         }
-        /// <summary>
-        /// Asinkrona metoda koja ažurira lokaciju korisnika
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private async void OnPositionChanged(Geolocator sender, PositionChangedEventArgs e)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
