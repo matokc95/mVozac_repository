@@ -64,8 +64,6 @@ namespace mVozac.Pages
                                             where webcam.IsEnabled
                                             select webcam).FirstOrDefault();
 
-            
-
             await _mediaCapture.InitializeAsync(new MediaCaptureInitializationSettings
             {
                 VideoDeviceId = backWebCam.Id,

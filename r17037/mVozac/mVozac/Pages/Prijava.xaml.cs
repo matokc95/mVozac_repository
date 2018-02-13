@@ -25,7 +25,8 @@ namespace mVozac
     /// </summary>
     public sealed partial class Prijava : Page
     {
-        Service1Client service;
+        private Service1Client service;
+
         public Prijava()
         {
             this.InitializeComponent();
@@ -45,7 +46,6 @@ namespace mVozac
                 Lozinka = TxtLozinka.Password
 
             };
-
             
             var res = await service.SelectKorisnikaAsync(kor);
 
@@ -66,7 +66,6 @@ namespace mVozac
             if (e.Key == VirtualKey.Enter)
             {
                 Login_ClickAsync(sender,e);
-
             }
         }
     }

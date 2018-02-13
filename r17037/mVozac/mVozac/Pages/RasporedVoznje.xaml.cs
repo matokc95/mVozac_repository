@@ -24,7 +24,8 @@ namespace mVozac.Pages
     /// </summary>
     public sealed partial class RasporedVoznje : Page
     {
-        Service1Client service = new Service1Client();
+        private Service1Client service = new Service1Client();
+
         public RasporedVoznje()
         {
             this.InitializeComponent();

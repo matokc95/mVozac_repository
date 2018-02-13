@@ -31,10 +31,10 @@ namespace mVozac.Pages
     /// </summary>
     public sealed partial class Tahometar : Page
     {
-        Geoposition pozicija;
-        Geopoint mojaLok;
+        private Geoposition pozicija;
+        private Geopoint mojaLok;
         private MapIcon ikona;
-        Service1Client service;
+        private Service1Client service;
 
         public Tahometar()
         {
@@ -47,11 +47,13 @@ namespace mVozac.Pages
 
             service = new Service1Client();
         }
+
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             TxtPrijavljeni.Text = e.Parameter.ToString();
         }
+
         private void BtnPovratak_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.GoBack();
@@ -67,7 +69,6 @@ namespace mVozac.Pages
             //odredivanje polazišta
             var lokacijaPocetak = await service.DohvatiLokacijuAsync(txtPolaziste.Text);
             BasicGeoposition startLocation = new BasicGeoposition() { Latitude = lokacijaPocetak.Latitude, Longitude = lokacijaPocetak.Longitude };
-
             
             //azuriranje trenutne lokacije korisnika
             Geolocator geolocator = new Geolocator();
@@ -127,16 +128,17 @@ namespace mVozac.Pages
                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                 await dialog.ShowAsync();
             }
-            
-
-            
         }
+<<<<<<< HEAD
         /// <summary>
         /// Metoda za iscrtavanje rute na karti
         /// </summary>
         /// <param name="start"></param>
         /// <param name="end"></param>
         /// <param name="routeColor"></param>
+=======
+
+>>>>>>> 1134ed4815b3796101564645597d03ebf95e1a71
         private async void PrintRoute(Geopoint start, BasicGeoposition end, Color routeColor)
         {
             try
@@ -153,7 +155,6 @@ namespace mVozac.Pages
                     MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
                     viewOfRoute.RouteColor = routeColor;
                     viewOfRoute.OutlineColor = Colors.Black;
-                    
 
                     //dodavanje rute na mapcontrol
                     MapControl1.Routes.Add(viewOfRoute);
@@ -176,7 +177,6 @@ namespace mVozac.Pages
                 dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                 await dialog.ShowAsync();
             }
-            
         }
         /// <summary>
         /// Asinkrona metoda koja ažurira lokaciju korisnika
@@ -197,7 +197,6 @@ namespace mVozac.Pages
                     var dialog = new MessageDialog("Nema GPS signala!!!");
                     dialog.Commands.Add(new Windows.UI.Popups.UICommand("Ok") { Id = 0 });
                 }
-                
             });
         }
 
@@ -223,6 +222,5 @@ namespace mVozac.Pages
                 this.Frame.GoBack();
             }
         }
-        
     }
 }

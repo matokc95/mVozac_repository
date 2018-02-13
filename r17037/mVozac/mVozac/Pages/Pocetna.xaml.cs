@@ -25,6 +25,7 @@ namespace mVozac
             this.InitializeComponent();
 
         }
+
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             Korisnik s = (Korisnik)e.Parameter;
