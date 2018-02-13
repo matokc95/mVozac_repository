@@ -53,7 +53,7 @@ namespace mVozac.Pages
 
         private async void btnPovrat_Click(object sender, RoutedEventArgs e)
         {
-            if (cmbKarte.Items.Count != 0)
+            if (cmbKarte.SelectedIndex != -1)
             {
                 //Service1Client activate = new Service1Client();
                 //await activate.AktivirajKartuAsync(int.Parse(cmbKarte.SelectedItem.ToString()));

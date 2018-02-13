@@ -29,6 +29,7 @@ namespace mVozac.Pages
         {
             this.InitializeComponent();
         }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             KartaIspis karta = (KartaIspis)e.Parameter;

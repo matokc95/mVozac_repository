@@ -29,7 +29,6 @@ namespace mVozac
             this.Frame.Navigate(typeof(Prijava), null);
         }
 
-
         private async void Register_ClickAsync(object sender, RoutedEventArgs e)
         {
             if (TxtName.Text.Length == 0 || TxtPrezime.Text.Length == 0 ||
@@ -51,7 +50,6 @@ namespace mVozac
                 kor.Lozinka = TxtPwd.Password;
                 kor.Email = TxtAddr.Text;
 
-
                 Service1Client service = new Service1Client();
                 var res = await service.InsertKorisnikaAsync(kor);
                 if (res == 0)
@@ -67,7 +65,6 @@ namespace mVozac
                     await dialog.ShowAsync();
                     this.Frame.Navigate(typeof(Prijava));
                 }
-
             }
         }
     }
