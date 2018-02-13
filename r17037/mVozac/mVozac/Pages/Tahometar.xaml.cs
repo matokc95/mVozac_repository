@@ -27,7 +27,7 @@ using System.Collections.ObjectModel;
 namespace mVozac.Pages
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Klasa za ostvarivanje funkcionalnosti Tahometra
     /// </summary>
     public sealed partial class Tahometar : Page
     {
@@ -56,7 +56,11 @@ namespace mVozac.Pages
         {
             this.Frame.GoBack();
         }
-
+        /// <summary>
+        /// Određuje trenutnu lokaciju korisnika i daje informacije o dnevnoj ruti
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btnRuta_ClickAsync(object sender, RoutedEventArgs e)
         {
 
@@ -127,6 +131,12 @@ namespace mVozac.Pages
 
             
         }
+        /// <summary>
+        /// Metoda za iscrtavanje rute na karti
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <param name="routeColor"></param>
         private async void PrintRoute(Geopoint start, BasicGeoposition end, Color routeColor)
         {
             try
@@ -168,7 +178,11 @@ namespace mVozac.Pages
             }
             
         }
-
+        /// <summary>
+        /// Asinkrona metoda koja ažurira lokaciju korisnika
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void OnPositionChanged(Geolocator sender, PositionChangedEventArgs e)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
