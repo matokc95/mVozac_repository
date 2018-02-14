@@ -82,10 +82,10 @@ namespace mVozac.Pages
                 PrintRoute(mojaLok, startLocation, Colors.Red);
 
                 //odredivanje medustanica
-                ObservableCollection<Grad> listaGradova = await service.ListaMedustanicaAsync(TxtPrijavljeni.Text);
-                if (listaGradova[0].NazivGrada != null)
+                ObservableCollection<Grad> listaMedustanica = await service.ListaMedustanicaAsync(TxtPrijavljeni.Text);
+                if (listaMedustanica[0].NazivGrada != null)
                 {
-                    foreach (Grad grad in listaGradova)
+                    foreach (Grad grad in listaMedustanica)
                     {
                         var ikoneMedustanica = new MapIcon();
                         BasicGeoposition meduGrad = new BasicGeoposition();
