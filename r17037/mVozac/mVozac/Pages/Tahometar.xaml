@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     x:Class="mVozac.Pages.Tahometar"
-    mc:Ignorable="d" Height="740.429" Width="401.238" Loaded="Page_Loaded">
+    mc:Ignorable="d" Height="740.429" Width="401.238" Loading="Page_Loading">
     <Grid x:Name="pageGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,0.333,0.333">
         <Maps:MapControl x:Name="MapControl1" HorizontalAlignment="Left" Margin="0,168,0,0" VerticalAlignment="Top" Height="562" Width="401" MapServiceToken="NUDduMOOVmZwz1cjsgca~ePRq5HHEc8Eu-ODahG9JOA~Agf7dNjHmoa9EnFTRdMWbAGtRDl0_FMmMKmQHW3eZU_2Qzl6zurdWXrEw4U57MCp"/>
         <Button Content="Povratak" Name="BtnPovratak" HorizontalAlignment="Left" Margin="13,10,0,0" VerticalAlignment="Top" Click="BtnPovratak_Click"/>

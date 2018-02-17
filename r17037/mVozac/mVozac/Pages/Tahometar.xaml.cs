@@ -179,7 +179,7 @@ namespace mVozac.Pages
             });
         }
 
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_Loading(FrameworkElement sender, object args)
         {
             try
             {
