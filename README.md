@@ -98,7 +98,7 @@ Komunikacija između različitih djelova sustava je važna jer ti djelovi ovise 
 # 2. Faza - Oblikovanje sustava, arhitektura softvera (dizajn)
 ## Arhitektura softvera
 * autor: Matija Benotić
-![Arhitektura](https://github.com/foivz/r17037/blob/master/arhitektura.png)
+![Arhitektura](https://github.com/matokc95/mVozac_repository/blob/master/arhitektura.png)
 
 GPS uređaj daje trenutnu lokaciju korisnika (koordinate širine i dužine). U osnovnom načinu, položaj korisnika se koristi za prikaz rute na kontroli mape.
 
@@ -111,11 +111,11 @@ S obzirom na položaj na Zemlji, kontrola mape će izračunati i iscrtati pripad
 ## Dijagram klasa
 * autor: Petar Bračko
 
-![class diagram1](https://github.com/foivz/r17037/blob/master/Class%20Diagram1.jpg)
+![class diagram1](https://github.com/matokc95/mVozac_repository/blob/master/Class%20Diagram1.jpg)
 U dijagramu klasa nalazi se ukupno 23 klasa svaka sa svojim atributima, objektima, referencama, metodama i  vezama. Klase IService1 i klasa Service1 služe za interakciju aplikacije s bazom podataka. Svi upiti na bazu podtaka vrše se preko tih dviju klasa. Klasa Service1 sarži sve operacije, odnosno metode za izvršavanje upita, dok klasa IService1 omogućuje samo konekciju prema bazi podataka. Klasa CompostieType služi klasi IService1 kao pomoć kod ostvarivanja konekcije prema bazi podataka. Sve ostale klase koje smo mi kreirali komuniciraju s klasom Service1 kako bi dohvatili tražene podatke iz baze podataka te ih prikazali u aplikaciji pomoći generiranih klasa pageova aplikacije. Klase Bus, Karta, KartaIspis, Korisnik, Voznja, Linija, Lokacija, PonistiKartu, Popust, StanicaPocetak te StanicaZavrsetak služe samo za manipulaciju podacima s kojima aplikacija radi, dok se sve metode za prikaz i obradu tih podataka nalaze u klasama pageova, odnosno aktivnosti aplikacije.
 ## Dijagram slučajeva korištenja
 * autor: Matija Benotić
-![Use case](https://github.com/foivz/r17037/blob/master/dijagram%20slucajeva/mvozac%20use%20case.png)
+![Use case](https://github.com/matokc95/mVozac_repository/blob/master/dijagram%20slucajeva/mvozac%20use%20case.png)
 
 Na temelju zahtjeva korisnika i analize provedene nad istima, izradili smo dijagram slučajeva korištenja po kojem će se programeri orijentirati prilikom realizacije programskog rješenja.
 
@@ -134,7 +134,7 @@ Moderator registrira nove vozače u sutav. Nakon što je vozač registriran i do
 ### 1. Prijava u sustav
 * autor: Matija Benotić
 
-![Log In screen](https://github.com/foivz/r17037/blob/master/skice%20ekrana/login.png)
+![Log In screen](https://github.com/matokc95/mVozac_repository/blob/master/skice%20ekrana/login.png)
 
 Dijagram aktivnosti za prijavu korisnika se sastoji od 3 učesnika: Korisnik, Aplikacija i Baza podataka. Aktivnost započinje pokretanjem aplikacije. 
 
@@ -142,23 +142,23 @@ Nakon što se aplikacija pokrenula, instancira se forma za prijavu. Korisnik uno
 
 Vrši se provjera podataka unutar baze podataka: dohvaćaju se podaci iz baze i vrši se provjera. Ako je provjera neuspješno završena, ispisuje se poruka o grešci i vraća se korisnika na formu za prijavu. Ako je provjera uspješno završena, dealocira se forma za prijavu i preusmjerava se korisnika na glavni izbornik aplikacije.
 
-![](https://github.com/foivz/r17037/blob/master/slike%20dijagram%20aktivnosti/login.jpg)
+![](https://github.com/matokc95/mVozac_repository/blob/master/slike%20dijagram%20aktivnosti/login.jpg)
 
 ### 2. Registracija
 * autor: Matija Benotić
 
-![Register screen](https://github.com/foivz/r17037/blob/master/skice%20ekrana/register.png)
+![Register screen](https://github.com/matokc95/mVozac_repository/blob/master/skice%20ekrana/register.png)
 
 Aktivnost registracije korisnika započinje ukoliko korisnik na formi za prijavu pritisne gumb "Registracija". Nakon pritiska na gumb "Registracija", forma se instancira i prikazuje. 
 
 Korisnik unosi u formu za registraciju tražene podatke (ime,prezime,datum rođenja,oib,korisničko ime,lozinku,email). Nakon unosa traženih podataka, zapis se spremi u bazu i ispisuje se poruka o uspješnoj registraciji. Nakon toga se dealocira forma za registraciju i prosljeđuje se korisnika na formu za prijavu.
 
-![](https://github.com/foivz/r17037/blob/master/slike%20dijagram%20aktivnosti/registracija.jpg)
+![](https://github.com/matokc95/mVozac_repository/blob/master/slike%20dijagram%20aktivnosti/registracija.jpg)
 
 ### 3. Pretraži karte
 * autor: Bračko Petar
 
-![2 pretrazi karte](https://github.com/foivz/r17037/blob/master/slike%20dijagram%20aktivnosti/Pretraga%20karte.jpg)
+![2 pretrazi karte](https://github.com/matokc95/mVozac_repository/blob/master/skice%20ekrana/Pretra%C5%BEivanje%20karte.png)
 
 Ovaj dijagram sadrži pet učesnika, a to su korisnik, aplikacija, baza podataka, web servis koji služi za komuniciranje s bazom podataka te element vezan na kameru uređaja za čitanje njezinog sadržaja. Proces započinje u trenutku kada korisnik odabire gumb Pretraži karte. Nakon što korisnik to odabere, aplikacija instancira formu za pretragu karata, nakon toga je inicijalizira te je na kraju prikaže. 
 
@@ -168,12 +168,12 @@ Nakon što aplikacija uspješno pročita QR kod, šalje pročitani ID broj web s
 
 U oba slučaja aplikacija ispisuje informacije o karti, te dodatno za poništene karte prikazuje dodatno tekstualno polje koje označava da je karta poništena.
 
-![Skica ekrana pretrage karata](https://github.com/foivz/r17037/blob/master/skice%20ekrana/Pretra%C5%BEivanje%20karte.png)
+![Skica ekrana pretrage karata](https://github.com/matokc95/mVozac_repository/blob/master/slike%20dijagram%20aktivnosti/Pretraga%20karte.jpg)
 
 ### 4. Poništi karte
 * autor: Bračko Petar
 
-![3 ponisti karte](https://github.com/foivz/r17037/blob/master/slike%20dijagram%20aktivnosti/Poni%C5%A1tavanje%20karte.jpg)
+![3 ponisti karte](https://github.com/matokc95/mVozac_repository/blob/master/skice%20ekrana/Poni%C5%A1tavanje%20karte.png)
 
 Ovaj dijagram sadrži pet učesnika. Bazu podataka, korisnika, aplikaciju, web servis koji služi za komuniciranje s bazom podatka te element koji služi za čitanje sadržaja kamere odnosno QR koda.  
 
@@ -183,12 +183,12 @@ Forma sadrži čitač QR koda koji čita QR kod s karte u kojem je zapisan ID br
 
 Ukoliko karta ne postoji, aplikacija javlja odgovarajuću poruku kako karta s određenim ID brojem ne postoji. Ako karta postoji, tada se provjerava da li je karta poništena ili nije. Ako je karta već poništena, aplikacija javi poruku da je karta već poništena, a ukoliko karta nije poništena, aplikacija javlja povratnu poruku o uspješnom poništavanju karte.
 
-![Skica ekrana za poništavanje karata](https://github.com/foivz/r17037/blob/master/skice%20ekrana/Poni%C5%A1tavanje%20karte.png)
+![Skica ekrana za poništavanje karata](https://github.com/matokc95/mVozac_repository/blob/master/slike%20dijagram%20aktivnosti/Poni%C5%A1tavanje%20karte.jpg)
 
 ### 5. Raspored vožnje
 * autor: Matija Benotić 
 
-![Raspored vožnje screen](https://github.com/foivz/r17037/blob/master/skice%20ekrana/raspored%20voznje.png)
+![Raspored vožnje screen](https://github.com/matokc95/mVozac_repository/blob/master/skice%20ekrana/raspored%20voznje.png)
 
 Ovaj dijagram sadrži tri učesnika :  Korisnik, Aplikacija i Baza podataka. 
 
@@ -196,12 +196,12 @@ Proces započinje u trenutku kada korisnik odabire gumb "Raspored vožnje". Apli
 
 Nakon što su dohvaćeni i učitani podaci o vozaču, forma se prikazuje korisniku. Klikom na gumb "Povratak" korisnika se vraća na glavni izbornik aplikacije. Klikom na gumb "Potvrdi vožnju", korisniku se dodjeljuje pravo pristupa vožnji u bazi podataka i prikazuje se poruka o prihvaćanju vožnje.
 
-![](https://github.com/foivz/r17037/blob/master/slike%20dijagram%20aktivnosti/raspored_voznje.jpg)
+![](https://github.com/matokc95/mVozac_repository/blob/master/slike%20dijagram%20aktivnosti/raspored_voznje.jpg)
 
 ### 6. Prodaj kartu
 * autor: Bračko Petar
 
-![5 prodaj kartu](https://github.com/foivz/r17037/blob/master/slike%20dijagram%20aktivnosti/Kreiranje%20karte.jpg)
+![5 prodaj kartu](https://github.com/matokc95/mVozac_repository/blob/master/skice%20ekrana/Prodaja.PNG)
 Ovaj dijagram sadrži četiri učesnika : Korisnik, aplikacija, web servis te baza podataka.  
 
 Proces započinje u trenutku kada korisnik odabire gumb Prodaj kartu. Kada korisnik to odabere, aplikacija instancira formu za pretragu karata, nakon toga je inicijalizira te je na kraju prikaže. 
@@ -213,12 +213,12 @@ Aplikacija tada izrađuje kartu na temelju određenih informacija poput popusta,
 
 Ukoliko je došlo do greške kod upisivanja nove karte, aplikacija ispisuje poruku o neuspjelom kreiranju karte. Ako je karta uspješno kreirana, tada aplikacija instancira novu formu za prikaz informacija o novo kreiranoj karti. Na novoj formi prikazuje sve podatke o karti te QR kod.
 
-![](https://github.com/foivz/r17037/blob/master/skice%20ekrana/Prikaz%20karte.PNG)
+![](https://github.com/matokc95/mVozac_repository/blob/master/slike%20dijagram%20aktivnosti/Kreiranje%20karte.jpg)
 
 ### 7. Tahometar
 * autor: Matija Benotić
 
-![Tahometar screen](https://github.com/foivz/r17037/blob/master/skice%20ekrana/tahometar.png)
+![Tahometar screen](https://github.com/matokc95/mVozac_repository/blob/master/skice%20ekrana/tahometar.png)
 
 Ovaj dijagram sadrži također tri učesnika : Korisnik, Aplikacija, Baza podataka. 
 
@@ -232,7 +232,7 @@ Ruta se dohvaća iz baze podataka.
 
 Klikom na gumb "Povratak", korisnika se vraća na glavni izbornik aplikacije.
 
-![](https://github.com/foivz/r17037/blob/master/slike%20dijagram%20aktivnosti/tahometar.jpg)
+![](https://github.com/matokc95/mVozac_repository/blob/master/slike%20dijagram%20aktivnosti/tahometar.jpg)
 
 ### 8. Ponovno aktiviranje karte
 * autor: Bračko Petar
@@ -243,7 +243,7 @@ Kod funkcionalnosti za aktiviranje poništenih karata, korisnik bira karte iz pa
 Nakon što korisnik odabere jednu od njih, odabire gumb Aktiviraj kartu, te baza podataka mijenja atribute zapisa kojem odgovara ID broj kojem pripada odabrana karta. 
 
 Nakon aktiviranja karte, aplikacija javlja povratnu poruku korisniku da je karta uspješno aktivirana.
-![](https://github.com/foivz/r17037/blob/master/skice%20ekrana/Akitivranje.PNG)
+![](https://github.com/matokc95/mVozac_repository/blob/master/slike%20dijagram%20aktivnosti/Aktiviranje%20poni%C5%A1tene%20karte.jpg)
 
 ## Dizajn podataka
 Baza sadržava 10 početnih tablica. 
@@ -260,12 +260,12 @@ Svaka linije iz tablice „linija“ ima svoj ID te svaka stanica iz tablice „
 
 U tablici „međustanice“ također postoje dva polja _start _i _end_. Ukoliko je neka stanica početna na nekoj liniji, tada ta stanica ima atribut _start _postavljen TRUE (vrsta atributa start i end je BOOL). Isto vrijedi ukoliko je stanica završna postaja linije, tada atribut _end _ima vrijednost TRUE. Sve međustanice imaju _start _i _end _atribute postavljene na FALSE. Jedna stanica može biti međustanica na više linije, te jedna linija može imati više međustanica, i zato je potrebna veza M:N.
 
-![ERA model](https://github.com/foivz/r17037/blob/master/ERA.png)
+![ERA model](https://github.com/matokc95/mVozac_repository/blob/master/ERA.png)
 
 ## Opis podataka
 Svi podatci iz stvarnog života  koriste se i u našoj bazi podataka, kao što su podatci o vozačima, vozilima, linijama, stanica i slično. Svi entiteti zapisuju se u bazu podataka setom atributa koji ih opisuju.
 
-Generirana [SQL skripta](https://github.com/foivz/r17037/blob/master/skripta.sql).
+Generirana [SQL skripta](https://github.com/matokc95/mVozac_repository/blob/master/skripta.sql).
 
 # 3. Faza - Implementacija i testiranje dijelova sustava
 Naša implementacija se temeljila na kreiranju objekata koji predstavljaju entitet uz kojeg je vezan skup atributa i operacija, dakle, korištena je objektno orijentirana paradigma!
@@ -288,10 +288,10 @@ Integriranju modula pristupili smo bottom up metodom. Prvo smo razvili sve modul
 Svi dijelovi sustava su testirani te provjereni da li rade na način kako smo očekivali da rade. Provjeru smo vršili pogledom u bazu podataka nakon sve akcije koja je u interakciji sa bazom podataka. Također, testirani su scenariji koji ne bi smjeli proći kod rada s aplikacijom, odnosno da li takvi scenariji ne ruše aplikaciju.
 
 ## Test case: Win aplikacija
-![Test 1](https://github.com/foivz/r17037/blob/master/testni%20slu%C4%8Dajevi/test1.png)
-![Test 2](https://github.com/foivz/r17037/blob/master/testni%20slu%C4%8Dajevi/test2.png)
-![Test 3](https://github.com/foivz/r17037/blob/master/testni%20slu%C4%8Dajevi/test3.png)
-![Test 4](https://github.com/foivz/r17037/blob/master/testni%20slu%C4%8Dajevi/test4.png)
+![Test 1](https://github.com/matokc95/mVozac_repository/blob/master/testni%20slu%C4%8Dajevi/test1.png)
+![Test 2](https://github.com/matokc95/mVozac_repository/blob/master/testni%20slu%C4%8Dajevi/test2.png)
+![Test 3](https://github.com/matokc95/mVozac_repository/blob/master/testni%20slu%C4%8Dajevi/test3.png)
+![Test 4](https://github.com/matokc95/mVozac_repository/blob/master/testni%20slu%C4%8Dajevi/test4.png)
 
 # 5. Faza - Uvođenje u rad i održavanje sustava
 Aplikacija omogućava rad funkcionalnosti za vozače. Korisnici (vozači) koriste aplikaciju za svoje svrhe, ali aplikacija ne omogućuje nikakvu dodjelu poslova samim korisnicima. Aplikacija je osmišljena da ju koriste vozači, dok im poslove (vozni red i sl.) dodjeljuju mogući administratori ili moderatori putem svoje aplikacije.
