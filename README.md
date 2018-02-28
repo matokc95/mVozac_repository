@@ -207,7 +207,6 @@ Ovaj dijagram sadrži četiri učesnika : Korisnik, aplikacija, web servis te ba
 Proces započinje u trenutku kada korisnik odabire gumb Prodaj kartu. Kada korisnik to odabere, aplikacija instancira formu za pretragu karata, nakon toga je inicijalizira te je na kraju prikaže. 
 
 Aplikacija dohvaća pomoću web servisa iz baze podataka sve vrste popusta te vožnje korisnika. Tim sadržajom puni dva padajuća izbornika iz kojih korisnik može birati podatke. Nakon toga korisnik odabire vožnju te određeni popust za kartu te odabire gumb Izdaj kartu. 
-![](https://github.com/foivz/r17037/blob/master/skice%20ekrana/Prodaja.PNG)
 
 Aplikacija tada izrađuje kartu na temelju određenih informacija poput popusta, ukupne cijene na koju utječe popust, linija vožnje te QR kod kojem je sadržaj ID broj nove karte. Baza podataka nakon toga radi novi zapis karte. 
 
@@ -237,7 +236,7 @@ Klikom na gumb "Povratak", korisnika se vraća na glavni izbornik aplikacije.
 ### 8. Ponovno aktiviranje karte
 * autor: Bračko Petar
 
-![](https://github.com/foivz/r17037/blob/master/slike%20dijagram%20aktivnosti/Aktiviranje%20poni%C5%A1tene%20karte.jpg)
+![](https://github.com/matokc95/mVozac_repository/blob/master/skice%20ekrana/Akitivranje.PNG)
 Kod funkcionalnosti za aktiviranje poništenih karata, korisnik bira karte iz padajućeg izbornika koje su poništene. 
 
 Nakon što korisnik odabere jednu od njih, odabire gumb Aktiviraj kartu, te baza podataka mijenja atribute zapisa kojem odgovara ID broj kojem pripada odabrana karta. 
